@@ -39,7 +39,7 @@ for i in range((nelectrons - 5) // 2, (nelectrons - 5) // 2 + 3):
 
 hsf = numpy.zeros((1, Cl_atm.nao, Cl_atm.nao))
 hso = fetch_X2C_soDKH1(
-    Cl_atm, Cl_scf, Cl_res["mo_coeff"], dm1, _test=False, _get_1e=True, _get_2e=False
+    Cl_atm, Cl_scf, Cl_res["mo_coeff"], dm1, _test=False, _get_1e=True, _get_2e=True
 )
 hso *= (data.nist.ALPHA**2) / 4.0
 # print(hso[0][:9, :9])
