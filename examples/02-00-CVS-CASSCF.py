@@ -1,19 +1,10 @@
 # coding=UTF-8
-import pyscf
-import os
-import sys
-import numpy
-import struct
 from pyscf import tools
-import copy
-from pyscf.lib import logger
-from pyscf import lib
-from pyscf import ao2mo
-from pyscf import mcscf, fci, gto, scf
+from pyscf import mcscf, gto, scf
 
 from pyscf_util.MeanField.iciscf import iCI
 
-BASIS = 'ccpvtz'
+BASIS = "ccpvtz"
 
 mol = gto.M(
     verbose=4,
@@ -25,7 +16,7 @@ mol = gto.M(
     spin=0,
     charge=0,
     symmetry="c2v",
-    unit="angstrom"
+    unit="angstrom",
 )
 mol.build()
 mf = scf.RHF(mol)
@@ -41,7 +32,7 @@ mymc2step.fcisolver = iCI(
     tol=1e-12,
     mo_coeff=mf.mo_coeff,
     taskname="iCI0",
-    CVS=True
+    CVS=True,
 )
 mymc2step.fcisolver.config["segment"] = "0 0 1 4 4 0 0 0"
 mymc2step.fcisolver.config["selection"] = 1
@@ -51,4 +42,4 @@ mymc2step.mc1step()
 # dump fcidump #
 
 mf.mo_coeff = mymc2step.mo_coeff
-tools.fcidump.from_scf(mf, "FCIDUMP_CO_C_Kedge_%s"%BASIS, tol=1e-10)
+tools.fcidump.from_scf(mf, "FCIDUMP_CO_C_Kedge_%s" % BASIS, tol=1e-10)

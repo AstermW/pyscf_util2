@@ -1,0 +1,3228 @@
+****************************************************************************
+*********** Iteractive Configuration Interaction with Selection  ***********
+     AUTHOR : NING ZHANG, PKU-CCME, 100871, ningzhangpku@foxmail.com        
+****************************************************************************
+
+
+
+**************************************
+*********** Print TaskInfo ***********
+**************************************
+
+ Spintwo / Irrep / nStates / OuterWeight / Weight
+____________________________________
+        0/      0/        1/     1.000000     1.00000000 
+____________________________________
+
+
+**************************************
+***************  END  ****************
+**************************************
+
+
+
+******** Print Parameter ******* 
+
+********** Basic Info **********
+
+Number of correlated electrons = 18
+Number of correlated orbitals  = 39
+Selection Algorithm            = SiCI with iCI Criterion
+Diagonization Algorithm        = LOBPCG
+Initial Guess                  = CASCI
+Orbital Type                   = Natural Orbital
+Connection Manager             = Automatic determination
+Perturbation                   = Default
+Relativity                     = Relativity -- Do not consider
+Reduced Density Matrix         = Do not calculate RDMs
+********** Cnotrol Info **********
+
+Similarity Control                           = 0.950000
+energy convergence tolerance for iCI (ETOL)  = 0.000000
+energy window for ivi roots (in Hartree)     = -10000000000.000000
+Cmin Schedule                (CMIN_SCHEDULE) = 5.0000e-05 3.0000e-05 2.0000e-05 1.0000e-05 7.0000e-06 5.0000e-06 3.0000e-06 1.5000e-06 
+
+**********  End  Parameter **********
+
+
+
+**************************************
+*********** Print FCI_INFO ***********
+**************************************
+
+ Spintwo / Irrep / nStates / 
+____________________________________
+        0/      0/        1/ ncfg : 11661213585522
+        0/      0/        1/ ncsf : 1448646197008400
+        0/      0/        1/ ndet : 11227006080609840
+Warning: the number of correlated electrons is read from FCIDUMP, not determined by the input file!
+____________________________________
+
+
+**************************************
+***************  END  ****************
+**************************************
+
+
+
+********** Calculation Procedure **********
+
+
+The number of steps of calculation procedure = 20
+
+Step   0 : iCI_Initialization with CASCI and cutoff =       5.000e-05
+Step   1 : Selection_NonRelativistic_iCI_Criterion with Cmin =       1.000e-03
+Step   2 : Generating Natural Orbitals with Cmin =       5.000e-05
+Step   3 : Selection_NonRelativistic_iCI_Criterion with Cmin =       5.000e-05
+Step   4 : Perturbation Correction -- ENPT(2) Non-Relativistic 
+Step   5 : Selection_NonRelativistic_iCI_Criterion with Cmin =       3.000e-05
+Step   6 : Perturbation Correction -- ENPT(2) Non-Relativistic 
+Step   7 : Selection_NonRelativistic_iCI_Criterion with Cmin =       2.000e-05
+Step   8 : Perturbation Correction -- ENPT(2) Non-Relativistic 
+Step   9 : Selection_NonRelativistic_iCI_Criterion with Cmin =       1.000e-05
+Step  10 : Perturbation Correction -- ENPT(2) Non-Relativistic 
+Step  11 : Selection_NonRelativistic_iCI_Criterion with Cmin =       7.000e-06
+Step  12 : Perturbation Correction -- ENPT(2) Non-Relativistic 
+Step  13 : Selection_NonRelativistic_iCI_Criterion with Cmin =       5.000e-06
+Step  14 : Perturbation Correction -- ENPT(2) Non-Relativistic 
+Step  15 : Selection_NonRelativistic_iCI_Criterion with Cmin =       3.000e-06
+Step  16 : Perturbation Correction -- ENPT(2) Non-Relativistic 
+Step  17 : Selection_NonRelativistic_iCI_Criterion with Cmin =       1.500e-06
+Step  18 : Perturbation Correction -- ENPT(2) Non-Relativistic 
+Step  19 : PostProcess -- WriteOut .enedat File
+
+
+*******************************************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 468
+nnz               = 20654
+Working Time      : cputime / walltime / effective core 
+Total Time        :     0.90 /     0.03 / 31.15
+Initialize Time   :     0.01 /     0.00 / 11.78
+Calculation Time  :     0.86 /     0.03 / 34.21
+Finalize Time     :     0.03 /     0.00 / 10.57
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    8
+Initial    : 
+Init[   0] :   -547.20117658
+Eigenvalue : 
+Eig[   0]  :   -547.23238415
+   CpuTime :           1.660
+  WallTime :           0.048
+Residue    : 
+Res[   0]  :      0.00004481
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    3
+Initial    : 
+Init[   0] :   -547.23238394
+Eigenvalue : 
+Eig[   0]  :   -547.23238395
+   CpuTime :           0.540
+  WallTime :           0.013
+Residue    : 
+Res[   0]  :      0.00000324
+
+
+*************** End MatrixDiag ***************
+
+
+
+********** INITIAL GUESS INFO **********
+
+  spintwo | symmetry |  nstates |     ncsf |     ncfg |   energy 
+--------------------------------------------------------------------------------------
+        0 |        0 |        1 |      308 |      218 |   -547.23238395, 
+
+
+****************************************
+
+
+
+******************************
+* Step   0 Finished          *
+* CpuTime  =           3.250 *
+* WallTime =           0.100 *
+******************************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 308
+nnz               = 9565
+Working Time      : cputime / walltime / effective core 
+Total Time        :     0.14 /     0.01 / 19.17
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :     0.11 /     0.00 / 27.10
+Finalize Time     :     0.02 /     0.00 / 8.89
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    3
+Initial    : 
+Init[   0] :   -547.23238395
+Eigenvalue : 
+Eig[   0]  :   -547.23238395
+   CpuTime :           0.540
+  WallTime :           0.012
+Residue    : 
+Res[   0]  :      0.00000015
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 7204 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   222.35 /     3.61 / 61.63
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :   222.34 /     3.61 / 61.66
+Finalize Time     :     0.00 /     0.00 / 0.00
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 7204
+nnz               = 1244810
+Working Time      : cputime / walltime / effective core 
+Total Time        :     0.76 /     0.04 / 20.58
+Initialize Time   :     0.02 /     0.00 / 13.57
+Calculation Time  :     0.70 /     0.02 / 36.33
+Finalize Time     :     0.04 /     0.02 / 2.48
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    9
+Initial    : 
+Init[   0] :   -547.23238395
+Eigenvalue : 
+Eig[   0]  :   -547.63765698
+   CpuTime :          15.660
+  WallTime :           0.356
+Residue    : 
+Res[   0]  :      0.00029452
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 7215 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   272.38 /     4.51 / 60.35
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :   272.35 /     4.51 / 60.37
+Finalize Time     :     0.03 /     0.00 / 74.72
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 7215
+nnz               = 1250055
+Working Time      : cputime / walltime / effective core 
+Total Time        :     0.13 /     0.01 / 17.46
+Initialize Time   :     0.01 /     0.00 / 6.94
+Calculation Time  :     0.09 /     0.00 / 28.90
+Finalize Time     :     0.03 /     0.00 / 10.67
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    4
+Initial    : 
+Init[   0] :   -547.63765698
+Eigenvalue : 
+Eig[   0]  :   -547.63770470
+   CpuTime :           6.350
+  WallTime :           0.145
+Residue    : 
+Res[   0]  :      0.00020138
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    6
+Initial    : 
+Init[   0] :   -547.63472931
+Eigenvalue : 
+Eig[   0]  :   -547.63477536
+   CpuTime :           8.420
+  WallTime :           0.181
+Residue    : 
+Res[   0]  :      0.00008134
+
+
+*************** End MatrixDiag ***************
+
+********** Selection_iCI Info **********
+
+iter / ncsf_prime / ncfg_prime / ncsf_Qspace / Similarity / time 
+   0 /      5743  /      4164  /      7204  /  0.0141  /   243.770,    8.401 
+   1 /      5746  /      4168  /      7215  /  0.9981  /   283.490,    8.997 
+Final prune is performed!
+
+***************************************
+
+
+********** BEGIN PRINT Important cfgspace INFO **********
+
+  spintwo | symmetry |  nstates |     ncsf |     ncfg |   energy 
+        0 |        0 |        1 |     5746 |     4168 |   -547.63477536, 
+
+
+*************** Begin PRINT NONRELA CFGSPACE ***************
+
+spintwo    = 0
+irrep      = 0
+nstates    = 1
+ncfg       =         4168
+ncsf       =         5746
+ncsf full  =         7461
+ndet full  =        21337
+ndet eff   =        15978
+
+*********** state  0 ***********
+Important ocfg:
+    0 2222222222222222000000000000000000000000000000000000000000000000       0    -9.364813e-01  87.699714
+    1 2222222222222202200000000000000000000000000000000000000000000000       0     9.237486e-02   0.853312
+    2 2222222222220222200000000000000000000000000000000000000000000000       0     4.797824e-02   0.230191
+    3 2222222222222211101000000000000000000000000000000000000000000000       0    -4.717146e-02   0.222515
+    4 2222222222222112110000000000000000000000000000000000000000000000       0     4.529065e-02   0.205124
+    5 2222222222221222100000000000000000000000000000000000000000000000       0     3.844607e-02   0.147810
+    6 2222222222221212100000000100000000000000000000000000000000000000       1     3.638726e-02   0.132403
+    7 2222222222222112110000000000000000000000000000000000000000000000       1    -3.514469e-02   0.123515
+    8 2222222222222202100000000000001000000000000000000000000000000000       0    -2.906893e-02   0.084500
+    9 2222222222221212100000000000010000000000000000000000000000000000       1    -2.839149e-02   0.080608
+   10 2222222222222220002000000000000000000000000000000000000000000000       0     2.715837e-02   0.073758
+   11 2222222222222121011000000000000000000000000000000000000000000000       0    -2.644149e-02   0.069915
+   12 2222222222222220200000000000000000000000000000000000000000000000       0     2.622980e-02   0.068800
+   13 2222222222222211101000000000000000000000000000000000000000000000       1    -2.561928e-02   0.065635
+   14 2222222222222202100000010000000000000000000000000000000000000000       0    -2.472909e-02   0.061153
+   15 2222222220222222200000000000000000000000000000000000000000000000       0     2.427057e-02   0.058906
+   16 2222222222221212000000000000011000000000000000000000000000000000       1    -2.380338e-02   0.056660
+   17 2222222222222022020000000000000000000000000000000000000000000000       0     2.337114e-02   0.054621
+   18 2222222222211222110000000000000000000000000000000000000000000000       0     2.245183e-02   0.050408
+   19 2222222221222221100000010000000000000000000000000000000000000000       1     2.243004e-02   0.050311
+   20 2222222222222122001000000000000000000000000000000000000000000000       0     2.175140e-02   0.047312
+   21 2222222221222221200000000000000000000000000000000000000000000000       0     2.164297e-02   0.046842
+   22 2222222222122212100001000000000000000000000000000000000000000000       0     2.149371e-02   0.046198
+   23 2222222222121222100000100000000000000000000000000000000000000000       0    -2.116582e-02   0.044799
+   24 2222222221122222100000000100000000000000000000000000000000000000       1    -2.057326e-02   0.042326
+check importance : 5705 / 5746 (   99.29)
+
+****************************
+
+
+*************** End PRINT NONRELA CFGSPACE ***************
+
+
+
+********** END   PRINT Important cfgspace INFO **********
+
+
+
+******************************
+* Step   1 Finished          *
+* CpuTime  =         540.220 *
+* WallTime =          17.837 *
+******************************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 5746
+nnz               = 932131
+Working Time      : cputime / walltime / effective core 
+Total Time        :     0.63 /     0.03 / 19.97
+Initialize Time   :     0.02 /     0.00 / 13.39
+Calculation Time  :     0.58 /     0.02 / 34.47
+Finalize Time     :     0.03 /     0.01 / 2.29
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    3
+Initial    : 
+Init[   0] :   -547.63477536
+Eigenvalue : 
+Eig[   0]  :   -547.63477536
+   CpuTime :           4.570
+  WallTime :           0.103
+Residue    : 
+Res[   0]  :      0.00000305
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 237404 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   290.35 /     4.85 / 59.81
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :   290.19 /     4.72 / 61.49
+Finalize Time     :     0.15 /     0.13 / 1.12
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 237404
+nnz               = 93865556
+Working Time      : cputime / walltime / effective core 
+Total Time        :    48.74 /     1.76 / 27.67
+Initialize Time   :     0.01 /     0.00 / 5.78
+Calculation Time  :    48.48 /     1.53 / 31.74
+Finalize Time     :     0.24 /     0.23 / 1.03
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :   11
+Initial    : 
+Init[   0] :   -547.63477536
+Eigenvalue : 
+Eig[   0]  :   -547.67641942
+   CpuTime :         175.230
+  WallTime :           3.644
+Residue    : 
+Res[   0]  :      0.00036133
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 289107 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   314.47 /     5.58 / 56.31
+Initialize Time   :     0.09 /     0.10 / 0.93
+Calculation Time  :   314.34 /     5.46 / 57.56
+Finalize Time     :     0.04 /     0.03 / 1.53
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 289107
+nnz               = 126476710
+Working Time      : cputime / walltime / effective core 
+Total Time        :    24.32 /     0.85 / 28.58
+Initialize Time   :     0.01 /     0.00 / 5.36
+Calculation Time  :    23.99 /     0.54 / 44.45
+Finalize Time     :     0.32 /     0.31 / 1.03
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    7
+Initial    : 
+Init[   0] :   -547.67641942
+Eigenvalue : 
+Eig[   0]  :   -547.67861290
+   CpuTime :         121.710
+  WallTime :           2.580
+Residue    : 
+Res[   0]  :      0.00042272
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 293383 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   315.63 /     5.60 / 56.35
+Initialize Time   :     0.08 /     0.08 / 1.04
+Calculation Time  :   315.51 /     5.51 / 57.22
+Finalize Time     :     0.03 /     0.01 / 2.76
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 293383
+nnz               = 129350585
+Working Time      : cputime / walltime / effective core 
+Total Time        :     2.87 /     0.12 / 23.47
+Initialize Time   :     0.01 /     0.00 / 7.05
+Calculation Time  :     2.79 /     0.06 / 46.06
+Finalize Time     :     0.07 /     0.06 / 1.16
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    3
+Initial    : 
+Init[   0] :   -547.67861290
+Eigenvalue : 
+Eig[   0]  :   -547.67876532
+   CpuTime :          53.720
+  WallTime :           1.226
+Residue    : 
+Res[   0]  :      0.00066968
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    4
+Initial    : 
+Init[   0] :   -547.67853471
+Eigenvalue : 
+Eig[   0]  :   -547.67853681
+   CpuTime :          75.650
+  WallTime :           1.487
+Residue    : 
+Res[   0]  :      0.00012907
+
+
+*************** End MatrixDiag ***************
+
+********** Selection_iCI Info **********
+
+iter / ncsf_prime / ncfg_prime / ncsf_Qspace / Similarity / time 
+   0 /    202283  /    119298  /    237404  /  0.0284  /   527.220,   15.333 
+   1 /    242586  /    139204  /    289107  /  0.8273  /   468.230,   13.563 
+   2 /    245636  /    140655  /    293383  /  0.9854  /   378.260,   11.476 
+Final prune is performed!
+
+***************************************
+
+
+********** BEGIN PRINT Important cfgspace INFO **********
+
+  spintwo | symmetry |  nstates |     ncsf |     ncfg |   energy 
+        0 |        0 |        1 |   245636 |   140655 |   -547.67853681, 
+
+
+*************** Begin PRINT NONRELA CFGSPACE ***************
+
+spintwo    = 0
+irrep      = 0
+nstates    = 1
+ncfg       =       140655
+ncsf       =       245636
+ncsf full  =       680242
+ndet full  =      2890196
+ndet eff   =       930798
+
+*********** state  0 ***********
+Important ocfg:
+    0 2222222222222222000000000000000000000000000000000000000000000000       0     9.113407e-01  83.054191
+    1 2222222222222202200000000000000000000000000000000000000000000000       0    -1.245772e-01   1.551949
+    2 2222222222221222100000000000000000000000000000000000000000000000       0    -7.480507e-02   0.559580
+    3 2222222222222211101000000000000000000000000000000000000000000000       0     6.297009e-02   0.396523
+    4 2222222222220222200000000000000000000000000000000000000000000000       0    -6.035758e-02   0.364304
+    5 2222222222222112110000000000000000000000000000000000000000000000       0    -5.977119e-02   0.357259
+    6 2222222222222112110000000000000000000000000000000000000000000000       1     4.895011e-02   0.239611
+    7 2222222222222220200000000000000000000000000000000000000000000000       0    -4.567685e-02   0.208637
+    8 2222222222221212100000000100000000000000000000000000000000000000       1    -4.524760e-02   0.204735
+    9 2222222222222221010000000000000000000000000000000000000000000000       0    -3.743652e-02   0.140149
+   10 2222222222222202100000000000001000000000000000000000000000000000       0     3.666479e-02   0.134431
+   11 2222222222222211101000000000000000000000000000000000000000000000       1     3.624829e-02   0.131394
+   12 2222222222222122001000000000000000000000000000000000000000000000       0    -3.582437e-02   0.128339
+   13 2222222222222220002000000000000000000000000000000000000000000000       0    -3.541348e-02   0.125411
+   14 2222222222222121011000000000000000000000000000000000000000000000       0     3.511790e-02   0.123327
+   15 2222222222221212100000000000010000000000000000000000000000000000       1     3.354768e-02   0.112545
+   16 2222222222222202100000010000000000000000000000000000000000000000       0     3.216138e-02   0.103435
+   17 2222222222222022020000000000000000000000000000000000000000000000       0    -3.082895e-02   0.095042
+   18 2222222221222221200000000000000000000000000000000000000000000000       0    -2.942217e-02   0.086566
+   19 2222222220222222200000000000000000000000000000000000000000000000       0    -2.918469e-02   0.085175
+   20 2222222222211222110000000000000000000000000000000000000000000000       0    -2.698030e-02   0.072794
+   21 2222222221222221100000010000000000000000000000000000000000000000       1    -2.593138e-02   0.067244
+   22 2222222222212222010000000000000000000000000000000000000000000000       0    -2.587094e-02   0.066931
+   23 2222222222122212100001000000000000000000000000000000000000000000       0    -2.475784e-02   0.061295
+   24 2222222222221212000000000000011000000000000000000000000000000000       1     2.472700e-02   0.061142
+check importance : 245081 / 245636 (   99.77)
+
+****************************
+
+
+*************** End PRINT NONRELA CFGSPACE ***************
+
+
+
+********** END   PRINT Important cfgspace INFO **********
+
+
+
+*************** Begin  ***************
+
+
+
+*************** Begin First_Residue_Update ***************
+
+memory            = 66018520
+Working Time      : cputime / walltime / effective core 
+Total Time        :     2.57 /     0.05 / 52.23
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :     2.56 /     0.05 / 52.14
+Finalize Time     :     0.01 /     0.00 / 418.68
+
+
+*************** End First_Residue_Update ***************
+
+Working Time      : cputime / walltime / effective core 
+Total Time        :     6.46 /     0.12 / 51.85
+Initialize Time   :     2.59 /     0.05 / 52.30
+Calculation Time  :     3.87 /     0.07 / 51.60
+
+
+*************** End  ***************
+
+n_converged =     15.91560756
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 245636
+nnz               = 87965562
+Working Time      : cputime / walltime / effective core 
+Total Time        :    48.02 /     1.68 / 28.56
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :    47.80 /     1.49 / 32.16
+Finalize Time     :     0.21 /     0.19 / 1.09
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :   16
+Initial    : 
+Init[   0] :   -546.87609154
+Eigenvalue : 
+Eig[   0]  :   -547.66694917
+   CpuTime :         255.770
+  WallTime :           5.312
+Residue    : 
+Res[   0]  :      0.00003586
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 389540 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   314.41 /     5.63 / 55.85
+Initialize Time   :     0.05 /     0.05 / 0.97
+Calculation Time  :   314.26 /     5.49 / 57.20
+Finalize Time     :     0.10 /     0.08 / 1.20
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 389540
+nnz               = 189744582
+Working Time      : cputime / walltime / effective core 
+Total Time        :    59.90 /     1.98 / 30.19
+Initialize Time   :     0.01 /     0.00 / 4.29
+Calculation Time  :    59.58 /     1.69 / 35.32
+Finalize Time     :     0.31 /     0.29 / 1.05
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :   10
+Initial    : 
+Init[   0] :   -547.66694917
+Eigenvalue : 
+Eig[   0]  :   -547.68960326
+   CpuTime :         310.040
+  WallTime :           6.039
+Residue    : 
+Res[   0]  :      0.00053644
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 405633 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   313.09 /     5.81 / 53.88
+Initialize Time   :     0.11 /     0.11 / 1.03
+Calculation Time  :   312.93 /     5.69 / 54.99
+Finalize Time     :     0.05 /     0.01 / 3.74
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 405633
+nnz               = 201175991
+Working Time      : cputime / walltime / effective core 
+Total Time        :    10.43 /     0.35 / 30.02
+Initialize Time   :     0.02 /     0.00 / 13.83
+Calculation Time  :    10.25 /     0.22 / 47.01
+Finalize Time     :     0.15 /     0.13 / 1.17
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    5
+Initial    : 
+Init[   0] :   -547.68960326
+Eigenvalue : 
+Eig[   0]  :   -547.69021408
+   CpuTime :         148.640
+  WallTime :           3.048
+Residue    : 
+Res[   0]  :      0.00037816
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 406298 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   312.94 /     5.71 / 54.80
+Initialize Time   :     0.13 /     0.13 / 1.03
+Calculation Time  :   312.77 /     5.57 / 56.11
+Finalize Time     :     0.02 /     0.01 / 1.93
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 406298
+nnz               = 201653042
+Working Time      : cputime / walltime / effective core 
+Total Time        :     0.72 /     0.06 / 12.45
+Initialize Time   :     0.02 /     0.00 / 14.17
+Calculation Time  :     0.64 /     0.01 / 43.99
+Finalize Time     :     0.06 /     0.04 / 1.44
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    3
+Initial    : 
+Init[   0] :   -547.69021408
+Eigenvalue : 
+Eig[   0]  :   -547.69023597
+   CpuTime :          94.200
+  WallTime :           1.977
+Residue    : 
+Res[   0]  :      0.00031343
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    6
+Initial    : 
+Init[   0] :   -547.68959852
+Eigenvalue : 
+Eig[   0]  :   -547.68960823
+   CpuTime :         197.420
+  WallTime :           3.879
+Residue    : 
+Res[   0]  :      0.00012097
+
+
+*************** End MatrixDiag ***************
+
+********** Selection_iCI Info **********
+
+iter / ncsf_prime / ncfg_prime / ncsf_Qspace / Similarity / time 
+   0 /    216982  /    123031  /    389540  /  0.2656  /   694.390,   18.255 
+   1 /    228658  /    128902  /    405633  /  0.9406  /   479.120,   13.765 
+   2 /    229125  /    129130  /    406298  /  0.9969  /   414.420,   12.244 
+Final prune is performed!
+
+***************************************
+
+
+********** BEGIN PRINT Important cfgspace INFO **********
+
+  spintwo | symmetry |  nstates |     ncsf |     ncfg |   energy 
+        0 |        0 |        1 |   229125 |   129130 |   -547.68960823, 
+
+
+*************** Begin PRINT NONRELA CFGSPACE ***************
+
+spintwo    = 0
+irrep      = 0
+nstates    = 1
+ncfg       =       129130
+ncsf       =       229125
+ncsf full  =       625428
+ndet full  =      2663987
+ndet eff   =       871337
+
+*********** state  0 ***********
+Important ocfg:
+    0 2222222222222222000000000000000000000000000000000000000000000000       0    -9.138316e-01  83.508824
+    1 2222222222222202200000000000000000000000000000000000000000000000       0     1.316952e-01   1.734364
+    2 2222222222222112110000000000000000000000000000000000000000000000       0     7.777165e-02   0.604843
+    3 2222222222222112110000000000000000000000000000000000000000000000       1    -6.874649e-02   0.472608
+    4 2222222222220222200000000000000000000000000000000000000000000000       0     6.726951e-02   0.452519
+    5 2222222222222211101000000000000000000000000000000000000000000000       0    -6.657106e-02   0.443171
+    6 2222222222221212100000000100000000000000000000000000000000000000       1    -6.000091e-02   0.360011
+    7 2222222222222022020000000000000000000000000000000000000000000000       0     5.456095e-02   0.297690
+    8 2222222222222220200000000000000000000000000000000000000000000000       0     5.144128e-02   0.264621
+    9 2222222222222220002000000000000000000000000000000000000000000000       0     5.016350e-02   0.251638
+   10 2222222222222121011000000000000000000000000000000000000000000000       0    -4.392606e-02   0.192950
+   11 2222222222222211101000000000000000000000000000000000000000000000       1    -4.217145e-02   0.177843
+   12 2222222222222220100010000000000000000000000000000000000000000000       0    -4.164888e-02   0.173463
+   13 2222222222121222101000000000000000000000000000000000000000000000       0     4.012830e-02   0.161028
+   14 2222222222211222110000000000000000000000000000000000000000000000       1     3.861430e-02   0.149106
+   15 2222222222212122010000100000000000000000000000000000000000000000       1     3.831692e-02   0.146819
+   16 2222222222202222020000000000000000000000000000000000000000000000       0     3.745277e-02   0.140271
+   17 2222222222121222101000000000000000000000000000000000000000000000       1    -3.724383e-02   0.138710
+   18 2222222222022222002000000000000000000000000000000000000000000000       0     3.379507e-02   0.114211
+   19 2222222222222121011000000000000000000000000000000000000000000000       1    -3.132059e-02   0.098098
+   20 2222222222211222110000000000000000000000000000000000000000000000       0    -2.974840e-02   0.088497
+   21 2222222222122221001100000000000000000000000000000000000000000000       1     2.964316e-02   0.087872
+   22 2222222221122222001100000000000000000000000000000000000000000000       1    -2.948928e-02   0.086962
+   23 2222222222221221100100000000000000000000000000000000000000000000       0     2.929281e-02   0.085807
+   24 2222222222221221100000001000000000000000000000000000000000000000       1    -2.909857e-02   0.084673
+check importance : 227616 / 229125 (   99.34)
+
+****************************
+
+
+*************** End PRINT NONRELA CFGSPACE ***************
+
+
+
+********** END   PRINT Important cfgspace INFO **********
+
+
+
+*************** Begin  ***************
+
+
+
+*************** Begin First_Residue_Update ***************
+
+memory            = 61110536
+Working Time      : cputime / walltime / effective core 
+Total Time        :     2.33 /     0.04 / 52.64
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :     2.31 /     0.04 / 52.35
+Finalize Time     :     0.00 /     0.00 / 0.00
+
+
+*************** End First_Residue_Update ***************
+
+Working Time      : cputime / walltime / effective core 
+Total Time        :     4.59 /     0.08 / 57.22
+Initialize Time   :     2.33 /     0.04 / 52.40
+Calculation Time  :     2.24 /     0.04 / 62.75
+
+
+*************** End  ***************
+
+n_converged =     26.03292799
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 229125
+nnz               = 84982920
+Working Time      : cputime / walltime / effective core 
+Total Time        :    45.68 /     1.62 / 28.17
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :    45.26 /     1.21 / 37.34
+Finalize Time     :     0.42 /     0.41 / 1.03
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :   16
+Initial    : 
+Init[   0] :   -546.83449526
+Eigenvalue : 
+Eig[   0]  :   -547.68863744
+   CpuTime :         183.150
+  WallTime :           4.000
+Residue    : 
+Res[   0]  :      0.00005693
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 284750 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   316.42 /     5.65 / 56.01
+Initialize Time   :     0.05 /     0.05 / 0.97
+Calculation Time  :   316.31 /     5.57 / 56.80
+Finalize Time     :     0.05 /     0.03 / 1.69
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 284750
+nnz               = 131046316
+Working Time      : cputime / walltime / effective core 
+Total Time        :    29.84 /     1.05 / 28.54
+Initialize Time   :     0.01 /     0.00 / 5.93
+Calculation Time  :    29.66 /     0.89 / 33.36
+Finalize Time     :     0.16 /     0.15 / 1.03
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    7
+Initial    : 
+Init[   0] :   -547.68863744
+Eigenvalue : 
+Eig[   0]  :   -547.69037585
+   CpuTime :         125.590
+  WallTime :           2.672
+Residue    : 
+Res[   0]  :      0.00037506
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 285635 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   312.12 /     5.64 / 55.36
+Initialize Time   :     0.08 /     0.09 / 0.91
+Calculation Time  :   312.01 /     5.54 / 56.29
+Finalize Time     :     0.03 /     0.01 / 4.18
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 285635
+nnz               = 131652488
+Working Time      : cputime / walltime / effective core 
+Total Time        :     0.76 /     0.05 / 14.08
+Initialize Time   :     0.01 /     0.00 / 7.18
+Calculation Time  :     0.70 /     0.02 / 41.85
+Finalize Time     :     0.04 /     0.04 / 1.12
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    3
+Initial    : 
+Init[   0] :   -547.69037585
+Eigenvalue : 
+Eig[   0]  :   -547.69040309
+   CpuTime :          63.460
+  WallTime :           1.357
+Residue    : 
+Res[   0]  :      0.00036057
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    5
+Initial    : 
+Init[   0] :   -547.69008029
+Eigenvalue : 
+Eig[   0]  :   -547.69008643
+   CpuTime :          96.420
+  WallTime :           1.901
+Residue    : 
+Res[   0]  :      0.00014309
+
+
+*************** End MatrixDiag ***************
+
+********** Selection_iCI Info **********
+
+iter / ncsf_prime / ncfg_prime / ncsf_Qspace / Similarity / time 
+   0 /    230810  /    129600  /    284750  /  0.8348  /   479.250,   13.885 
+   1 /    231357  /    129876  /    285635  /  0.9966  /   382.300,   11.544 
+Final prune is performed!
+
+***************************************
+
+
+********** BEGIN PRINT Important cfgspace INFO **********
+
+  spintwo | symmetry |  nstates |     ncsf |     ncfg |   energy 
+        0 |        0 |        1 |   231357 |   129876 |   -547.69008643, 
+
+
+*************** Begin PRINT NONRELA CFGSPACE ***************
+
+spintwo    = 0
+irrep      = 0
+nstates    = 1
+ncfg       =       129876
+ncsf       =       231357
+ncsf full  =       633816
+ndet full  =      2704703
+ndet eff   =       881839
+
+*********** state  0 ***********
+Important ocfg:
+    0 2222222222222222000000000000000000000000000000000000000000000000       0     9.139161e-01  83.524265
+    1 2222222222222202200000000000000000000000000000000000000000000000       0    -1.313223e-01   1.724555
+    2 2222222222222112110000000000000000000000000000000000000000000000       0     7.767788e-02   0.603385
+    3 2222222222222112110000000000000000000000000000000000000000000000       1    -6.882975e-02   0.473753
+    4 2222222222220222200000000000000000000000000000000000000000000000       0    -6.724264e-02   0.452157
+    5 2222222222222211101000000000000000000000000000000000000000000000       0     6.636848e-02   0.440478
+    6 2222222222221212100000000100000000000000000000000000000000000000       1    -6.014477e-02   0.361739
+    7 2222222222222022020000000000000000000000000000000000000000000000       0    -5.479592e-02   0.300259
+    8 2222222222222220200000000000000000000000000000000000000000000000       0    -4.979118e-02   0.247916
+    9 2222222222222220002000000000000000000000000000000000000000000000       0    -4.959172e-02   0.245934
+   10 2222222222222121011000000000000000000000000000000000000000000000       0    -4.391657e-02   0.192866
+   11 2222222222222211101000000000000000000000000000000000000000000000       1     4.268654e-02   0.182214
+   12 2222222222222220100010000000000000000000000000000000000000000000       0    -4.146755e-02   0.171956
+   13 2222222222121222101000000000000000000000000000000000000000000000       0     4.049950e-02   0.164021
+   14 2222222222211222110000000000000000000000000000000000000000000000       1     3.963104e-02   0.157062
+   15 2222222222212122010000100000000000000000000000000000000000000000       1     3.892261e-02   0.151497
+   16 2222222222202222020000000000000000000000000000000000000000000000       0    -3.848246e-02   0.148090
+   17 2222222222121222101000000000000000000000000000000000000000000000       1    -3.762728e-02   0.141581
+   18 2222222222022222002000000000000000000000000000000000000000000000       0    -3.462541e-02   0.119892
+   19 2222222222222121011000000000000000000000000000000000000000000000       1    -3.290679e-02   0.108286
+   20 2222222222122221001100000000000000000000000000000000000000000000       1     3.057132e-02   0.093461
+   21 2222222221122222001100000000000000000000000000000000000000000000       1     3.023930e-02   0.091442
+   22 2222222221222221100010000000000000000000000000000000000000000000       1     2.944832e-02   0.086720
+   23 2222222222221221100000001000000000000000000000000000000000000000       1     2.944692e-02   0.086712
+   24 2222222222211222110000000000000000000000000000000000000000000000       0    -2.919214e-02   0.085218
+check importance : 230236 / 231357 (   99.52)
+
+****************************
+
+
+*************** End PRINT NONRELA CFGSPACE ***************
+
+
+
+********** END   PRINT Important cfgspace INFO **********
+
+
+
+*************** Begin  ***************
+
+
+
+*************** Begin First_Residue_Update ***************
+
+memory            = 61553968
+Working Time      : cputime / walltime / effective core 
+Total Time        :     2.38 /     0.04 / 54.54
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :     2.37 /     0.04 / 54.46
+Finalize Time     :     0.00 /     0.00 / 0.00
+
+
+*************** End First_Residue_Update ***************
+
+Working Time      : cputime / walltime / effective core 
+Total Time        :     4.66 /     0.08 / 58.66
+Initialize Time   :     2.39 /     0.04 / 54.51
+Calculation Time  :     2.26 /     0.04 / 63.60
+
+
+*************** End  ***************
+
+n_converged =     31.99155331
+
+
+******************************
+* Step   2 Finished          *
+* CpuTime  =        5318.580 *
+* WallTime =         160.373 *
+******************************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 231357
+nnz               = 85601247
+Working Time      : cputime / walltime / effective core 
+Total Time        :    45.92 /     1.60 / 28.63
+Initialize Time   :     0.01 /     0.00 / 5.44
+Calculation Time  :    45.71 /     1.42 / 32.08
+Finalize Time     :     0.20 /     0.18 / 1.13
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :   16
+Initial    : 
+Init[   0] :   -546.98959113
+Eigenvalue : 
+Eig[   0]  :   -547.69013535
+   CpuTime :         195.460
+  WallTime :           4.408
+Residue    : 
+Res[   0]  :      0.00005110
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 274066 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   316.60 /     5.63 / 56.19
+Initialize Time   :     0.05 /     0.05 / 0.92
+Calculation Time  :   316.51 /     5.56 / 56.98
+Finalize Time     :     0.04 /     0.02 / 1.65
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 274066
+nnz               = 123628329
+Working Time      : cputime / walltime / effective core 
+Total Time        :    24.52 /     0.90 / 27.38
+Initialize Time   :     0.01 /     0.00 / 2.76
+Calculation Time  :    24.16 /     0.56 / 43.16
+Finalize Time     :     0.34 /     0.33 / 1.02
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    5
+Initial    : 
+Init[   0] :   -547.69013535
+Eigenvalue : 
+Eig[   0]  :   -547.69041674
+   CpuTime :          87.640
+  WallTime :           1.878
+Residue    : 
+Res[   0]  :      0.00035742
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    5
+Initial    : 
+Init[   0] :   -547.69018043
+Eigenvalue : 
+Eig[   0]  :   -547.69018534
+   CpuTime :          87.250
+  WallTime :           1.738
+Residue    : 
+Res[   0]  :      0.00010998
+
+
+*************** End MatrixDiag ***************
+
+********** Selection_iCI Info **********
+
+iter / ncsf_prime / ncfg_prime / ncsf_Qspace / Similarity / time 
+   0 /    231392  /    129890  /    274066  /  0.9806  /   435.770,   12.905 
+Final prune is performed!
+
+***************************************
+
+
+********** BEGIN PRINT Important cfgspace INFO **********
+
+  spintwo | symmetry |  nstates |     ncsf |     ncfg |   energy 
+        0 |        0 |        1 |   231392 |   129890 |   -547.69018534, 
+
+
+*************** Begin PRINT NONRELA CFGSPACE ***************
+
+spintwo    = 0
+irrep      = 0
+nstates    = 1
+ncfg       =       129890
+ncsf       =       231392
+ncsf full  =       633880
+ndet full  =      2704965
+ndet eff   =       881949
+
+*********** state  0 ***********
+Important ocfg:
+    0 2222222222222222000000000000000000000000000000000000000000000000       0     9.139137e-01  83.523829
+    1 2222222222222202200000000000000000000000000000000000000000000000       0    -1.312459e-01   1.722548
+    2 2222222222222112110000000000000000000000000000000000000000000000       0     7.764039e-02   0.602803
+    3 2222222222222112110000000000000000000000000000000000000000000000       1    -6.879989e-02   0.473342
+    4 2222222222220222200000000000000000000000000000000000000000000000       0    -6.723088e-02   0.451999
+    5 2222222222222211101000000000000000000000000000000000000000000000       0    -6.633474e-02   0.440030
+    6 2222222222221212100000000100000000000000000000000000000000000000       1    -6.016530e-02   0.361986
+    7 2222222222222022020000000000000000000000000000000000000000000000       0    -5.479930e-02   0.300296
+    8 2222222222222220200000000000000000000000000000000000000000000000       0    -4.953618e-02   0.245383
+    9 2222222222222220002000000000000000000000000000000000000000000000       0    -4.949803e-02   0.245006
+   10 2222222222222121011000000000000000000000000000000000000000000000       0     4.391216e-02   0.192828
+   11 2222222222222211101000000000000000000000000000000000000000000000       1    -4.276488e-02   0.182884
+   12 2222222222222220100010000000000000000000000000000000000000000000       0    -4.139442e-02   0.171350
+   13 2222222222121222101000000000000000000000000000000000000000000000       0     4.053665e-02   0.164322
+   14 2222222222211222110000000000000000000000000000000000000000000000       1     3.972100e-02   0.157776
+   15 2222222222212122010000100000000000000000000000000000000000000000       1    -3.897942e-02   0.151940
+   16 2222222222202222020000000000000000000000000000000000000000000000       0    -3.854824e-02   0.148597
+   17 2222222222121222101000000000000000000000000000000000000000000000       1    -3.766987e-02   0.141902
+   18 2222222222022222002000000000000000000000000000000000000000000000       0    -3.471829e-02   0.120536
+   19 2222222222222121011000000000000000000000000000000000000000000000       1     3.311179e-02   0.109639
+   20 2222222222122221001100000000000000000000000000000000000000000000       1     3.071850e-02   0.094363
+   21 2222222221122222001100000000000000000000000000000000000000000000       1     3.031992e-02   0.091930
+   22 2222222221222221100010000000000000000000000000000000000000000000       1     2.962631e-02   0.087772
+   23 2222222222221221100000001000000000000000000000000000000000000000       1     2.949180e-02   0.086977
+   24 2222222222211222110000000000000000000000000000000000000000000000       0    -2.912946e-02   0.084853
+check importance : 230467 / 231392 (   99.60)
+
+****************************
+
+
+*************** End PRINT NONRELA CFGSPACE ***************
+
+
+
+********** END   PRINT Important cfgspace INFO **********
+
+
+
+******************************
+* Step   3 Finished          *
+* CpuTime  =        6096.550 *
+* WallTime =         184.589 *
+******************************
+
+
+
+*************** Begin First_Residue_Update ***************
+
+memory            = 61568960
+Working Time      : cputime / walltime / effective core 
+Total Time        :     2.31 /     0.04 / 53.01
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :     2.31 /     0.04 / 53.19
+Finalize Time     :     0.00 /     0.00 / 0.00
+
+
+*************** End First_Residue_Update ***************
+
+
+
+*************** Begin Second_Residue_Update ***************
+
+memory            = 244777848
+Working Time      : cputime / walltime / effective core 
+Total Time        :    10.60 /     0.22 / 48.27
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :    10.60 /     0.22 / 48.31
+Finalize Time     :     0.00 /     0.00 / 0.00
+
+
+*************** End Second_Residue_Update ***************
+
+Thread label = 53
+ept        =     -0.93183475
+ene offset =     -0.90627791
+
+
+********** ENPT2 Info **********
+
+Wall Time                   =   28.501
+CPU  Time                   = 1511.830
+CPU / Wall                  =   53.044
+ncfg_touched                =            168015699
+ncsf_touched                =           2869351706
+---------------------------------------------------
+       var        /  perturbation  /     total     
+      -547.69018534/    -0.02555684/  -547.71574218
+---------------------------------------------------
+Residue Time                =   12.950 ( 0.86%)
+Generate connection  record =   38.432 ( 2.54%)
+sort connection record      =   69.652 ( 4.61%)
+sort calculation record     =  304.915 (20.17%)
+sort                        =  374.567 (24.78%)
+calculation sigma           =  296.225 (19.59%)
+collect result              =  136.692 ( 9.04%)
+Other                       =  652.963 (43.19%)
+nWorkDone                   = 10881
+
+
+********************************
+
+
+
+*************** iCI_ENPT(2)_NonRela::Info ***************
+
+_______________________________________________________________________________________________
+      ncfg |       ncsf |            evar |             ept |            etot 
+_______________________________________________________________________________________________
+    129890 |     231392 |   -547.69018534 |     -0.02555684 |   -547.71574218 
+_______________________________________________________________________________________________
+
+
+*******************************************************
+
+
+
+******************************
+* Step   4 Finished          *
+* CpuTime  =        7608.390 *
+* WallTime =         213.096 *
+******************************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 231392
+nnz               = 85445114
+Working Time      : cputime / walltime / effective core 
+Total Time        :    45.92 /     1.61 / 28.59
+Initialize Time   :     0.02 /     0.00 / 11.93
+Calculation Time  :    45.71 /     1.43 / 32.04
+Finalize Time     :     0.19 /     0.18 / 1.07
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    3
+Initial    : 
+Init[   0] :   -547.69018534
+Eigenvalue : 
+Eig[   0]  :   -547.69018534
+   CpuTime :          39.140
+  WallTime :           0.906
+Residue    : 
+Res[   0]  :      0.00002124
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 519530 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   330.23 /     6.06 / 54.47
+Initialize Time   :     0.05 /     0.05 / 1.01
+Calculation Time  :   329.98 /     5.84 / 56.55
+Finalize Time     :     0.20 /     0.18 / 1.13
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 519530
+nnz               = 293249974
+Working Time      : cputime / walltime / effective core 
+Total Time        :   129.46 /     3.90 / 33.16
+Initialize Time   :     0.01 /     0.00 / 5.09
+Calculation Time  :   128.92 /     3.39 / 38.01
+Finalize Time     :     0.53 /     0.51 / 1.04
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    7
+Initial    : 
+Init[   0] :   -547.69018534
+Eigenvalue : 
+Eig[   0]  :   -547.69560390
+   CpuTime :         311.230
+  WallTime :           6.489
+Residue    : 
+Res[   0]  :      0.00062487
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 530973 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   352.07 /     6.62 / 53.17
+Initialize Time   :     0.17 /     0.17 / 0.99
+Calculation Time  :   351.86 /     6.43 / 54.74
+Finalize Time     :     0.04 /     0.02 / 1.78
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 530973
+nnz               = 301301724
+Working Time      : cputime / walltime / effective core 
+Total Time        :     8.33 /     0.24 / 34.74
+Initialize Time   :     0.01 /     0.00 / 4.24
+Calculation Time  :     8.24 /     0.17 / 48.36
+Finalize Time     :     0.07 /     0.07 / 1.04
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    4
+Initial    : 
+Init[   0] :   -547.69560390
+Eigenvalue : 
+Eig[   0]  :   -547.69577673
+   CpuTime :         182.230
+  WallTime :           3.682
+Residue    : 
+Res[   0]  :      0.00040432
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    4
+Initial    : 
+Init[   0] :   -547.69559965
+Eigenvalue : 
+Eig[   0]  :   -547.69560306
+   CpuTime :         196.140
+  WallTime :           3.642
+Residue    : 
+Res[   0]  :      0.00017855
+
+
+*************** End MatrixDiag ***************
+
+********** Selection_iCI Info **********
+
+iter / ncsf_prime / ncfg_prime / ncsf_Qspace / Similarity / time 
+   0 /    436953  /    231186  /    519530  /  0.5295  /   787.960,   21.379 
+   1 /    445062  /    235477  /    530973  /  0.9785  /   550.520,   15.291 
+Final prune is performed!
+
+***************************************
+
+
+********** BEGIN PRINT Important cfgspace INFO **********
+
+  spintwo | symmetry |  nstates |     ncsf |     ncfg |   energy 
+        0 |        0 |        1 |   445062 |   235477 |   -547.69560306, 
+
+
+*************** Begin PRINT NONRELA CFGSPACE ***************
+
+spintwo    = 0
+irrep      = 0
+nstates    = 1
+ncfg       =       235477
+ncsf       =       445062
+ncsf full  =      1234045
+ndet full  =      5346621
+ndet eff   =      1743889
+
+*********** state  0 ***********
+Important ocfg:
+    0 2222222222222222000000000000000000000000000000000000000000000000       0     9.120289e-01  83.179673
+    1 2222222222222202200000000000000000000000000000000000000000000000       0    -1.308896e-01   1.713209
+    2 2222222222222112110000000000000000000000000000000000000000000000       0     7.748826e-02   0.600443
+    3 2222222222222112110000000000000000000000000000000000000000000000       1    -6.890202e-02   0.474749
+    4 2222222222220222200000000000000000000000000000000000000000000000       0    -6.697088e-02   0.448510
+    5 2222222222222211101000000000000000000000000000000000000000000000       0    -6.646082e-02   0.441704
+    6 2222222222221212100000000100000000000000000000000000000000000000       1    -5.995077e-02   0.359410
+    7 2222222222222022020000000000000000000000000000000000000000000000       0    -5.467014e-02   0.298882
+    8 2222222222222220002000000000000000000000000000000000000000000000       0    -4.969653e-02   0.246974
+    9 2222222222222220200000000000000000000000000000000000000000000000       0    -4.922592e-02   0.242319
+   10 2222222222222121011000000000000000000000000000000000000000000000       0     4.415557e-02   0.194971
+   11 2222222222222211101000000000000000000000000000000000000000000000       1    -4.289997e-02   0.184041
+   12 2222222222222220100010000000000000000000000000000000000000000000       0    -4.148765e-02   0.172123
+   13 2222222222121222101000000000000000000000000000000000000000000000       0     4.067507e-02   0.165446
+   14 2222222222211222110000000000000000000000000000000000000000000000       1     3.992064e-02   0.159366
+   15 2222222222212122010000100000000000000000000000000000000000000000       1    -3.907142e-02   0.152658
+   16 2222222222202222020000000000000000000000000000000000000000000000       0    -3.846867e-02   0.147984
+   17 2222222222121222101000000000000000000000000000000000000000000000       1    -3.787207e-02   0.143429
+   18 2222222222022222002000000000000000000000000000000000000000000000       0    -3.478517e-02   0.121001
+   19 2222222222222121011000000000000000000000000000000000000000000000       1     3.331054e-02   0.110959
+   20 2222222222122221001100000000000000000000000000000000000000000000       1     3.096620e-02   0.095891
+   21 2222222221122222001100000000000000000000000000000000000000000000       1     3.048524e-02   0.092935
+   22 2222222221222221100010000000000000000000000000000000000000000000       1     3.009469e-02   0.090569
+   23 2222222222221221100000001000000000000000000000000000000000000000       1     2.994554e-02   0.089674
+   24 2222222222211222110000000000000000000000000000000000000000000000       0    -2.930861e-02   0.085899
+check importance : 443713 / 445062 (   99.70)
+
+****************************
+
+
+*************** End PRINT NONRELA CFGSPACE ***************
+
+
+
+********** END   PRINT Important cfgspace INFO **********
+
+
+
+******************************
+* Step   5 Finished          *
+* CpuTime  =        9241.150 *
+* WallTime =         262.482 *
+******************************
+
+
+
+*************** Begin First_Residue_Update ***************
+
+memory            = 109992296
+Working Time      : cputime / walltime / effective core 
+Total Time        :     4.08 /     0.08 / 49.68
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :     4.07 /     0.08 / 49.63
+Finalize Time     :     0.00 /     0.00 / 0.00
+
+
+*************** End First_Residue_Update ***************
+
+
+
+*************** Begin Second_Residue_Update ***************
+
+memory            = 429481792
+Working Time      : cputime / walltime / effective core 
+Total Time        :    21.38 /     0.48 / 44.81
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :    21.37 /     0.48 / 44.80
+Finalize Time     :     0.00 /     0.00 / 0.00
+
+
+*************** End Second_Residue_Update ***************
+
+Thread label = 25
+ept        =     -0.94419703
+ene offset =     -0.92373047
+
+
+********** ENPT2 Info **********
+
+Wall Time                   =   54.213
+CPU  Time                   = 2814.400
+CPU / Wall                  =   51.914
+ncfg_touched                =            261851117
+ncsf_touched                =           4672592511
+---------------------------------------------------
+       var        /  perturbation  /     total     
+      -547.69560306/    -0.02046655/  -547.71606962
+---------------------------------------------------
+Residue Time                =   25.480 ( 0.91%)
+Generate connection  record =   69.158 ( 2.46%)
+sort connection record      =  144.050 ( 5.12%)
+sort calculation record     =  595.217 (21.15%)
+sort                        =  739.267 (26.27%)
+calculation sigma           =  759.483 (26.99%)
+collect result              =  195.220 ( 6.94%)
+Other                       = 1025.791 (36.45%)
+nWorkDone                   = 10881
+
+
+********************************
+
+
+
+*************** iCI_ENPT(2)_NonRela::Info ***************
+
+_______________________________________________________________________________________________
+      ncfg |       ncsf |            evar |             ept |            etot 
+_______________________________________________________________________________________________
+    235477 |     445062 |   -547.69560306 |     -0.02046655 |   -547.71606962 
+_______________________________________________________________________________________________
+
+
+*******************************************************
+
+
+
+******************************
+* Step   6 Finished          *
+* CpuTime  =       12055.610 *
+* WallTime =         316.735 *
+******************************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 445062
+nnz               = 207237927
+Working Time      : cputime / walltime / effective core 
+Total Time        :   107.23 /     3.52 / 30.48
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :   106.69 /     3.00 / 35.52
+Finalize Time     :     0.53 /     0.51 / 1.04
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    3
+Initial    : 
+Init[   0] :   -547.69560306
+Eigenvalue : 
+Eig[   0]  :   -547.69560307
+   CpuTime :         124.750
+  WallTime :           2.561
+Residue    : 
+Res[   0]  :      0.00002944
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 935139 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   383.33 /     6.98 / 54.90
+Initialize Time   :     0.12 /     0.12 / 1.00
+Calculation Time  :   382.89 /     6.56 / 58.34
+Finalize Time     :     0.31 /     0.30 / 1.03
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 935139
+nnz               = 641603575
+Working Time      : cputime / walltime / effective core 
+Total Time        :   274.59 /     7.94 / 34.60
+Initialize Time   :     0.01 /     0.00 / 3.28
+Calculation Time  :   273.96 /     7.33 / 37.37
+Finalize Time     :     0.62 /     0.60 / 1.03
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    7
+Initial    : 
+Init[   0] :   -547.69560307
+Eigenvalue : 
+Eig[   0]  :   -547.70007626
+   CpuTime :         656.550
+  WallTime :          12.390
+Residue    : 
+Res[   0]  :      0.00054389
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 952461 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   420.07 /     7.90 / 53.18
+Initialize Time   :     0.40 /     0.40 / 1.00
+Calculation Time  :   419.60 /     7.46 / 56.28
+Finalize Time     :     0.07 /     0.04 / 1.57
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 952461
+nnz               = 656656824
+Working Time      : cputime / walltime / effective core 
+Total Time        :    15.81 /     0.50 / 31.69
+Initialize Time   :     0.01 /     0.00 / 2.91
+Calculation Time  :    15.60 /     0.32 / 49.14
+Finalize Time     :     0.19 /     0.18 / 1.07
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    4
+Initial    : 
+Init[   0] :   -547.70007626
+Eigenvalue : 
+Eig[   0]  :   -547.70021235
+   CpuTime :         469.940
+  WallTime :           8.830
+Residue    : 
+Res[   0]  :      0.00038331
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    4
+Initial    : 
+Init[   0] :   -547.70006847
+Eigenvalue : 
+Eig[   0]  :   -547.70007115
+   CpuTime :         412.170
+  WallTime :           7.436
+Residue    : 
+Res[   0]  :      0.00014949
+
+
+*************** End MatrixDiag ***************
+
+********** Selection_iCI Info **********
+
+iter / ncsf_prime / ncfg_prime / ncsf_Qspace / Similarity / time 
+   0 /    790915  /    398791  /    935139  /  0.5625  /  1344.800,   32.991 
+   1 /    803586  /    405169  /    952461  /  0.9815  /   917.500,   22.519 
+Final prune is performed!
+
+***************************************
+
+
+********** BEGIN PRINT Important cfgspace INFO **********
+
+  spintwo | symmetry |  nstates |     ncsf |     ncfg |   energy 
+        0 |        0 |        1 |   803586 |   405169 |   -547.70007115, 
+
+
+*************** Begin PRINT NONRELA CFGSPACE ***************
+
+spintwo    = 0
+irrep      = 0
+nstates    = 1
+ncfg       =       405169
+ncsf       =       803586
+ncsf full  =      2237444
+ndet full  =      9799868
+ndet eff   =      3210243
+
+*********** state  0 ***********
+Important ocfg:
+    0 2222222222222222000000000000000000000000000000000000000000000000       0     9.105056e-01  82.902046
+    1 2222222222222202200000000000000000000000000000000000000000000000       0    -1.306995e-01   1.708237
+    2 2222222222222112110000000000000000000000000000000000000000000000       0     7.741854e-02   0.599363
+    3 2222222222222112110000000000000000000000000000000000000000000000       1    -6.892569e-02   0.475075
+    4 2222222222220222200000000000000000000000000000000000000000000000       0    -6.680857e-02   0.446339
+    5 2222222222222211101000000000000000000000000000000000000000000000       0    -6.656933e-02   0.443148
+    6 2222222222221212100000000100000000000000000000000000000000000000       1    -5.974897e-02   0.356994
+    7 2222222222222022020000000000000000000000000000000000000000000000       0    -5.455082e-02   0.297579
+    8 2222222222222220002000000000000000000000000000000000000000000000       0    -4.983054e-02   0.248308
+    9 2222222222222220200000000000000000000000000000000000000000000000       0    -4.902769e-02   0.240371
+   10 2222222222222121011000000000000000000000000000000000000000000000       0     4.424291e-02   0.195744
+   11 2222222222222211101000000000000000000000000000000000000000000000       1    -4.287405e-02   0.183818
+   12 2222222222222220100010000000000000000000000000000000000000000000       0    -4.142954e-02   0.171641
+   13 2222222222121222101000000000000000000000000000000000000000000000       0     4.070028e-02   0.165651
+   14 2222222222211222110000000000000000000000000000000000000000000000       1     3.994242e-02   0.159540
+   15 2222222222212122010000100000000000000000000000000000000000000000       1    -3.898841e-02   0.152010
+   16 2222222222202222020000000000000000000000000000000000000000000000       0    -3.836063e-02   0.147154
+   17 2222222222121222101000000000000000000000000000000000000000000000       1    -3.795004e-02   0.144021
+   18 2222222222022222002000000000000000000000000000000000000000000000       0    -3.475669e-02   0.120803
+   19 2222222222222121011000000000000000000000000000000000000000000000       1     3.328889e-02   0.110815
+   20 2222222222122221001100000000000000000000000000000000000000000000       1     3.100919e-02   0.096157
+   21 2222222221122222001100000000000000000000000000000000000000000000       1     3.045971e-02   0.092779
+   22 2222222221222221100010000000000000000000000000000000000000000000       1     3.021307e-02   0.091283
+   23 2222222222221221100000001000000000000000000000000000000000000000       1     3.014823e-02   0.090892
+   24 2222222222211222110000000000000000000000000000000000000000000000       0    -2.935111e-02   0.086149
+check importance : 801282 / 803586 (   99.71)
+
+****************************
+
+
+*************** End PRINT NONRELA CFGSPACE ***************
+
+
+
+********** END   PRINT Important cfgspace INFO **********
+
+
+
+******************************
+* Step   7 Finished          *
+* CpuTime  =       14989.290 *
+* WallTime =         397.617 *
+******************************
+
+
+
+*************** Begin First_Residue_Update ***************
+
+memory            = 185726592
+Working Time      : cputime / walltime / effective core 
+Total Time        :     7.58 /     0.16 / 47.84
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :     7.57 /     0.16 / 47.81
+Finalize Time     :     0.01 /     0.00 / 262.21
+
+
+*************** End First_Residue_Update ***************
+
+
+
+*************** Begin Second_Residue_Update ***************
+
+memory            = 711170112
+Working Time      : cputime / walltime / effective core 
+Total Time        :    36.79 /     1.05 / 34.96
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :    36.78 /     1.05 / 34.96
+Finalize Time     :     0.00 /     0.00 / 0.00
+
+
+*************** End Second_Residue_Update ***************
+
+Thread label = 31
+ept        =     -0.95495562
+ene offset =     -0.93865799
+
+
+********** ENPT2 Info **********
+
+Wall Time                   =   76.748
+CPU  Time                   = 4351.390
+CPU / Wall                  =   56.697
+ncfg_touched                =            377560377
+ncsf_touched                =           6914238160
+---------------------------------------------------
+       var        /  perturbation  /     total     
+      -547.70007115/    -0.01629763/  -547.71636878
+---------------------------------------------------
+Residue Time                =   44.390 ( 1.02%)
+Generate connection  record =  109.913 ( 2.53%)
+sort connection record      =  254.354 ( 5.85%)
+sort calculation record     =  925.093 (21.26%)
+sort                        = 1179.447 (27.11%)
+calculation sigma           = 1169.660 (26.88%)
+collect result              =  295.850 ( 6.80%)
+Other                       = 1552.129 (35.67%)
+nWorkDone                   = 10881
+
+
+********************************
+
+
+
+*************** iCI_ENPT(2)_NonRela::Info ***************
+
+_______________________________________________________________________________________________
+      ncfg |       ncsf |            evar |             ept |            etot 
+_______________________________________________________________________________________________
+    405169 |     803586 |   -547.70007115 |     -0.01629763 |   -547.71636878 
+_______________________________________________________________________________________________
+
+
+*******************************************************
+
+
+
+******************************
+* Step   8 Finished          *
+* CpuTime  =       19340.940 *
+* WallTime =         474.607 *
+******************************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 803586
+nnz               = 458773162
+Working Time      : cputime / walltime / effective core 
+Total Time        :   232.72 /     7.46 / 31.18
+Initialize Time   :     0.01 /     0.00 / 6.84
+Calculation Time  :   231.99 /     6.77 / 34.26
+Finalize Time     :     0.71 /     0.69 / 1.03
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    3
+Initial    : 
+Init[   0] :   -547.70007115
+Eigenvalue : 
+Eig[   0]  :   -547.70007115
+   CpuTime :         243.210
+  WallTime :           4.809
+Residue    : 
+Res[   0]  :      0.00002812
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 2395367 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   523.49 /    10.73 / 48.81
+Initialize Time   :     0.20 /     0.20 / 1.00
+Calculation Time  :   522.19 /     9.45 / 55.24
+Finalize Time     :     1.08 /     1.07 / 1.01
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 2395367
+nnz               = 2268797367
+Working Time      : cputime / walltime / effective core 
+Total Time        :  1046.36 /    21.45 / 48.77
+Initialize Time   :     0.01 /     0.00 / 2.52
+Calculation Time  :  1044.98 /    20.12 / 51.95
+Finalize Time     :     1.35 /     1.34 / 1.01
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    8
+Initial    : 
+Init[   0] :   -547.70007115
+Eigenvalue : 
+Eig[   0]  :   -547.70625045
+   CpuTime :        2848.490
+  WallTime :          50.922
+Residue    : 
+Res[   0]  :      0.00054225
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 2459576 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   662.34 /    13.69 / 48.40
+Initialize Time   :     0.91 /     0.91 / 1.00
+Calculation Time  :   661.26 /    12.63 / 52.34
+Finalize Time     :     0.17 /     0.14 / 1.20
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 2459576
+nnz               = 2348351785
+Working Time      : cputime / walltime / effective core 
+Total Time        :    80.89 /     2.17 / 37.31
+Initialize Time   :     0.01 /     0.01 / 1.75
+Calculation Time  :    80.43 /     1.73 / 46.53
+Finalize Time     :     0.45 /     0.43 / 1.04
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    4
+Initial    : 
+Init[   0] :   -547.70625045
+Eigenvalue : 
+Eig[   0]  :   -547.70640240
+   CpuTime :        1575.810
+  WallTime :          28.507
+Residue    : 
+Res[   0]  :      0.00043360
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    4
+Initial    : 
+Init[   0] :   -547.70630716
+Eigenvalue : 
+Eig[   0]  :   -547.70630888
+   CpuTime :        1511.330
+  WallTime :          26.846
+Residue    : 
+Res[   0]  :      0.00013301
+
+
+*************** End MatrixDiag ***************
+
+********** Selection_iCI Info **********
+
+iter / ncsf_prime / ncfg_prime / ncsf_Qspace / Similarity / time 
+   0 /   2047838  /    929287  /   2395367  /  0.3924  /  4497.210,   92.108 
+   1 /   2094943  /    949611  /   2459576  /  0.9739  /  2343.140,   51.099 
+Final prune is performed!
+
+***************************************
+
+
+********** BEGIN PRINT Important cfgspace INFO **********
+
+  spintwo | symmetry |  nstates |     ncsf |     ncfg |   energy 
+        0 |        0 |        1 |  2094943 |   949611 |   -547.70630888, 
+
+
+*************** Begin PRINT NONRELA CFGSPACE ***************
+
+spintwo    = 0
+irrep      = 0
+nstates    = 1
+ncfg       =       949611
+ncsf       =      2094943
+ncsf full  =      5658717
+ndet full  =     25247375
+ndet eff   =      8609091
+
+*********** state  0 ***********
+Important ocfg:
+    0 2222222222222222000000000000000000000000000000000000000000000000       0    -9.083087e-01  82.502470
+    1 2222222222222202200000000000000000000000000000000000000000000000       0     1.307927e-01   1.710674
+    2 2222222222222112110000000000000000000000000000000000000000000000       0    -7.749349e-02   0.600524
+    3 2222222222222112110000000000000000000000000000000000000000000000       1     6.897962e-02   0.475819
+    4 2222222222222211101000000000000000000000000000000000000000000000       0     6.681520e-02   0.446427
+    5 2222222222220222200000000000000000000000000000000000000000000000       0     6.669346e-02   0.444802
+    6 2222222222221212100000000100000000000000000000000000000000000000       1     5.954050e-02   0.354507
+    7 2222222222222022020000000000000000000000000000000000000000000000       0     5.447705e-02   0.296775
+    8 2222222222222220002000000000000000000000000000000000000000000000       0     4.998413e-02   0.249841
+    9 2222222222222220200000000000000000000000000000000000000000000000       0     4.915034e-02   0.241576
+   10 2222222222222121011000000000000000000000000000000000000000000000       0    -4.440762e-02   0.197204
+   11 2222222222222211101000000000000000000000000000000000000000000000       1     4.289138e-02   0.183967
+   12 2222222222222220100010000000000000000000000000000000000000000000       0     4.141188e-02   0.171494
+   13 2222222222121222101000000000000000000000000000000000000000000000       0    -4.077547e-02   0.166264
+   14 2222222222211222110000000000000000000000000000000000000000000000       1    -3.994764e-02   0.159581
+   15 2222222222212122010000100000000000000000000000000000000000000000       1     3.883404e-02   0.150808
+   16 2222222222202222020000000000000000000000000000000000000000000000       0     3.825519e-02   0.146346
+   17 2222222222121222101000000000000000000000000000000000000000000000       1     3.799664e-02   0.144374
+   18 2222222222022222002000000000000000000000000000000000000000000000       0     3.473987e-02   0.120686
+   19 2222222222222121011000000000000000000000000000000000000000000000       1    -3.322528e-02   0.110392
+   20 2222222222122221001100000000000000000000000000000000000000000000       1    -3.097255e-02   0.095930
+   21 2222222221122222001100000000000000000000000000000000000000000000       1    -3.035052e-02   0.092115
+   22 2222222222221221100000001000000000000000000000000000000000000000       1    -3.032396e-02   0.091954
+   23 2222222221222221100010000000000000000000000000000000000000000000       1    -3.021146e-02   0.091273
+   24 2222222221222212101000000000000000000000000000000000000000000000       1     2.950640e-02   0.087063
+check importance : 2089600 / 2094943 (   99.74)
+
+****************************
+
+
+*************** End PRINT NONRELA CFGSPACE ***************
+
+
+
+********** END   PRINT Important cfgspace INFO **********
+
+
+
+******************************
+* Step   9 Finished          *
+* CpuTime  =       28227.960 *
+* WallTime =         687.818 *
+******************************
+
+
+
+*************** Begin First_Residue_Update ***************
+
+memory            = 419721016
+Working Time      : cputime / walltime / effective core 
+Total Time        :    18.55 /     0.38 / 48.93
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :    18.54 /     0.38 / 48.92
+Finalize Time     :     0.01 /     0.00 / 195.45
+
+
+*************** End First_Residue_Update ***************
+
+
+
+*************** Begin Second_Residue_Update ***************
+
+memory            = 1554301968
+Working Time      : cputime / walltime / effective core 
+Total Time        :    91.67 /     2.97 / 30.86
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :    91.65 /     2.97 / 30.85
+Finalize Time     :     0.00 /     0.00 / 0.00
+
+
+*************** End Second_Residue_Update ***************
+
+Thread label = 9
+ept        =     -0.97096873
+ene offset =     -0.96049029
+
+
+********** ENPT2 Info **********
+
+Wall Time                   =  169.880
+CPU  Time                   = 10151.650
+CPU / Wall                  =   59.758
+ncfg_touched                =            638738406
+ncsf_touched                =          12549111087
+---------------------------------------------------
+       var        /  perturbation  /     total     
+      -547.70630888/    -0.01047844/  -547.71678733
+---------------------------------------------------
+Residue Time                =  110.240 ( 1.09%)
+Generate connection  record =  238.635 ( 2.35%)
+sort connection record      =  648.764 ( 6.39%)
+sort calculation record     = 1850.830 (18.23%)
+sort                        = 2499.594 (24.62%)
+calculation sigma           = 3324.396 (32.75%)
+collect result              =  566.161 ( 5.58%)
+Other                       = 3412.624 (33.62%)
+nWorkDone                   = 15927
+
+
+********************************
+
+
+
+*************** iCI_ENPT(2)_NonRela::Info ***************
+
+_______________________________________________________________________________________________
+      ncfg |       ncsf |            evar |             ept |            etot 
+_______________________________________________________________________________________________
+    949611 |    2094943 |   -547.70630888 |     -0.01047844 |   -547.71678733 
+_______________________________________________________________________________________________
+
+
+*******************************************************
+
+
+
+******************************
+* Step  10 Finished          *
+* CpuTime  =       38380.350 *
+* WallTime =         858.414 *
+******************************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 2094943
+nnz               = 1697194724
+Working Time      : cputime / walltime / effective core 
+Total Time        :   825.50 /    19.81 / 41.67
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :   824.01 /    18.34 / 44.92
+Finalize Time     :     1.49 /     1.46 / 1.02
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    3
+Initial    : 
+Init[   0] :   -547.70630888
+Eigenvalue : 
+Eig[   0]  :   -547.70630888
+   CpuTime :         751.150
+  WallTime :          14.218
+Residue    : 
+Res[   0]  :      0.00003754
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 3817690 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   781.15 /    15.93 / 49.02
+Initialize Time   :     0.65 /     0.64 / 1.01
+Calculation Time  :   779.39 /    14.19 / 54.93
+Finalize Time     :     1.11 /     1.11 / 1.00
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 3817690
+nnz               = 4258215734
+Working Time      : cputime / walltime / effective core 
+Total Time        :  1609.19 /    28.88 / 55.72
+Initialize Time   :     0.02 /     0.01 / 1.91
+Calculation Time  :  1607.90 /    27.61 / 58.23
+Finalize Time     :     1.27 /     1.26 / 1.01
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    6
+Initial    : 
+Init[   0] :   -547.70630888
+Eigenvalue : 
+Eig[   0]  :   -547.70867738
+   CpuTime :        7090.240
+  WallTime :         120.076
+Residue    : 
+Res[   0]  :      0.00071772
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 3860890 
+Working Time      : cputime / walltime / effective core 
+Total Time        :   930.32 /    18.30 / 50.85
+Initialize Time   :     1.73 /     1.72 / 1.00
+Calculation Time  :   928.46 /    16.47 / 56.38
+Finalize Time     :     0.12 /     0.11 / 1.13
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 3860890
+nnz               = 4320161801
+Working Time      : cputime / walltime / effective core 
+Total Time        :    65.36 /     1.85 / 35.30
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :    64.94 /     1.44 / 44.99
+Finalize Time     :     0.42 /     0.41 / 1.03
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    3
+Initial    : 
+Init[   0] :   -547.70867738
+Eigenvalue : 
+Eig[   0]  :   -547.70873255
+   CpuTime :        2325.420
+  WallTime :          41.367
+Residue    : 
+Res[   0]  :      0.00079768
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    4
+Initial    : 
+Init[   0] :   -547.70865853
+Eigenvalue : 
+Eig[   0]  :   -547.70865990
+   CpuTime :        4111.520
+  WallTime :          69.630
+Residue    : 
+Res[   0]  :      0.00013595
+
+
+*************** End MatrixDiag ***************
+
+********** Selection_iCI Info **********
+
+iter / ncsf_prime / ncfg_prime / ncsf_Qspace / Similarity / time 
+   0 /   3267795  /   1389395  /   3817690  /  0.6409  /  9587.230,  175.121 
+   1 /   3299398  /   1402523  /   3860890  /  0.9881  /  3352.240,   70.003 
+Final prune is performed!
+
+***************************************
+
+
+********** BEGIN PRINT Important cfgspace INFO **********
+
+  spintwo | symmetry |  nstates |     ncsf |     ncfg |   energy 
+        0 |        0 |        1 |  3299398 |  1402523 |   -547.70865990, 
+
+
+*************** Begin PRINT NONRELA CFGSPACE ***************
+
+spintwo    = 0
+irrep      = 0
+nstates    = 1
+ncfg       =      1402523
+ncsf       =      3299398
+ncsf full  =      8683214
+ndet full  =     39166719
+ndet eff   =     13739469
+
+*********** state  0 ***********
+Important ocfg:
+    0 2222222222222222000000000000000000000000000000000000000000000000       0    -9.074036e-01  82.338123
+    1 2222222222222202200000000000000000000000000000000000000000000000       0     1.310349e-01   1.717013
+    2 2222222222222112110000000000000000000000000000000000000000000000       0    -7.760346e-02   0.602230
+    3 2222222222222112110000000000000000000000000000000000000000000000       1     6.906508e-02   0.476999
+    4 2222222222222211101000000000000000000000000000000000000000000000       0     6.695184e-02   0.448255
+    5 2222222222220222200000000000000000000000000000000000000000000000       0     6.671483e-02   0.445087
+    6 2222222222221212100000000100000000000000000000000000000000000000       1     5.951311e-02   0.354181
+    7 2222222222222022020000000000000000000000000000000000000000000000       0     5.448954e-02   0.296911
+    8 2222222222222220002000000000000000000000000000000000000000000000       0     5.004590e-02   0.250459
+    9 2222222222222220200000000000000000000000000000000000000000000000       0     4.936135e-02   0.243654
+   10 2222222222222121011000000000000000000000000000000000000000000000       0    -4.450745e-02   0.198091
+   11 2222222222222211101000000000000000000000000000000000000000000000       1     4.295241e-02   0.184491
+   12 2222222222222220100010000000000000000000000000000000000000000000       0     4.145421e-02   0.171845
+   13 2222222222121222101000000000000000000000000000000000000000000000       0    -4.082973e-02   0.166707
+   14 2222222222211222110000000000000000000000000000000000000000000000       1    -3.996970e-02   0.159758
+   15 2222222222212122010000100000000000000000000000000000000000000000       1     3.879151e-02   0.150478
+   16 2222222222202222020000000000000000000000000000000000000000000000       0     3.824057e-02   0.146234
+   17 2222222222121222101000000000000000000000000000000000000000000000       1     3.802800e-02   0.144613
+   18 2222222222022222002000000000000000000000000000000000000000000000       0     3.476045e-02   0.120829
+   19 2222222222222121011000000000000000000000000000000000000000000000       1    -3.321350e-02   0.110314
+   20 2222222222122221001100000000000000000000000000000000000000000000       1    -3.096824e-02   0.095903
+   21 2222222222221221100000001000000000000000000000000000000000000000       1    -3.038983e-02   0.092354
+   22 2222222221122222001100000000000000000000000000000000000000000000       1    -3.031965e-02   0.091928
+   23 2222222221222221100010000000000000000000000000000000000000000000       1    -3.019154e-02   0.091153
+   24 2222222221222212101000000000000000000000000000000000000000000000       1     2.956287e-02   0.087396
+check importance : 3291222 / 3299398 (   99.75)
+
+****************************
+
+
+*************** End PRINT NONRELA CFGSPACE ***************
+
+
+
+********** END   PRINT Important cfgspace INFO **********
+
+
+
+******************************
+* Step  11 Finished          *
+* CpuTime  =       57138.760 *
+* WallTime =        1257.676 *
+******************************
+
+
+
+*************** Begin First_Residue_Update ***************
+
+memory            = 609398080
+Working Time      : cputime / walltime / effective core 
+Total Time        :    28.72 /     0.65 / 44.38
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :    28.71 /     0.65 / 44.37
+Finalize Time     :     0.00 /     0.00 / 0.00
+
+
+*************** End First_Residue_Update ***************
+
+
+
+*************** Begin Second_Residue_Update ***************
+
+memory            = 2220599320
+Working Time      : cputime / walltime / effective core 
+Total Time        :   144.74 /     4.45 / 32.50
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :   144.73 /     4.45 / 32.50
+Finalize Time     :     0.00 /     0.00 / 0.00
+
+
+*************** End Second_Residue_Update ***************
+
+Thread label = 4
+ept        =     -0.97745089
+ene offset =     -0.96916814
+
+
+********** ENPT2 Info **********
+
+Wall Time                   =  250.544
+CPU  Time                   = 15022.090
+CPU / Wall                  =   59.958
+ncfg_touched                =            815720441
+ncsf_touched                =          17019899607
+---------------------------------------------------
+       var        /  perturbation  /     total     
+      -547.70865990/    -0.00828276/  -547.71694266
+---------------------------------------------------
+Residue Time                =  173.480 ( 1.15%)
+Generate connection  record =  342.444 ( 2.28%)
+sort connection record      =  867.610 ( 5.78%)
+sort calculation record     = 2647.177 (17.62%)
+sort                        = 3514.787 (23.40%)
+calculation sigma           = 5217.251 (34.73%)
+collect result              =  777.493 ( 5.18%)
+Other                       = 4996.635 (33.26%)
+nWorkDone                   = 31439
+
+
+********************************
+
+
+
+*************** iCI_ENPT(2)_NonRela::Info ***************
+
+_______________________________________________________________________________________________
+      ncfg |       ncsf |            evar |             ept |            etot 
+_______________________________________________________________________________________________
+   1402523 |    3299398 |   -547.70865990 |     -0.00828276 |   -547.71694266 
+_______________________________________________________________________________________________
+
+
+*******************************************************
+
+
+
+******************************
+* Step  12 Finished          *
+* CpuTime  =       72161.930 *
+* WallTime =        1509.278 *
+******************************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 3299398
+nnz               = 3167121755
+Working Time      : cputime / walltime / effective core 
+Total Time        :  1502.86 /    31.84 / 47.21
+Initialize Time   :     0.00 /     0.01 / 0.00
+Calculation Time  :  1501.14 /    30.14 / 49.81
+Finalize Time     :     1.71 /     1.69 / 1.01
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    3
+Initial    : 
+Init[   0] :   -547.70865990
+Eigenvalue : 
+Eig[   0]  :   -547.70865991
+   CpuTime :        1397.460
+  WallTime :          25.686
+Residue    : 
+Res[   0]  :      0.00004869
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 5705548 
+Working Time      : cputime / walltime / effective core 
+Total Time        :  1110.60 /    22.71 / 48.91
+Initialize Time   :     1.07 /     1.07 / 1.00
+Calculation Time  :  1107.41 /    19.52 / 56.74
+Finalize Time     :     2.12 /     2.12 / 1.00
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 5705548
+nnz               = 7321083943
+Working Time      : cputime / walltime / effective core 
+Total Time        :  2675.87 /    45.97 / 58.21
+Initialize Time   :     0.02 /     0.01 / 2.21
+Calculation Time  :  2674.42 /    44.55 / 60.03
+Finalize Time     :     1.43 /     1.41 / 1.01
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    6
+Initial    : 
+Init[   0] :   -547.70865991
+Eigenvalue : 
+Eig[   0]  :   -547.71039045
+   CpuTime :        8411.780
+  WallTime :         145.178
+Residue    : 
+Res[   0]  :      0.00061784
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 5758907 
+Working Time      : cputime / walltime / effective core 
+Total Time        :  1318.33 /    27.85 / 47.33
+Initialize Time   :     2.42 /     2.42 / 1.00
+Calculation Time  :  1315.74 /    25.28 / 52.05
+Finalize Time     :     0.17 /     0.16 / 1.08
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 5758907
+nnz               = 7406570348
+Working Time      : cputime / walltime / effective core 
+Total Time        :    99.08 /     2.67 / 37.12
+Initialize Time   :     0.02 /     0.00 / 14.10
+Calculation Time  :    98.58 /     2.22 / 44.41
+Finalize Time     :     0.47 /     0.45 / 1.05
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    3
+Initial    : 
+Init[   0] :   -547.71039045
+Eigenvalue : 
+Eig[   0]  :   -547.71042877
+   CpuTime :        5941.100
+  WallTime :         101.380
+Residue    : 
+Res[   0]  :      0.00067816
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    3
+Initial    : 
+Init[   0] :   -547.71037211
+Eigenvalue : 
+Eig[   0]  :   -547.71037317
+   CpuTime :        6020.160
+  WallTime :         100.495
+Residue    : 
+Res[   0]  :      0.00026618
+
+
+*************** End MatrixDiag ***************
+
+********** Selection_iCI Info **********
+
+iter / ncsf_prime / ncfg_prime / ncsf_Qspace / Similarity / time 
+   0 /   4895088  /   1957101  /   5705548  /  0.6738  /  12349.360,  227.360 
+   1 /   4934198  /   1972822  /   5758907  /  0.9900  /  7399.760,  142.615 
+Final prune is performed!
+
+***************************************
+
+
+********** BEGIN PRINT Important cfgspace INFO **********
+
+  spintwo | symmetry |  nstates |     ncsf |     ncfg |   energy 
+        0 |        0 |        1 |  4934198 |  1972822 |   -547.71037317, 
+
+
+*************** Begin PRINT NONRELA CFGSPACE ***************
+
+spintwo    = 0
+irrep      = 0
+nstates    = 1
+ncfg       =      1972822
+ncsf       =      4934198
+ncsf full  =     12742994
+ndet full  =     58240893
+ndet eff   =     20797218
+
+*********** state  0 ***********
+Important ocfg:
+    0 2222222222222222000000000000000000000000000000000000000000000000       0     9.066727e-01  82.205535
+    1 2222222222222202200000000000000000000000000000000000000000000000       0    -1.313571e-01   1.725470
+    2 2222222222222112110000000000000000000000000000000000000000000000       0     7.772190e-02   0.604069
+    3 2222222222222112110000000000000000000000000000000000000000000000       1    -6.918300e-02   0.478629
+    4 2222222222222211101000000000000000000000000000000000000000000000       0    -6.708490e-02   0.450038
+    5 2222222222220222200000000000000000000000000000000000000000000000       0    -6.674970e-02   0.445552
+    6 2222222222221212100000000100000000000000000000000000000000000000       1    -5.952628e-02   0.354338
+    7 2222222222222022020000000000000000000000000000000000000000000000       0    -5.452938e-02   0.297345
+    8 2222222222222220002000000000000000000000000000000000000000000000       0    -5.011250e-02   0.251126
+    9 2222222222222220200000000000000000000000000000000000000000000000       0    -4.959338e-02   0.245950
+   10 2222222222222121011000000000000000000000000000000000000000000000       0     4.460329e-02   0.198945
+   11 2222222222222211101000000000000000000000000000000000000000000000       1    -4.303235e-02   0.185178
+   12 2222222222222220100010000000000000000000000000000000000000000000       0    -4.152706e-02   0.172450
+   13 2222222222121222101000000000000000000000000000000000000000000000       0     4.088742e-02   0.167178
+   14 2222222222211222110000000000000000000000000000000000000000000000       1     3.999917e-02   0.159993
+   15 2222222222212122010000100000000000000000000000000000000000000000       1    -3.877644e-02   0.150361
+   16 2222222222202222020000000000000000000000000000000000000000000000       0    -3.824541e-02   0.146271
+   17 2222222222121222101000000000000000000000000000000000000000000000       1    -3.807367e-02   0.144960
+   18 2222222222022222002000000000000000000000000000000000000000000000       0    -3.478902e-02   0.121028
+   19 2222222222222121011000000000000000000000000000000000000000000000       1     3.322775e-02   0.110408
+   20 2222222222122221001100000000000000000000000000000000000000000000       1     3.097777e-02   0.095962
+   21 2222222222221221100000001000000000000000000000000000000000000000       1     3.044666e-02   0.092700
+   22 2222222221122222001100000000000000000000000000000000000000000000       1     3.031110e-02   0.091876
+   23 2222222221222221100010000000000000000000000000000000000000000000       1     3.018259e-02   0.091099
+   24 2222222221222212101000000000000000000000000000000000000000000000       1    -2.961413e-02   0.087700
+check importance : 4922285 / 4934198 (   99.76)
+
+****************************
+
+
+*************** End PRINT NONRELA CFGSPACE ***************
+
+
+
+********** END   PRINT Important cfgspace INFO **********
+
+
+
+******************************
+* Step  13 Finished          *
+* CpuTime  =      101044.360 *
+* WallTime =        2113.498 *
+******************************
+
+
+
+*************** Begin First_Residue_Update ***************
+
+memory            = 845258064
+Working Time      : cputime / walltime / effective core 
+Total Time        :    44.25 /     1.06 / 41.76
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :    44.24 /     1.06 / 41.75
+Finalize Time     :     0.00 /     0.00 / 0.00
+
+
+*************** End First_Residue_Update ***************
+
+
+
+*************** Begin Second_Residue_Update ***************
+
+memory            = 3036000248
+Working Time      : cputime / walltime / effective core 
+Total Time        :   207.11 /     6.08 / 34.06
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :   207.11 /     6.08 / 34.06
+Finalize Time     :     0.00 /     0.00 / 0.00
+
+
+*************** End Second_Residue_Update ***************
+
+Thread label = 20
+ept        =     -0.98247599
+ene offset =     -0.97579630
+
+
+********** ENPT2 Info **********
+
+Wall Time                   =  342.595
+CPU  Time                   = 21023.990
+CPU / Wall                  =   61.367
+ncfg_touched                =           1032528015
+ncsf_touched                =          23234232699
+---------------------------------------------------
+       var        /  perturbation  /     total     
+      -547.71037317/    -0.00667969/  -547.71705285
+---------------------------------------------------
+Residue Time                =  251.380 ( 1.20%)
+Generate connection  record =  465.663 ( 2.21%)
+sort connection record      = 1055.467 ( 5.02%)
+sort calculation record     = 3418.362 (16.26%)
+sort                        = 4473.829 (21.28%)
+calculation sigma           = 7611.048 (36.20%)
+collect result              = 1043.148 ( 4.96%)
+Other                       = 7178.922 (34.15%)
+nWorkDone                   = 51014
+
+
+********************************
+
+
+
+*************** iCI_ENPT(2)_NonRela::Info ***************
+
+_______________________________________________________________________________________________
+      ncfg |       ncsf |            evar |             ept |            etot 
+_______________________________________________________________________________________________
+   1972822 |    4934198 |   -547.71037317 |     -0.00667969 |   -547.71705285 
+_______________________________________________________________________________________________
+
+
+*******************************************************
+
+
+
+******************************
+* Step  14 Finished          *
+* CpuTime  =      122069.730 *
+* WallTime =        2457.481 *
+******************************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 4934198
+nnz               = 5495539205
+Working Time      : cputime / walltime / effective core 
+Total Time        :  2549.26 /    49.69 / 51.30
+Initialize Time   :     0.01 /     0.01 / 1.43
+Calculation Time  :  2547.14 /    47.60 / 53.51
+Finalize Time     :     2.11 /     2.09 / 1.01
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    3
+Initial    : 
+Init[   0] :   -547.71037317
+Eigenvalue : 
+Eig[   0]  :   -547.71037317
+   CpuTime :        2354.400
+  WallTime :          43.394
+Residue    : 
+Res[   0]  :      0.00006047
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 10031042 
+Working Time      : cputime / walltime / effective core 
+Total Time        :  1889.13 /    40.77 / 46.34
+Initialize Time   :     1.94 /     1.94 / 1.00
+Calculation Time  :  1881.73 /    33.39 / 56.35
+Finalize Time     :     5.46 /     5.44 / 1.00
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 10031042
+nnz               = 15517892571
+Working Time      : cputime / walltime / effective core 
+Total Time        :  5792.38 /    96.18 / 60.23
+Initialize Time   :     0.02 /     0.02 / 1.24
+Calculation Time  :  5790.66 /    94.49 / 61.29
+Finalize Time     :     1.69 /     1.67 / 1.01
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    7
+Initial    : 
+Init[   0] :   -547.71037317
+Eigenvalue : 
+Eig[   0]  :   -547.71224341
+   CpuTime :       27788.690
+  WallTime :         472.423
+Residue    : 
+Res[   0]  :      0.00049754
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 10164052 
+Working Time      : cputime / walltime / effective core 
+Total Time        :  3156.14 /    68.24 / 46.25
+Initialize Time   :     6.08 /     6.07 / 1.00
+Calculation Time  :  3149.26 /    61.36 / 51.32
+Finalize Time     :     0.80 /     0.81 / 0.99
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 10164052
+nnz               = 15765339947
+Working Time      : cputime / walltime / effective core 
+Total Time        :   272.58 /     7.23 / 37.68
+Initialize Time   :     0.03 /     0.04 / 0.82
+Calculation Time  :   271.37 /     6.04 / 44.91
+Finalize Time     :     1.17 /     1.16 / 1.01
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    3
+Initial    : 
+Init[   0] :   -547.71224341
+Eigenvalue : 
+Eig[   0]  :   -547.71228255
+   CpuTime :       13632.610
+  WallTime :         229.354
+Residue    : 
+Res[   0]  :      0.00064755
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    3
+Initial    : 
+Init[   0] :   -547.71224645
+Eigenvalue : 
+Eig[   0]  :   -547.71224713
+   CpuTime :       14875.720
+  WallTime :         244.939
+Residue    : 
+Res[   0]  :      0.00024438
+
+
+*************** End MatrixDiag ***************
+
+********** Selection_iCI Info **********
+
+iter / ncsf_prime / ncfg_prime / ncsf_Qspace / Similarity / time 
+   0 /   8641861  /   3169306  /  10031042  /  0.5709  /  35757.780,  632.612 
+   1 /   8741411  /   3207208  /  10164052  /  0.9862  /  17136.320,  322.641 
+Final prune is performed!
+
+***************************************
+
+
+********** BEGIN PRINT Important cfgspace INFO **********
+
+  spintwo | symmetry |  nstates |     ncsf |     ncfg |   energy 
+        0 |        0 |        1 |  8741411 |  3207208 |   -547.71224713, 
+
+
+*************** Begin PRINT NONRELA CFGSPACE ***************
+
+spintwo    = 0
+irrep      = 0
+nstates    = 1
+ncfg       =      3207208
+ncsf       =      8741411
+ncsf full  =     22597269
+ndet full  =    106265693
+ndet eff   =     37535931
+
+*********** state  0 ***********
+Important ocfg:
+    0 2222222222222222000000000000000000000000000000000000000000000000       0     9.057669e-01  82.041364
+    1 2222222222222202200000000000000000000000000000000000000000000000       0    -1.318991e-01   1.739736
+    2 2222222222222112110000000000000000000000000000000000000000000000       0     7.790325e-02   0.606892
+    3 2222222222222112110000000000000000000000000000000000000000000000       1    -6.937533e-02   0.481294
+    4 2222222222222211101000000000000000000000000000000000000000000000       0    -6.727285e-02   0.452564
+    5 2222222222220222200000000000000000000000000000000000000000000000       0    -6.683174e-02   0.446648
+    6 2222222222221212100000000100000000000000000000000000000000000000       1    -5.958489e-02   0.355036
+    7 2222222222222022020000000000000000000000000000000000000000000000       0    -5.461335e-02   0.298262
+    8 2222222222222220002000000000000000000000000000000000000000000000       0    -5.022377e-02   0.252243
+    9 2222222222222220200000000000000000000000000000000000000000000000       0    -4.994951e-02   0.249495
+   10 2222222222222121011000000000000000000000000000000000000000000000       0     4.473679e-02   0.200138
+   11 2222222222222211101000000000000000000000000000000000000000000000       1    -4.316695e-02   0.186339
+   12 2222222222222220100010000000000000000000000000000000000000000000       0    -4.166034e-02   0.173558
+   13 2222222222121222101000000000000000000000000000000000000000000000       0     4.097784e-02   0.167918
+   14 2222222222211222110000000000000000000000000000000000000000000000       1     4.006096e-02   0.160488
+   15 2222222222212122010000100000000000000000000000000000000000000000       1    -3.878343e-02   0.150415
+   16 2222222222202222020000000000000000000000000000000000000000000000       0    -3.827308e-02   0.146483
+   17 2222222222121222101000000000000000000000000000000000000000000000       1    -3.815607e-02   0.145589
+   18 2222222222022222002000000000000000000000000000000000000000000000       0    -3.483916e-02   0.121377
+   19 2222222222222121011000000000000000000000000000000000000000000000       1     3.327067e-02   0.110694
+   20 2222222222122221001100000000000000000000000000000000000000000000       1     3.100794e-02   0.096149
+   21 2222222222221221100000001000000000000000000000000000000000000000       1     3.052993e-02   0.093208
+   22 2222222221122222001100000000000000000000000000000000000000000000       1     3.031729e-02   0.091914
+   23 2222222221222221100010000000000000000000000000000000000000000000       1     3.019237e-02   0.091158
+   24 2222222221222212101000000000000000000000000000000000000000000000       1    -2.970183e-02   0.088220
+check importance : 8721687 / 8741411 (   99.77)
+
+****************************
+
+
+*************** End PRINT NONRELA CFGSPACE ***************
+
+
+
+********** END   PRINT Important cfgspace INFO **********
+
+
+
+******************************
+* Step  15 Finished          *
+* CpuTime  =      195083.860 *
+* WallTime =        3886.075 *
+******************************
+
+
+
+*************** Begin First_Residue_Update ***************
+
+memory            = 1351261320
+Working Time      : cputime / walltime / effective core 
+Total Time        :    67.34 /     1.82 / 36.93
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :    67.33 /     1.82 / 36.93
+Finalize Time     :     0.00 /     0.00 / 0.00
+
+
+*************** End First_Residue_Update ***************
+
+
+
+*************** Begin Second_Residue_Update ***************
+
+memory            = 4761168776
+Working Time      : cputime / walltime / effective core 
+Total Time        :   341.50 /     9.63 / 35.45
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :   341.50 /     9.63 / 35.45
+Finalize Time     :     0.00 /     0.00 / 0.00
+
+
+*************** End Second_Residue_Update ***************
+
+Thread label = 49
+ept        =     -0.98838986
+ene offset =     -0.98347336
+
+
+********** ENPT2 Info **********
+
+Wall Time                   =  580.531
+CPU  Time                   = 35770.150
+CPU / Wall                  =   61.616
+ncfg_touched                =           1531384877
+ncsf_touched                =          39811251292
+---------------------------------------------------
+       var        /  perturbation  /     total     
+      -547.71224713/    -0.00491650/  -547.71716364
+---------------------------------------------------
+Residue Time                =  408.870 ( 1.14%)
+Generate connection  record =  731.381 ( 2.04%)
+sort connection record      = 1609.711 ( 4.50%)
+sort calculation record     = 5415.425 (15.14%)
+sort                        = 7025.136 (19.64%)
+calculation sigma           = 13841.612 (38.70%)
+collect result              = 1751.919 ( 4.90%)
+Other                       = 12011.232 (33.58%)
+nWorkDone                   = 68850
+
+
+********************************
+
+
+
+*************** iCI_ENPT(2)_NonRela::Info ***************
+
+_______________________________________________________________________________________________
+      ncfg |       ncsf |            evar |             ept |            etot 
+_______________________________________________________________________________________________
+   3207208 |    8741411 |   -547.71224713 |     -0.00491650 |   -547.71716364 
+_______________________________________________________________________________________________
+
+
+*******************************************************
+
+
+
+******************************
+* Step  16 Finished          *
+* CpuTime  =      230855.960 *
+* WallTime =        4468.535 *
+******************************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 8741411
+nnz               = 11880526398
+Working Time      : cputime / walltime / effective core 
+Total Time        :  5280.03 /   103.31 / 51.11
+Initialize Time   :     0.02 /     0.01 / 1.82
+Calculation Time  :  5277.38 /   100.68 / 52.42
+Finalize Time     :     2.63 /     2.62 / 1.00
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin MatrixDiag ***************
+
+Iteration  :    3
+Initial    : 
+Init[   0] :   -547.71224713
+Eigenvalue : 
+Eig[   0]  :   -547.71224714
+   CpuTime :        4834.720
+  WallTime :          87.405
+Residue    : 
+Res[   0]  :      0.00005621
+
+
+*************** End MatrixDiag ***************
+
+
+
+*************** Begin Selection ***************
+
+Q_Space Dim       : 20829300 
+Working Time      : cputime / walltime / effective core 
+Total Time        :  4439.78 /    96.71 / 45.91
+Initialize Time   :     3.22 /     3.23 / 1.00
+Calculation Time  :  4421.79 /    78.73 / 56.16
+Finalize Time     :    14.77 /    14.75 / 1.00
+
+
+*************** End Selection ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 20829300
+Not Support SpMat_CSR_Base<Indx_t, Scalar>::WriteFileNot Support SpMat_CSR_Base<Indx_t, Scalar>::WriteFile
