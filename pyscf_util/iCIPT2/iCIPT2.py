@@ -3,7 +3,7 @@ import os
 from copy import deepcopy
 
 _FILE_NOT_REMOVE = {
-    "start_with": ["FCIDUMP"],
+    "start_with": ["FCIDUMP", "RELDUMP"],
     "end_with": [".py", ".out", ".inp", ".err"],
 }
 

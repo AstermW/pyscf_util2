@@ -260,4 +260,6 @@ def fetch_X2C_soDKH1(
             [reduce(numpy.dot, (contr_coeff.T, x, contr_coeff)) for x in res]
         )
 
+    res = numpy.asarray([reduce(numpy.dot, (_cmoao.T, x, _cmoao)) for x in res])
+
     return res
