@@ -236,6 +236,86 @@ _CONFIG = {
             },
         },
     },
+    "Br": {
+        0: {
+            "mf": "mcscf",
+            # description of symmetry #
+            "spin": 1,
+            "state": [
+                [1, "p+0", 1],
+                [1, "p+1", 1],
+                [1, "p-1", 1],
+            ],
+            "ici_state": [
+                [1, 5, 1, [1]],
+                [1, 6, 1, [1]],
+                [1, 7, 1, [1]],
+            ],
+            "minimal_cas": {
+                "norb": 3,
+                "nelec": 5,
+            },
+            "fakescf": True,
+            "fake_charge": -1,
+            "fake_spin": 0,
+            "fake_irrep_nelec": {
+                "s+0": 8,
+                "p-1": 6,
+                "p+0": 6,
+                "p+1": 6,
+                "d-2": 2,
+                "d-1": 2,
+                "d+0": 2,
+                "d+1": 2,
+                "d+2": 2,
+            },
+            "cas_symm_d2h": {
+                "b1u": 1,
+                "b2u": 1,
+                "b3u": 1,
+            },
+        },
+    },
+    "I": {
+        0: {
+            "mf": "mcscf",
+            # description of symmetry #
+            "spin": 1,
+            "state": [
+                [1, "p+0", 1],
+                [1, "p+1", 1],
+                [1, "p-1", 1],
+            ],
+            "ici_state": [
+                [1, 5, 1, [1]],
+                [1, 6, 1, [1]],
+                [1, 7, 1, [1]],
+            ],
+            "minimal_cas": {
+                "norb": 3,
+                "nelec": 5,
+            },
+            "fakescf": True,
+            "fake_charge": -1,
+            "fake_spin": 0,
+            "fake_irrep_nelec": {
+                "s+0": 10,
+                "p-1": 8,
+                "p+0": 8,
+                "p+1": 8,
+                "d-2": 4,
+                "d-1": 4,
+                "d+0": 4,
+                "d+1": 4,
+                "d+2": 4,
+            },
+            "cas_symm_d2h": {
+                "b1u": 1,
+                "b2u": 1,
+                "b3u": 1,
+            },
+        },
+    },
 }
 
 _MO_CONFIG = {
@@ -265,5 +345,11 @@ _MO_CONFIG = {
     },
     "Cl": {
         "orb_type": ["1s", "2s", "2p", "3s", "3p", "3d", "4s", "4p", "4d"],
+    },
+    "Br": {
+        "orb_type": ["1s", "2s", "2p", "3s", "3p", "3d", "4s", "4p", "4d", "5s", "5p", "5d"],
+    },
+    "I": {
+        "orb_type": ["1s", "2s", "2p", "3s", "3p", "3d", "4s", "4p", "4d", "5s", "5p", "5d", "6s", "6p", "6d"],
     },
 }
