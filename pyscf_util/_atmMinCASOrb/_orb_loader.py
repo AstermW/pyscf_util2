@@ -345,4 +345,5 @@ if __name__ == "__main__":
     # print(LoadAtmHFOrb("Co", 1, "cc-pvtz", rerun=True))
     # print(LoadAtmHFOrb("Ni", 0, "cc-pvtz", rerun=True))
     # print(LoadAtmHFOrb("Ni", 1, "cc-pvtz", rerun=True))
-    print(LoadAtmHFOrb("Cr", 1, "cc-pvtz", rerun=True))
+    # print(LoadAtmHFOrb("Cr", 1, "cc-pvtz", rerun=True))
+    print(LoadAtmHFOrb("Br", 0, "unc-ccpv5z-dk", with_sfx2c=True, rerun=True))
