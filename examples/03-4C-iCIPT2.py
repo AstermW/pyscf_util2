@@ -6,7 +6,7 @@ from pyscf_util.Relativisitc.integral_4C import (
 
 mol = gto.M(
     atom="F 0 0 0",
-    basis="cc-pvdz-dk",
+    basis="unc-cc-pvdz-dk",
     verbose=5,
     charge=-1,
     spin=0,

@@ -1,11 +1,11 @@
 
 from pyscf import gto, scf
-from pyscf_util.iCIPT2.iCIPT2_coov import kernel
+# from pyscf_util.iCIPT2.iCIPT2_coov import kernel
 from pyscf_util.Integrals.integral_Dooh import (
     FCIDUMP_Dooh,
 )
 from pyscf import tools
-from pyscf_util.iCIPT2.iCIPT2 import kernel
+# from pyscf_util.iCIPT2.iCIPT2 import kernel
 
 mol = gto.M(
     verbose=0,
@@ -13,7 +13,7 @@ mol = gto.M(
             C   0.000000000000       0.000000000000      -0.621265
             C   0.000000000000       0.000000000000       0.621265
             """,
-    basis={"C": "cc-pvdz", "O": "cc-pvdz"},
+    basis={"C": "cc-pvtz", "O": "cc-pvtz"},
     spin=0,
     charge=0,
     symmetry="dooh",
@@ -32,7 +32,7 @@ mol = gto.M(
             C   0.000000000000       0.000000000000      -0.621265
             C   0.000000000000       0.000000000000       0.621265
             """,
-    basis={"C": "cc-pvdz", "O": "cc-pvdz"},
+    basis={"C": "cc-pvtz", "O": "cc-pvtz"},
     spin=0,
     charge=0,
     symmetry="d2h",
