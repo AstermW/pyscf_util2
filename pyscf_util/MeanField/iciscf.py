@@ -110,7 +110,7 @@ def execute_iCI(iciobj):
     if iciobj.CVS:
         os.system("%s %s FCIDUMP > %s" % (iciobj.executable, iciobj.inputfile, iciobj.outputfile))
     else:
-        os.system("%s %s > %s" % (iciobj.executable, iciobj.inputfile, iciobj.outputfile))
+        os.system("%s %s FCIDUMP > %s" % (iciobj.executable, iciobj.inputfile, iciobj.outputfile)) # for new iCIPT2
 
     # exit(1)
 
