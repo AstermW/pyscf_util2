@@ -15,7 +15,9 @@ from pyscf_util.misc import icipt2_inputfile_generator
 
 # Constant/Configuration
 
-iCI_ProgramName = "ICI_CPP"
+iCI_ProgramName = "ICI_CSF_CPP"
+iCI_Dooh_ProgramName = "ICI_CSF_DOOH"
+iCI_Coov_ProgramName = "ICI_CSF_COOV"
 iCI_CVS_ProgramName = "ICI_CSF_CVS_CPP"
 FILE_RDM1_NAME = "rdm1.csv"
 FILE_RDM2_NAME = "rdm2.csv"
@@ -183,6 +185,13 @@ class iCI(lib.StreamObject):  # this is iCI object used in iciscf #
         
         if not self.CVS:
             self.executable = os.getenv(iCI_ProgramName)
+            # if mol.symmetry == "Dooh":
+            #     self.executable = os.getenv(iCI_ProgramName)
+            # else:
+            #     if mol.symmetry == "Coov":
+            #         self.executable = os.getenv(iCI_ProgramName)
+            #     else:
+            #         self.executable = os.getenv(iCI_ProgramName)
         else:
             self.executable = os.getenv(iCI_CVS_ProgramName)
         print(self.executable)
