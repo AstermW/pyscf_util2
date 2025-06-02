@@ -1,6 +1,7 @@
 import pyscf
 from pyscf import tools
 import numpy as np
+from pyscf.ao2mo import incore
 
 
 def dump_heff_casci(_mol, _mcscf, _core_coeff, _mocoeff, _filename="FCIDUMP"):
@@ -16,7 +17,9 @@ def dump_heff_casci(_mol, _mcscf, _core_coeff, _mocoeff, _filename="FCIDUMP"):
     act_indx = list(range(loc1, norb))
     mocoeff[:, core_indx] = _core_coeff
     mocoeff[:, act_indx] = _mocoeff
-    int2e_full = pyscf.ao2mo.full(eri_or_mol=_mol, mo_coeff=mocoeff, aosym="1")
+    int2e_full = pyscf.ao2mo.full(
+        eri_or_mol=_mol, mo_coeff=mocoeff, compact=True
+    )  # incore anyway since the size of active space cannot be too large!
     int2e_full = pyscf.ao2mo.restore(1, int2e_full.copy(), mocoeff.shape[1])
     # Get integrals
     int2e_res = int2e_full[loc1:norb, loc1:norb, loc1:norb, loc1:norb]

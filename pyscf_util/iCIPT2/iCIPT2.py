@@ -93,12 +93,12 @@ class _iCIPT2_Driver:
             if not os.path.isfile(file):
                 continue
             with temporary_update(self._file_not_remove, "start_with", start_with):
-                if any(file.endswith(ext) for ext in self._file_not_remove["end_with"]):
+                if any(file.startswith(ext) for ext in self._file_not_remove["start_with"]):
                     continue
             with temporary_update(self._file_not_remove, "end_with", end_with):
                 if any(
-                    file.startswith(start)
-                    for start in self._file_not_remove["start_with"]
+                    file.endswith(start)
+                    for start in self._file_not_remove["end_with"]
                 ):
                     continue
             os.remove(file)
@@ -112,7 +112,8 @@ def _load_app(env_var):
 
 
 ICIPT2_CSF_DRIVER = _iCIPT2_Driver(_load_app("ICI_CSF_CPP"), _FILE_NOT_REMOVE)
-ICIPT2_DET_DRIVER = _iCIPT2_Driver(_load_app("ICI_DET_CPP"), _FILE_NOT_REMOVE)
+# ICIPT2_DET_DRIVER = _iCIPT2_Driver(_load_app("ICI_DET_CPP"), _FILE_NOT_REMOVE) # skip
+ICIPT2_DET_DRIVER = None
 
 
 def kernel(

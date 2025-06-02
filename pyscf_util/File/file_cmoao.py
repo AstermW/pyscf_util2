@@ -24,4 +24,5 @@ def ReadIn_Cmoao(TaskName, nao, nmo=None, skiprows=1):
         nmo = nao
     cmoao = numpy.zeros((nao, nmo))
     cmoao[i, j] = val
+    cmoao[j, i] = val
     return cmoao

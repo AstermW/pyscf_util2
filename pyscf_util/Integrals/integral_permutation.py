@@ -2,9 +2,9 @@ import numpy as np
 from pyscf_util.misc.misc import _combine4
 
 
-def kernel(h1e, h2e, norb, map_old_2_new, symmetry=4):
+def kernel(h1e, h2e, norb, map_old_2_new, symmetry=8):
 
-    assert symmetry == 4, "Only symmetry 4 is supported"
+    assert symmetry == 8, "Only symmetry8 is supported"
 
     h1e_new = np.zeros((norb, norb))
     h2e_new = np.zeros(len(h2e))

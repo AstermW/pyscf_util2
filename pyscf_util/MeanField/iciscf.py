@@ -67,6 +67,9 @@ def writeIntegralFile(iciobj, h1eff, eri_cas, ncas, nelec, ecore=0):
 
     # The name of the FCIDUMP file, default is "FCIDUMP".
     integralFile = os.path.join(iciobj.runtimedir, iciobj.integralfile)
+    # print(integralFile)
+    # print(h1eff)
+    # print(eri_cas)
     tools.fcidump.from_integrals(
         integralFile,
         h1eff,
@@ -77,6 +80,8 @@ def writeIntegralFile(iciobj, h1eff, eri_cas, ncas, nelec, ecore=0):
         ms=abs(neleca - nelecb),
         orbsym=orbsym,
     )
+    # print("stop here!")
+    # exit(1)
     return integralFile
 
 
@@ -105,6 +110,8 @@ def execute_iCI(iciobj):
         selection=iciobj.config["selection"],
         direct=iciobj.config["direct"],
     )
+
+    # exit(1)
 
     # execute
 
@@ -408,13 +415,13 @@ class iCI(lib.StreamObject):  # this is iCI object used in iciscf #
             nelectrons = nelec[0] + nelec[1]
 
         if "nvalelec" not in self.config.keys():
-            if nelectrons <= 10:
+            if nelectrons <= 14:
                 self.config["nvalelec"] = nelectrons
             else:
                 if nelectrons % 2 == 0:
-                    self.config["nvalelec"] = 10
+                    self.config["nvalelec"] = 12
                 else:
-                    self.config["nvalelec"] = 9
+                    self.config["nvalelec"] = 11
 
         nval = min(self.config["nvalelec"], norb)
         if norb <= 8:
@@ -509,14 +516,14 @@ class iCI(lib.StreamObject):  # this is iCI object used in iciscf #
             nelectrons = nelec[0] + nelec[1]
 
         if "nvalelec" not in self.config.keys():
-            if nelectrons <= 10:
+            if nelectrons <= 14:
                 self.config["nvalelec"] = nelectrons
             else:
                 if nelectrons % 2 == 0:
-                    self.config["nvalelec"] = 10
+                    self.config["nvalelec"] = 12
                 else:
-                    self.config["nvalelec"] = 9
-
+                    self.config["nvalelec"] = 11
+                    
         nval = min(self.config["nvalelec"], norb)
         nval_hole = nval // 2
         nval_part = nval - nval_hole
