@@ -492,8 +492,8 @@ Cr     0.0000      0.0000  -%f
     # fcidump.from_mo(
     #     Mol, "FCIDUMP_Cr2_Benchmark", CASSCF_Driver.mo_coeff, orbsym, tol=1e-12
     # )
-    fcidump_sfx2c(Mol, SCF, mo_coeff, "FCIDUMP_Cr2_Benchmark", 1e-12)
+    fcidump_sfx2c(Mol, SCF, mo_coeff, "FCIDUMP_Cr2_Benchmark", 1e-10)
     fcidump_mrpt2_outcore(
-        Mol, SCF, mo_coeff, 18, 12, Mol.nao - 30, "FCIDUMP_Cr2_outcore", 1e-12
+        Mol, SCF, mo_coeff, 18, 12, Mol.nao - 30, "FCIDUMP_Cr2_outcore", 1e-10
     )
-    fcidump_mrpt2(Mol, SCF, mo_coeff, 18, 12, Mol.nao - 30, "FCIDUMP_Cr2_incore", 1e-12)
+    fcidump_mrpt2(Mol, SCF, mo_coeff, 18, 12, Mol.nao - 30, "FCIDUMP_Cr2_incore", 1e-10)
