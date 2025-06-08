@@ -7,7 +7,7 @@ import h5py
 from pyscf.ao2mo import outcore
 from pyscf.mcscf.casci import get_fock
 from pyscf_util.misc.misc import _combine4, _combine2
-from pyscf_util.File import file_cmoao
+from pyscf_util.File import file_rdm
 
 ############## build generalized Fock operator ##############
 
@@ -480,7 +480,7 @@ Cr     0.0000      0.0000  -%f
     os.system("mv rdm1.csv cr2_rdm1.csv")
 
     mo_coeff = CASSCF_Driver.mo_coeff
-    rdm1 = file_cmoao.ReadIn_Cmoao("cr2_rdm1", 12, 12)
+    rdm1 = file_rdm.ReadIn_rdm1("cr2_rdm1", 12, 12)
 
     print(rdm1)
     print(get_generalized_fock(CASSCF_Driver, mo_coeff, rdm1))
