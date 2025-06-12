@@ -50,7 +50,7 @@ def get_irrep_orbid(mol, mo_coeff, begin_indx, end_indx):
 
 
 def read_mcscf_mo_coeff_from_molden(
-    mol, filename: str, NFZC: dict, NACT: dict, NVIR: dict, debug: bool = False
+    mol, filename: str, NFZC: dict, NACT: dict, NVIR: dict = None, debug: bool = False
 ):
 
     _, mo_energy, mo_coeff, mo_occ, _, _ = tools.molden.load(filename)
@@ -64,10 +64,16 @@ def read_mcscf_mo_coeff_from_molden(
     for key in irrep_orbid.keys():
         order.extend(irrep_orbid[key][NFZC[key] : NFZC[key] + NACT[key]])
     nact = len(order) - nfzc
-    for key in irrep_orbid.keys():
-        order.extend(
-            irrep_orbid[key][NFZC[key] + NACT[key] : NFZC[key] + NACT[key] + NVIR[key]]
-        )
+    if NVIR is None:
+        for key in irrep_orbid.keys():
+            order.extend(irrep_orbid[key][NFZC[key] + NACT[key] :])
+    else:
+        for key in irrep_orbid.keys():
+            order.extend(
+                irrep_orbid[key][
+                    NFZC[key] + NACT[key] : NFZC[key] + NACT[key] + NVIR[key]
+                ]
+            )
     nvir = len(order) - nact - nfzc
 
     def takeSecond(elem):
