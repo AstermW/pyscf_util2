@@ -626,12 +626,14 @@ def kernel(
     _frozen=None,
     _mo_init=None,
     _cas_list=None,
+    _core_list=None,
     _mc_conv_tol=1e-7,
     _mc_max_macro=128,
     # _pyscf_state=None,  # [spintwo, irrep, nstates]
     _ici_state=None,
     _cmin=0.0,
     _do_pyscf_analysis=False,
+    _internal_rotation=False,
     _run_mcscf=True,
 ):
     """Run MCSCF calculation
@@ -673,8 +675,9 @@ def kernel(
         mo_init = _mo_init
     my_mc.mo_coeff = mo_init  # in case _run_mcscf = False,
     if _cas_list is not None:
+        # print(_cas_list)
         if isinstance(_cas_list, dict):
-            mo_init = pyscf.mcscf.sort_mo_by_irrep(my_mc, mo_init, _cas_list)
+            mo_init = pyscf.mcscf.sort_mo_by_irrep(my_mc, mo_init, _cas_list, _core_list)
         else:
             mo_init = pyscf.mcscf.sort_mo(my_mc, mo_init, _cas_list)
     # determine FCIsolver
@@ -703,6 +706,9 @@ def kernel(
             taskname=generate_random_string(8),
         )
         my_mc.fcisolver = solver
+    # if do _internal_rotation
+    if _internal_rotation:
+        my_mc.internal_rotation = True
     # Run
     if _run_mcscf:
         my_mc.kernel(mo_init)

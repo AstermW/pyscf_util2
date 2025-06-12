@@ -38,7 +38,8 @@ class _iCIPT2_Driver:
         segment,
         nelec_val,
         rotatemo=0,
-        cmin: str | float = 1e-4,
+        # cmin: str | float = 1e-4,
+        cmin = 1e-4,
         perturbation=0,
         dumprdm=0,
         relative=0,
@@ -49,7 +50,7 @@ class _iCIPT2_Driver:
         doublegroup=None,
         direct=None,
         start_with=None,
-        end_with=None,
+        end_with=None
     ):
         inputfilename = task_name + ".inp"
         outputfilename = task_name + ".out"
@@ -101,7 +102,7 @@ class _iCIPT2_Driver:
                     for start in self._file_not_remove["end_with"]
                 ):
                     continue
-            os.remove(file)
+            # os.remove(file)
 
 
 def _load_app(env_var):
@@ -123,7 +124,7 @@ def kernel(
     segment,
     nelec_val,
     rotatemo=0,
-    cmin: str | float = 1e-4,
+    cmin= 1e-4,
     perturbation=0,
     dumprdm=0,
     relative=0,
@@ -134,7 +135,7 @@ def kernel(
     doublegroup=None,
     direct=None,
     start_with=None,
-    end_with=None,
+    end_with=None
 ):
     if IsCSF:
         ICIPT2_CSF_DRIVER.run(

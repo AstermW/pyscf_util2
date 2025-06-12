@@ -1,6 +1,7 @@
 from pyscf import gto, scf
 from pyscf import tools
 from pyscf_util.iCIPT2.iCIPT2 import kernel
+from pyscf_util.Integrals.integral_sfX2C import fcidump_sfx2c
 
 mol = gto.M(
     verbose=4,
@@ -20,7 +21,11 @@ mf = scf.sfx2c(mf)
 mf.kernel()
 FCIDUMP_NAME = "FCIDUMP_Cr2_D2h"
 
-tools.fcidump.from_scf(mf, FCIDUMP_NAME, 1e-10)
+# tools.fcidump.from_scf(mf, FCIDUMP_NAME, 1e-10)
+
+fcidump_sfx2c(mol, mf, mf.mo_coeff[:, :36], FCIDUMP_NAME, tol=1e-10)
+
+exit(1)
 
 kernel(
     True,
