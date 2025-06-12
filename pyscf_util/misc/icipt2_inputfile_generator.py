@@ -26,7 +26,7 @@ iCI_Keywords = [
     "print",
     "doublegroup",
     "prune",
-    "relaxcore"
+    "relaxcore",
 ]
 
 
@@ -66,6 +66,7 @@ def _Generate_InputFile_iCI(
         inputfile.write("direct=%d\n" % (direct))
     inputfile.close()
 
+
 def _Generate_InputFile_iCI_CVS(
     inputfilename,
     Segment,
@@ -104,7 +105,8 @@ def _Generate_InputFile_iCI_CVS(
     if relaxcore is not None:
         inputfile.write("relaxcore=%d\n" % (relaxcore))
     inputfile.close()
-    
+
+
 def _generate_task_spinarray_weight(state):
     res = ""
     spinarray = []
