@@ -690,11 +690,11 @@ def kernel(
         else:
             mo_init = pyscf.mcscf.sort_mo(my_mc, mo_init, _cas_list)
     # determine FCIsolver
-    nelecas = _nelecas
-    if isinstance(_nelecas, tuple):
-        nelecas = _nelecas[0] + _nelecas[1]
-    if _ncas > 12 or nelecas > 12:  # Large Cas Space
-        raise ValueError("Large Cas Space")
+    # nelecas = _nelecas
+    # if isinstance(_nelecas, tuple):
+    #     nelecas = _nelecas[0] + _nelecas[1]
+    # if _ncas > 12 or nelecas > 12:  # Large Cas Space
+    #     raise ValueError("Large Cas Space")
 
     import random
     import string
