@@ -18,7 +18,7 @@ def Analysis_MO_Component(
     with_sfx2c=None,
     verbose=True,
 ):
-    # step 1 fetch each atm lable, which should be uniqie #
+    # step 1 fetch each atm lable, which should be unique #
     atm_labels = []
     for atm_id in range(mol.natm):
         atm_symbol = mol.atom_symbol(atm_id)
@@ -43,18 +43,29 @@ def Analysis_MO_Component(
     res = numpy.ndarray((first_nmo, ncomp), dtype=numpy.float64)
     icomp = 0
     ovlp = mol.intor("int1e_ovlp")
+    # print(atm_labels)
     for atm_label in atm_labels:
         idx = mol.search_ao_label(["%s.*" % (atm_label)])
+        print(atm_label, idx)
         assert idx[-1] + 1 - idx[0] == len(idx)
         for orb_type in _MO_CONFIG[_std_symbol(atm_label)]["orb_type"]:
             # fetch orb #
-            orb = LoadAtmHFOrbGivenType(
-                atm_label,
-                0,
-                basis[_std_symbol(atm_label)],
-                with_sfx2c=with_sfx2c,
-                orb_symbol=orb_type,
-            )
+            if isinstance(basis, str):
+                orb = LoadAtmHFOrbGivenType(
+                    atm_label,
+                    0,
+                    basis,
+                    with_sfx2c=with_sfx2c,
+                    orb_symbol=orb_type,
+                )
+            else:
+                orb = LoadAtmHFOrbGivenType(
+                    atm_label,
+                    0,
+                    basis[_std_symbol(atm_label)],
+                    with_sfx2c=with_sfx2c,
+                    orb_symbol=orb_type,
+                )
             norb_loaded = orb.shape[1]
             orb_in_mol = numpy.zeros((mol.nao, norb_loaded), dtype=numpy.float64)
             orb_in_mol[idx[0] : idx[-1] + 1, :] = orb

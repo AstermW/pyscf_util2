@@ -238,8 +238,8 @@ _CONFIG = {
                 [4, 3, 1, [1]],
             ],
             "minimal_cas": {
-                "norb": 6,
-                "nelec": 8,
+                "norb": 5,
+                "nelec": 6,
             },
             "fakescf": True,
             "fake_charge": 1,
@@ -256,7 +256,7 @@ _CONFIG = {
                 "d-2": 1,
             },
             "cas_symm_d2h": {
-                "ag": 3,
+                "ag": 2,
                 "b1g": 1,
                 "b2g": 1,
                 "b3g": 1,
@@ -273,8 +273,8 @@ _CONFIG = {
                 [5, 3, 1, [1]],
             ],
             "minimal_cas": {
-                "norb": 6,
-                "nelec": 7,
+                "norb": 5,
+                "nelec": 5,
             },
             "fakescf": True,
             "fake_charge": 1,
@@ -291,7 +291,7 @@ _CONFIG = {
                 "d-2": 1,
             },
             "cas_symm_d2h": {
-                "ag": 3,
+                "ag": 2,
                 "b1g": 1,
                 "b2g": 1,
                 "b3g": 1,
