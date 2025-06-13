@@ -627,6 +627,8 @@ def kernel(
     _mo_init=None,
     _cas_list=None,
     _core_list=None,
+    _with_df=False,
+    _df_auxbasis=None,
     _mc_conv_tol=1e-7,
     _mc_max_macro=128,
     # _pyscf_state=None,  # [spintwo, irrep, nstates]
@@ -664,7 +666,14 @@ def kernel(
     """
 
     # Generate MCSCF object
-    my_mc = pyscf.mcscf.CASSCF(_rohf, nelecas=_nelecas, ncas=_ncas)
+    # df 
+    if _with_df:
+        if _df_auxbasis is not None:
+            my_mc = pyscf.mcscf.DFCASSCF(_rohf, nelecas=_nelecas, ncas=_ncas, auxbasis=_df_auxbasis)
+        else:
+            my_mc = pyscf.mcscf.DFCASSCF(_rohf, nelecas=_nelecas, ncas=_ncas)
+    else:
+        my_mc = pyscf.mcscf.CASSCF(_rohf, nelecas=_nelecas, ncas=_ncas)
     my_mc.conv_tol = _mc_conv_tol
     my_mc.max_cycle_macro = _mc_max_macro
     my_mc.frozen = _frozen
