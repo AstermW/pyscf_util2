@@ -391,7 +391,7 @@ if __name__ == "__main__":
 
     Mol = pyscf.gto.Mole()
     Mol.atom = """
-Cr     0.0000      0.0000  %f 
+Cr     0.0000      0.0000   %f 
 Cr     0.0000      0.0000  -%f 
 """ % (
         1.68 / 2,
