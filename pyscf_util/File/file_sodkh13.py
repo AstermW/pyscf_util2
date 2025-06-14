@@ -37,3 +37,11 @@ def ReadIn_Relint_csv(TaskName, nao, skiprows=1):
     relint = numpy.zeros((4, nao, nao))
     relint[k, i, j] = val
     return relint
+
+def ReadIn_Relint_iCI(filename, nao):
+    FILE = open(filename, "r")
+    relint = numpy.zeros((4, nao, nao))
+    for line in FILE:
+        val, i, j, k = line.split()
+        relint[k, i, j] = float(val)
+    return relint
