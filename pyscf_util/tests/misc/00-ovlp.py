@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from pyscf_util.misc.math import _orthogonalize
+from pyscf_util.misc.math_misc import _orthogonalize
 
 
 class TestOrthogonalize(unittest.TestCase):

@@ -1,8 +1,10 @@
 from urllib import robotparser
-#import seaborn
-#import pandas
+
+# import seaborn
+# import pandas
 import matplotlib.pyplot as plt
-#import numpy
+
+# import numpy
 
 
 def draw_extra_pic(
