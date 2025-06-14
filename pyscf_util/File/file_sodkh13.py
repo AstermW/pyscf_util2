@@ -43,5 +43,5 @@ def ReadIn_Relint_iCI(filename, nao):
     relint = numpy.zeros((4, nao, nao))
     for line in FILE:
         val, i, j, k = line.split()
-        relint[k, i, j] = float(val)
+        relint[int(k), int(i), int(j)] = float(val)
     return relint
