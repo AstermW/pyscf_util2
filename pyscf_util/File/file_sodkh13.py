@@ -35,5 +35,5 @@ def ReadIn_Relint_csv(TaskName, nao, skiprows=1):
         unpack=True,
     )
     relint = numpy.zeros((4, nao, nao))
-    relint[i, j, k] = val
+    relint[k, i, j] = val
     return relint
