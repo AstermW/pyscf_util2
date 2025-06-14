@@ -76,7 +76,7 @@ def read_ao2somat_from_chkfil(file_path, int_size=8, maxrecord=1024):
     return ao2somat.T
 
 
-def ao2somat_compatible_with_pyscf(ao2somat, Mol):
+def ao2somat_split_based_on_irrep(ao2somat, Mol):
 
     from pyscf_util.misc.mole import get_orbsym
 
@@ -135,7 +135,7 @@ H             -6.383749016945       0.000000000000       2.354252931327
     Mol.build()
 
     mf = pyscf.scf.RHF(Mol)
-    symm_ao2somat = ao2somat_compatible_with_pyscf(ao2somat, Mol)
+    symm_ao2somat = ao2somat_split_based_on_irrep(ao2somat, Mol)
 
     # read in casorb file of bdf #
 
@@ -154,7 +154,7 @@ H             -6.383749016945       0.000000000000       2.354252931327
     occupancies = []
 
     for irrep in range(len(Mol.irrep_name)):
-        print(irrep)
+        # print(irrep)
         assert symm_ao2somat[irrep].shape[1] == parser.get_sym_data(irrep).shape[1]
         mo_coeff_tmp = symm_ao2somat[irrep] @ parser.get_sym_data(irrep)
         mo_coeffs.append(mo_coeff_tmp)

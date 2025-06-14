@@ -1,50 +1,129 @@
 import pyscf
-from pyscf import scf, tools
-import numpy
-from functools import reduce
-
-from mokit.lib.py2bdf import py2bdf
+from pyscf import scf
+import numpy as np
 from mokit.lib.py2fch_direct import fchk
-
+from mokit.lib.gaussian import mo_fch2py
 import os
+from pyscf_util.misc._parse_bdf_chkfil import (
+    read_ao2somat_from_chkfil,
+    ao2somat_split_based_on_irrep,
+)
+from pyscf_util.misc._parse_bdf_orbfile import BDFOrbParser
+from pyscf_util.misc.dump_to_bdforb import dump_to_scforb
 
-################################################################
-### interface BDF and pyscf with MOKIT
-################################################################
 
-BDF2FCH = os.getenv("BDF2FCH")
-if BDF2FCH is None:
-    raise ValueError("BDF2FCH is not set")
+def convert_bdf_to_pyscf(
+    # geometry,
+    # basis="cc-pvdz",
+    # symmetry="d2h",
+    Mol: pyscf.gto.Mole,
+    mf: scf.RHF,
+    chkfil_path="02S.chkfil",  #### 必须保证 chkfil 文件 和 Mol 和 scforb 文件分子构型时一致的，注意，bdf 做带对称性的计算时候会调整分子构型 ####
+    scforb_path="bdf_test/02S.scforb",
+    output_fch="test.fch",
+    output_fch_new="test_new.fch",
+    output_scforb="02S_nosymm.scforb",
+    # max_scf_cycles=32,
+):
+    """
+    Convert PySCF calculation to BDF format and perform SCF calculation.
 
-################################################################
-## MOKIT is a wonnderful package !
-################################################################
+    Parameters
+    ----------
+    geometry : str
+        Molecular geometry in PySCF format
+    basis : str, optional
+        Basis set name, default is "cc-pvdz"
+    symmetry : str, optional
+        Point group symmetry, default is "d2h"
+    chkfil_path : str, optional
+        Path to BDF checkpoint file
+    scforb_path : str, optional
+        Path to BDF orbital file
+    output_fch : str, optional
+        Path for intermediate fch file
+    output_fch_new : str, optional
+        Path for final fch file
+    output_scforb : str, optional
+        Path for output BDF orbital file
+    max_scf_cycles : int, optional
+        Maximum number of SCF cycles, default is 32
+
+    Returns
+    -------
+    tuple
+        (mf, mo_coeffs_bdf) where mf is the PySCF mean-field object and mo_coeffs_bdf
+        are the molecular orbitals in BDF format
+    """
+    # Check BDF2FCH environment variable
+    BDF2FCH = os.getenv("BDF2FCH")
+    if BDF2FCH is None:
+        raise ValueError("BDF2FCH is not set")
+
+    # Initial SCF calculation
+    max_cycle_bak = mf.max_cycle
+    mf.max_cycle = 1  # do not do scf just build
+    mf.kernel()
+
+    # Read BDF symmetry orbitals
+    ao2somat_bdf = read_ao2somat_from_chkfil(chkfil_path)
+    ao2somat_bdf = ao2somat_split_based_on_irrep(ao2somat_bdf, Mol)
+
+    # Read and process orbital coefficients
+    parser = BDFOrbParser(scforb_path)
+    parser.parse_file()
+
+    # Pack orbital data
+    mo_coeffs = []
+    energies = []
+    occupancies = []
+
+    for irrep in range(len(Mol.irrep_name)):
+        mo_coeff_tmp = ao2somat_bdf[irrep] @ parser.get_sym_data(irrep)
+        mo_coeffs.append(mo_coeff_tmp)
+        energies.append(parser.get_sym_energies(irrep))
+        occupancies.append(parser.get_sym_occupations(irrep))
+
+    mo_coeffs = np.hstack(mo_coeffs)
+    energies = np.hstack(energies)
+    occupancies = np.hstack(occupancies)
+
+    # Dump to BDF format
+    dump_to_scforb(Mol, mo_coeffs, energies, occupancies, output_scforb)
+
+    # Convert to fch format
+    fchk(mf, output_fch)
+    os.system(f"{BDF2FCH} {output_scforb} {output_fch} {output_fch_new}")
+
+    # Read back and perform final SCF
+    mo_coeffs_bdf = mo_fch2py(output_fch_new)
+
+    mf.max_cycle = max_cycle_bak
+
+    return mo_coeffs_bdf
+
 
 if __name__ == "__main__":
-
-    from _parse_bdf_orbfile import BDFOrbParser
-
-    #### use C10H8 as an example ####
-
+    # Example usage with C10H8
     GEOMETRY = """
-C       -2.433633500      0.708353500      0.000000000 
-C       -2.433633500     -0.708353500      0.000000000 
-H       -3.378134500     -1.245817000      0.000000000 
-H       -3.378134500      1.245817000      0.000000000 
-C       -1.244704000      1.402507000      0.000000000 
-C       -1.244704000     -1.402507000      0.000000000 
-C        0.000000000      0.717168000      0.000000000 
-C        0.000000000     -0.717168000      0.000000000 
-H       -1.242591000      2.490280000      0.000000000 
-H       -1.242591000     -2.490280000      0.000000000 
-C        1.244704000      1.402507000      0.000000000 
-C        1.244704000     -1.402507000      0.000000000 
-C        2.433633500      0.708353500      0.000000000 
-C        2.433633500     -0.708353500      0.000000000 
-H        1.242591000      2.490280000      0.000000000 
-H        1.242591000     -2.490280000      0.000000000 
-H        3.378134500      1.245817000      0.000000000 
-H        3.378134500     -1.245817000      0.000000000
+C              4.598900802567      -0.000000000000      -1.338594114377
+C              4.598900802567      -0.000000000000       1.338594114377
+H              6.383749016945      -0.000000000000       2.354252931327
+H              6.383749016945      -0.000000000000      -2.354252931327
+C              2.352149666151      -0.000000000000      -2.650354117785
+C              2.352149666151      -0.000000000000       2.650354117785
+C             -0.000000000000      -0.000000000000      -1.355251105302
+C              0.000000000000       0.000000000000       1.355251105302
+H              2.348156674849      -0.000000000000      -4.705947173482
+H              2.348156674849      -0.000000000000       4.705947173482
+C             -2.352149666151       0.000000000000      -2.650354117785
+C             -2.352149666151       0.000000000000       2.650354117785
+C             -4.598900802567       0.000000000000      -1.338594114377
+C             -4.598900802567       0.000000000000       1.338594114377
+H             -2.348156674849       0.000000000000      -4.705947173482
+H             -2.348156674849       0.000000000000       4.705947173482
+H             -6.383749016945       0.000000000000      -2.354252931327
+H             -6.383749016945       0.000000000000       2.354252931327
 """
     Mol = pyscf.gto.Mole()
     Mol.atom = GEOMETRY
@@ -53,73 +132,16 @@ H        3.378134500     -1.245817000      0.000000000
     Mol.spin = 0
     Mol.charge = 0
     Mol.verbose = 4
-    Mol.unit = "angstorm"
+    Mol.unit = "bohr"
     Mol.build()
 
-    #### use pyscf to get the SCF energy ####
-
+    # build mf #
     mf = scf.RHF(Mol)
-    mf.kernel()
-    print(mf.e_tot)
-    mf.analyze()
 
-    CASSCF_Driver = pyscf.mcscf.CASSCF(mf, 10, 10)
+    # convert to bdf #
+    mo_coeffs_bdf = convert_bdf_to_pyscf(Mol, mf)
 
-    # fchk(CASSCF_Driver, "test_C10H8.fch")
-    py2bdf(CASSCF_Driver, "test_C10H8.inp")
+    # check #
 
-    # print(Mol.symm_orb)
-    # for x in Mol.symm_orb:
-    #     print(x.shape)
-    # print(Mol.irrep_name)
-
-    # 打印 the first orb
-
-    ovlp = Mol.intor("int1e_ovlp")
-    coeff = Mol.symm_orb[0].T @ ovlp @ mf.mo_coeff[:, 0]
-    print(coeff)
-
-    print(Mol.symm_orb[0].T @ ovlp @ Mol.symm_orb[0])
-
-    # exit(1)
-
-    # copy and backup the fch file
-    # os.system("cp test_C10H8.fch test_C10H8.fch.bak")
-
-    # run BDF2FCH
-    # os.system(f"{BDF2FCH} 02S.casorb test_C10H8.fch")
-
-    # read in bdf's casorb file
-
-    # parser = BDFOrbParser("02S.casorb")
-    parser = BDFOrbParser("02S.scforb")
-    parser.parse_file(verbose=True)
-    parser.BDF_convention_old2new()
-    # print(parser.sym_blocks)
-    # print(parser.sym_orbital_energies)
-    # print(parser.sym_occupations)
-
-    # for each irrep construct the mo_coeff
-
-    print(parser.get_sym_data(0, "ALPHA")[:, 0])
-    print(parser.get_sym_data(0, "ALPHA")[0, :])
-
-    mo_coeffs = []
-    ovlp = Mol.intor("int1e_ovlp")
-
-    # # # for symm_orb, sym_block in zip(Mol.symm_orb, parser.sym_blocks):
-    # for key in parser.sym_blocks.keys():
-    #     symm_orb = Mol.symm_orb[key]
-    #     print(symm_orb.shape)
-    #     sym_block = parser.sym_blocks[key]
-    #     so_coeff = sym_block['ALPHA']['data']
-    #     print(so_coeff.shape)
-    #     mo_coeff = symm_orb @ so_coeff
-    #     # check ortho #
-    #     mo_ovlp = mo_coeff.T @ ovlp @ mo_coeff
-    #     print(mo_ovlp)
-    #     mo_coeffs.append(mo_coeff)
-    # mo_coeffs = numpy.hstack(mo_coeffs)
-    # print(mo_coeffs.shape)
-
-    ## NOTE: BDF 内部 symm orb 的 convention 和 pyscf 的 convention 不一样
+    dm_init = mf.make_rdm1(mo_coeffs_bdf)
+    mf.kernel(dm0=dm_init)  # should end within one or two cycles #
