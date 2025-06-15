@@ -460,11 +460,28 @@ class BDFOrbParser:
                 self.sym_blocks[3],
                 self.sym_blocks[2],
             )
+            # do the same thing for self.sym_orbital_energies and self.sym_occupations
+            self.sym_orbital_energies[2], self.sym_orbital_energies[3] = (
+                self.sym_orbital_energies[3],
+                self.sym_orbital_energies[2],
+            )
+            self.sym_occupations[2], self.sym_occupations[3] = (
+                self.sym_occupations[3],
+                self.sym_occupations[2],
+            )
         if len(self.sym_blocks) >= 8:
             # switch self.sym_blocks[6] and self.sym_blocks[7]
             self.sym_blocks[6], self.sym_blocks[7] = (
                 self.sym_blocks[7],
                 self.sym_blocks[6],
+            )
+            self.sym_orbital_energies[6], self.sym_orbital_energies[7] = (
+                self.sym_orbital_energies[7],
+                self.sym_orbital_energies[6],
+            )
+            self.sym_occupations[6], self.sym_occupations[7] = (
+                self.sym_occupations[7],
+                self.sym_occupations[6],
             )
 
 

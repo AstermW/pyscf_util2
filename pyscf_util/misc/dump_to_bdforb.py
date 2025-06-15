@@ -100,10 +100,17 @@ def dump_to_scforb(
         energies = energies[sorted_idx]
         occupancies = occupancies[sorted_idx]
 
+        # print(occupancies[high_occ_sort_idx])
+        # print(occupancies[mid_occ_idx])
+        # print(occupancies[low_occ_sort_idx])
+        # print(energies[high_occ_sort_idx])
+        # print(energies[mid_occ_idx])
+        # print(energies[low_occ_sort_idx])
+
         # 修改 occupancies 数组
-        nocc = mol.nelectron // 2
-        occupancies[:nocc] = 1.0
-        occupancies[nocc:] = 0.0
+        # nocc = mol.nelectron // 2
+        # occupancies[:nocc] = 1.0
+        # occupancies[nocc:] = 0.0
 
         sym_data[0]["coeffs"] = coeffs
         sym_data[0]["energies"] = energies
@@ -140,23 +147,25 @@ def dump_to_scforb(
         # 写入结束标记
         f.write("$END\n")
 
-        # write mole geometry data in bohr #
+        if not is_casorb:
 
-        natm = mol.natm
-        coords = mol.atom_coords()
-        f.write(f"$COORD{natm:9d}\n")
-        for i in range(natm):
-            f.write(
-                f"{mol.atom_symbol(i):3s}     {coords[i, 0]:21.12f}{coords[i, 1]:21.12f}{coords[i, 2]:21.12f}\n"
-            )
-        f.write("$END\n")
+            # write mole geometry data in bohr #
 
-        # dump nbas and nocc info #
+            natm = mol.natm
+            coords = mol.atom_coords()
+            f.write(f"$COORD{natm:9d}\n")
+            for i in range(natm):
+                f.write(
+                    f"{mol.atom_symbol(i):3s}     {coords[i, 0]:21.12f}{coords[i, 1]:21.12f}{coords[i, 2]:21.12f}\n"
+                )
+            f.write("$END\n")
 
-        nocc = mol.nelectron // 2
-        f.write(f"$NBF{nbas:9d}{nbas:9d}   1\n")
-        f.write(f"NOCC{nocc:9d}{nocc:9d}\n")
-        f.write("$END\n")
+            # dump nbas and nocc info #
+
+            nocc = mol.nelectron // 2
+            f.write(f"$NBF{nbas:9d}{nbas:9d}   1\n")
+            f.write(f"NOCC{nocc:9d}{nocc:9d}\n")
+            f.write("$END\n")
 
     print(f"数据已成功写入到 {filename}")
     print(f"总轨道数: {nmo}")
