@@ -12,7 +12,7 @@ import pyscf
 from pyscf import gto, lib
 from typing import Iterator, Tuple, List, Dict
 import time
-
+from pyscf.ao2mo._ao2mo import nr_e2
 
 def get_shell_slices(mol: pyscf.gto.Mole, ao_block_size: int) -> List[Tuple[int, int]]:
     """
@@ -146,8 +146,9 @@ def generate_eri_pprs(
             eri_block = _get_eri_ijkl_given_kl_shell_slices(
                 mol, id_k, id_l, shell_slices
             )
+            _, _, shape2, shape3 = eri_block.shape
             eri_block = eri_block.reshape(
-                nao * nao, eri_block.shape[2], eri_block.shape[3]
+                nao * nao, eri_block.shape[2] * eri_block.shape[3]
             )
 
             k_start, k_end = shell_slices[id_k]
@@ -157,7 +158,9 @@ def generate_eri_pprs(
 
             eri_ppkl[
                 :, ao_loc[k_start] : ao_loc[k_end], ao_loc[l_start] : ao_loc[l_end]
-            ] = np.einsum("pq,prs->qrs", ao_pair_2_ao, eri_block)
+            ] = lib.ddot(ao_pair_2_ao.T, eri_block).reshape(nao, shape2, shape3)
+
+            # np.einsum("pq,prs->qrs", ao_pair_2_ao, eri_block)
 
             # eri_ppkl[
             #     :, ao_loc[l_start] : ao_loc[l_end], ao_loc[k_start] : ao_loc[k_end]
@@ -179,8 +182,14 @@ def generate_eri_pprs(
 
     # the last two indices #
 
-    eri_ppkl = np.einsum("pqr,qs->psr", eri_ppkl, mo_coeff)
-    eri_ppkl = np.einsum("psr,rt->pst", eri_ppkl, mo_coeff)
+    # eri_ppkl = np.einsum("pqr,qs->psr", eri_ppkl, mo_coeff)
+    # eri_ppkl = np.einsum("psr,rt->pst", eri_ppkl, mo_coeff)
+    
+    eri_ppkl_out = np.zeros(eri_ppkl.shape)
+    orb_slices = (0, nao, 0, nao)
+    
+    nr_e2(eri_ppkl, mo_coeff, orb_slices, out=eri_ppkl_out)
+    eri_ppkl = eri_ppkl_out
 
     # print the final result
     elapsed = time.time() - start_time
@@ -245,8 +254,9 @@ def generate_eri_prps(
                 mol, id_k, id_l, shell_slices
             )
             eri_block = eri_block.transpose(0, 2, 1, 3)
+            _, _, shape2, shape3 = eri_block.shape
             eri_block = eri_block.reshape(
-                nao * nao, eri_block.shape[2], eri_block.shape[3]
+                nao * nao, eri_block.shape[2] * eri_block.shape[3]
             )
 
             k_start, k_end = shell_slices[id_k]
@@ -256,7 +266,9 @@ def generate_eri_prps(
 
             eri_pkpl[
                 :, ao_loc[k_start] : ao_loc[k_end], ao_loc[l_start] : ao_loc[l_end]
-            ] = np.einsum("pq,prs->qrs", ao_pair_2_ao, eri_block)
+            ] = lib.ddot(ao_pair_2_ao.T, eri_block).reshape(nao, shape2, shape3)
+
+            # np.einsum("pq,prs->qrs", ao_pair_2_ao, eri_block)
 
             # eri_pkpl[
             #     :, ao_loc[l_start] : ao_loc[l_end], ao_loc[k_start] : ao_loc[k_end]
@@ -278,8 +290,14 @@ def generate_eri_prps(
 
     # the last two indices #
 
-    eri_pkpl = np.einsum("pqr,qs->psr", eri_pkpl, mo_coeff)
-    eri_pkpl = np.einsum("psr,rt->pst", eri_pkpl, mo_coeff)
+    # eri_pkpl = np.einsum("pqr,qs->psr", eri_pkpl, mo_coeff)
+    # eri_pkpl = np.einsum("psr,rt->pst", eri_pkpl, mo_coeff)
+    
+    eri_pkpl_out = np.zeros(eri_pkpl.shape)
+    orb_slices = (0, nao, 0, nao)
+    
+    nr_e2(eri_pkpl, mo_coeff, orb_slices, out=eri_pkpl_out)
+    eri_pkpl = eri_pkpl_out
 
     # print the final result
     elapsed = time.time() - start_time

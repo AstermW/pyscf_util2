@@ -13,6 +13,8 @@ from pyscf_util.Integrals._util import generate_eri_pprs, generate_eri_prps
 
 ############## integral MRPT2 ##############
 
+# TODO: opt it!
+
 
 def fcidump_mrpt2_incore_fast(
     mol, scf, mo_coeff, nfzc, nact, nvir, filename="FCIDUMP", tol=1e-10
@@ -62,7 +64,7 @@ def fcidump_mrpt2_incore_fast(
 
         for p in range(int2e_cvcv.shape[0]):
             for q in range(int2e_cvcv.shape[1]):
-                for r in range(int2e_cvcv.shape[2]):
+                for r in range(p + 1):
                     for s in range(int2e_cvcv.shape[3]):
                         if abs(int2e_cvcv[p, q, r, s]) < tol:
                             continue
@@ -86,14 +88,14 @@ def fcidump_mrpt2_incore_fast(
         int2e_cvav = pyscf.ao2mo.general(
             mol,
             (
-                mo_coeff[:, :nfzc],
-                mo_coeff[:, nfzc + nact :],
                 mo_coeff[:, nfzc : nfzc + nact],
+                mo_coeff[:, nfzc + nact :],
+                mo_coeff[:, :nfzc],
                 mo_coeff[:, nfzc + nact :],
             ),
             aosym="1",
             compact=False,
-        ).reshape(nfzc, nvir, nact, nvir)
+        ).reshape(nact, nvir, nfzc, nvir)
 
         for p in range(int2e_cvav.shape[0]):
             for q in range(int2e_cvav.shape[1]):
@@ -105,9 +107,9 @@ def fcidump_mrpt2_incore_fast(
                             output_format
                             % (
                                 int2e_cvav[p, q, r, s],
-                                p + 1,
+                                nfzc + p + 1,
                                 nfzc + nact + q + 1,
-                                nfzc + r + 1,
+                                r + 1,
                                 nfzc + nact + s + 1,
                             )
                         )
@@ -122,13 +124,13 @@ def fcidump_mrpt2_incore_fast(
             mol,
             (
                 mo_coeff[:, :nfzc],
-                mo_coeff[:, nfzc + nact :],
-                mo_coeff[:, :nfzc],
                 mo_coeff[:, nfzc : nfzc + nact],
+                mo_coeff[:, :nfzc],
+                mo_coeff[:, nfzc + nact :],
             ),
             aosym="1",
             compact=False,
-        ).reshape(nfzc, nvir, nfzc, nact)
+        ).reshape(nfzc, nact, nfzc, nvir)
 
         for p in range(int2e_cvca.shape[0]):
             for q in range(int2e_cvca.shape[1]):
@@ -141,9 +143,9 @@ def fcidump_mrpt2_incore_fast(
                             % (
                                 int2e_cvca[p, q, r, s],
                                 p + 1,
-                                nfzc + nact + q + 1,
+                                nfzc + q + 1,
                                 r + 1,
-                                nfzc + s + 1,
+                                nfzc + nact + s + 1,
                             )
                         )
 
@@ -191,17 +193,17 @@ def fcidump_mrpt2_incore_fast(
         int2e_paaa = pyscf.ao2mo.general(
             mol,
             (
+                mo_coeff[:, nfzc : nfzc + nact],
+                mo_coeff[:, nfzc : nfzc + nact],
                 mo_coeff[:, :],
-                mo_coeff[:, nfzc : nfzc + nact],
-                mo_coeff[:, nfzc : nfzc + nact],
                 mo_coeff[:, nfzc : nfzc + nact],
             ),
             aosym="1",
             compact=False,
-        ).reshape(nfzc + nact + nvir, nact, nact, nact)
+        ).reshape(nact, nact, nfzc + nact + nvir, nact)
 
         for p in range(int2e_paaa.shape[0]):
-            for q in range(int2e_paaa.shape[1]):
+            for q in range(p + 1):
                 for r in range(int2e_paaa.shape[2]):
                     for s in range(int2e_paaa.shape[3]):
                         if abs(int2e_paaa[p, q, r, s]) < tol:
@@ -210,9 +212,9 @@ def fcidump_mrpt2_incore_fast(
                             output_format
                             % (
                                 int2e_paaa[p, q, r, s],
-                                p + 1,
+                                nfzc + p + 1,
                                 nfzc + q + 1,
-                                nfzc + r + 1,
+                                r + 1,
                                 nfzc + s + 1,
                             )
                         )
@@ -237,7 +239,7 @@ def fcidump_mrpt2_incore_fast(
 
         for p in range(int2e_vvaa.shape[0]):
             for q in range(int2e_vvaa.shape[1]):
-                for r in range(int2e_vvaa.shape[2]):
+                for r in range(p + 1):
                     for s in range(int2e_vvaa.shape[3]):
                         if abs(int2e_vvaa[p, q, r, s]) < tol:
                             continue
@@ -272,7 +274,7 @@ def fcidump_mrpt2_incore_fast(
 
         for p in range(int2e_acac.shape[0]):
             for q in range(int2e_acac.shape[1]):
-                for r in range(int2e_acac.shape[2]):
+                for r in range(p + 1):
                     for s in range(int2e_acac.shape[3]):
                         if abs(int2e_acac[p, q, r, s]) < tol:
                             continue
@@ -308,7 +310,7 @@ def fcidump_mrpt2_incore_fast(
         for p in range(int2e_cvaa.shape[0]):
             for q in range(int2e_cvaa.shape[1]):
                 for r in range(int2e_cvaa.shape[2]):
-                    for s in range(int2e_cvaa.shape[3]):
+                    for s in range(r + 1):
                         if abs(int2e_cvaa[p, q, r, s]) < tol:
                             continue
                         fout.write(
