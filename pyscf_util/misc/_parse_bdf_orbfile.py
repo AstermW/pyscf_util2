@@ -449,64 +449,6 @@ class BDFOrbParser:
 
             print(f"{i+1:<8} {energy:<15.6f} {energy_ev:<12.3f} {occ:<10.6f} {status}")
 
-    def BDFold_2_pyscf(self):
-        if len(self.sym_blocks) >= 4:
-            # switch self.sym_blocks[1] and self.sym_blocks[2]
-            self.sym_blocks[1], self.sym_blocks[2] = (
-                self.sym_blocks[2],
-                self.sym_blocks[1],
-            )
-            # switch self.sym_blocks[1] and self.sym_blocks[3]
-            self.sym_blocks[1], self.sym_blocks[3] = (
-                self.sym_blocks[3],
-                self.sym_blocks[1],
-            )
-            # do the same thing for self.sym_orbital_energies and self.sym_occupations
-            self.sym_orbital_energies[1], self.sym_orbital_energies[2] = (
-                self.sym_orbital_energies[2],
-                self.sym_orbital_energies[1],
-            )
-            self.sym_orbital_energies[1], self.sym_orbital_energies[3] = (
-                self.sym_orbital_energies[3],
-                self.sym_orbital_energies[1],
-            )
-            self.sym_occupations[1], self.sym_occupations[2] = (
-                self.sym_occupations[2],
-                self.sym_occupations[1],
-            )
-            self.sym_occupations[1], self.sym_occupations[3] = (
-                self.sym_occupations[3],
-                self.sym_occupations[1],
-            )
-
-        if len(self.sym_blocks) >= 8:
-            # switch self.sym_blocks[5] and self.sym_blocks[7]
-            self.sym_blocks[5], self.sym_blocks[7] = (
-                self.sym_blocks[7],
-                self.sym_blocks[5],
-            )
-            # switch self.sym_blocks[6] and self.sym_blocks[7]
-            self.sym_blocks[6], self.sym_blocks[7] = (
-                self.sym_blocks[7],
-                self.sym_blocks[6],
-            )
-            self.sym_orbital_energies[5], self.sym_orbital_energies[7] = (
-                self.sym_orbital_energies[7],
-                self.sym_orbital_energies[5],
-            )
-            self.sym_orbital_energies[6], self.sym_orbital_energies[7] = (
-                self.sym_orbital_energies[7],
-                self.sym_orbital_energies[6],
-            )
-            self.sym_occupations[5], self.sym_occupations[7] = (
-                self.sym_occupations[7],
-                self.sym_occupations[5],
-            )
-            self.sym_occupations[6], self.sym_occupations[7] = (
-                self.sym_occupations[7],
-                self.sym_occupations[6],
-            )
-
     def BDFold_2_new(self):
         """
         2 3 互换
@@ -524,10 +466,6 @@ class BDFOrbParser:
                 self.sym_blocks[7],
                 self.sym_blocks[6],
             )
-
-    def BDFnew_2_pyscf(self):
-        self.BDFold_2_new()
-        self.BDFold_2_pyscf()
 
 
 def main():
@@ -548,7 +486,6 @@ def main():
 
         # switch convention and print again #
 
-        parser.BDFold_2_pyscf()
         parser.print_summary()
 
         # 示例：获取特定SYM的数据

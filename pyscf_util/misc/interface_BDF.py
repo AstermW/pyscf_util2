@@ -23,8 +23,8 @@ def convert_bdf_to_pyscf(
     output_fch="test.fch",
     output_fch_new="test_new.fch",
     output_scforb="02S_nosymm.scforb",
-    old_bdf_convention = False,
-    is_casorb = False
+    old_bdf_convention=False,
+    is_casorb=False,
     # max_scf_cycles=32,
 ):
     """
@@ -91,7 +91,9 @@ def convert_bdf_to_pyscf(
     occupancies = np.hstack(occupancies)
 
     # Dump to BDF format
-    dump_to_scforb(Mol, mo_coeffs, energies, occupancies, output_scforb, is_casorb=is_casorb)
+    dump_to_scforb(
+        Mol, mo_coeffs, energies, occupancies, output_scforb, is_casorb=is_casorb
+    )
 
     # Convert to fch format
     fchk(mf, output_fch)
@@ -149,15 +151,15 @@ H             -6.383749016945       0.000000000000       2.354252931327
     mo_coeffs_bdf = convert_bdf_to_pyscf(Mol, mf)
 
     # check ortho #
-    
+
     ovlp = Mol.intor("int1e_ovlp")
     ovlp_mo = mo_coeffs_bdf.T @ ovlp @ mo_coeffs_bdf
-    
+
     # print diagonal elements of ovlp_mo #
-    
+
     print(np.diag(ovlp_mo))
 
     # check #
 
-    #dm_init = mf.make_rdm1(mo_coeffs_bdf)
-    #mf.kernel(dm0=dm_init)  # should end within one or two cycles #
+    # dm_init = mf.make_rdm1(mo_coeffs_bdf)
+    # mf.kernel(dm0=dm_init)  # should end within one or two cycles #

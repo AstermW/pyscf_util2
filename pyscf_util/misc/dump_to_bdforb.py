@@ -19,7 +19,7 @@ def dump_to_scforb(
     occupancies: np.ndarray,
     filename: str = "02S.scforb",
     title: str = "SCF Canonical Orbital",
-    is_casorb = False
+    is_casorb=False,
 ):
     """
     将 PySCF 数据转换为 BDF scforb 格式
@@ -60,9 +60,8 @@ def dump_to_scforb(
 
     # 根据轨道能量排序 #
 
-    
     sym_info = sym_data[0]
-    
+
     if not is_casorb:
         coeffs = sym_info["coeffs"]
         energies = sym_info["energies"]
@@ -86,7 +85,9 @@ def dump_to_scforb(
         # 对于 occupancy > 2-1e-4 和 < 1e-4 的轨道按轨道能量排序
         high_occ_idx = np.where(occupancies > 2 - 1e-4)[0]
         low_occ_idx = np.where(occupancies < 1e-4)[0]
-        mid_occ_idx = np.setdiff1d(np.arange(len(occupancies)), np.concatenate((high_occ_idx, low_occ_idx)))
+        mid_occ_idx = np.setdiff1d(
+            np.arange(len(occupancies)), np.concatenate((high_occ_idx, low_occ_idx))
+        )
 
         high_occ_sort_idx = high_occ_idx[np.argsort(energies[high_occ_idx])]
         low_occ_sort_idx = low_occ_idx[np.argsort(energies[low_occ_idx])]
