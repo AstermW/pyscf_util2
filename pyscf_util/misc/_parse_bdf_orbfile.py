@@ -162,7 +162,7 @@ class BDFOrbParser:
         # 将数据转换为numpy数组
         if data_lines:
             try:
-                data_array = np.array(data_lines)
+                data_array = np.array(data_lines, dtype=np.float64)
                 # 重新整形为 norb x (数据长度/norb) 的矩阵
                 if len(data_array) % norb == 0:
                     cols = len(data_array) // norb
@@ -235,7 +235,7 @@ class BDFOrbParser:
 
         # 将数据转换为numpy数组
         if data_lines:
-            return np.array(data_lines), lines_read
+            return np.array(data_lines, dtype=np.float64), lines_read
 
         return None, lines_read
 

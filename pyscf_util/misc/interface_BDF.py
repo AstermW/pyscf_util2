@@ -23,6 +23,8 @@ def convert_bdf_to_pyscf(
     output_fch="test.fch",
     output_fch_new="test_new.fch",
     output_scforb="02S_nosymm.scforb",
+    old_bdf_convention = False,
+    is_casorb = False
     # max_scf_cycles=32,
 ):
     """
@@ -30,12 +32,8 @@ def convert_bdf_to_pyscf(
 
     Parameters
     ----------
-    geometry : str
-        Molecular geometry in PySCF format
-    basis : str, optional
-        Basis set name, default is "cc-pvdz"
-    symmetry : str, optional
-        Point group symmetry, default is "d2h"
+    Mol :
+    mf  :
     chkfil_path : str, optional
         Path to BDF checkpoint file
     scforb_path : str, optional
@@ -63,7 +61,9 @@ def convert_bdf_to_pyscf(
     # Initial SCF calculation
     max_cycle_bak = mf.max_cycle
     mf.max_cycle = 1  # do not do scf just build
-    mf.kernel()
+    mf.mo_coeff = np.zeros((Mol.nao, Mol.nao))
+    mf.mo_energy = np.zeros(Mol.nao)
+    # mf.kernel()
 
     # Read BDF symmetry orbitals
     ao2somat_bdf = read_ao2somat_from_chkfil(chkfil_path)
@@ -72,6 +72,8 @@ def convert_bdf_to_pyscf(
     # Read and process orbital coefficients
     parser = BDFOrbParser(scforb_path)
     parser.parse_file()
+    if old_bdf_convention:
+        parser.BDFold_2_new()
 
     # Pack orbital data
     mo_coeffs = []
@@ -89,7 +91,7 @@ def convert_bdf_to_pyscf(
     occupancies = np.hstack(occupancies)
 
     # Dump to BDF format
-    dump_to_scforb(Mol, mo_coeffs, energies, occupancies, output_scforb)
+    dump_to_scforb(Mol, mo_coeffs, energies, occupancies, output_scforb, is_casorb=is_casorb)
 
     # Convert to fch format
     fchk(mf, output_fch)
@@ -99,6 +101,11 @@ def convert_bdf_to_pyscf(
     mo_coeffs_bdf = mo_fch2py(output_fch_new)
 
     mf.max_cycle = max_cycle_bak
+
+    # fch file must be removed #
+
+    os.system(f"rm {output_fch}")
+    os.system(f"rm {output_fch_new}")
 
     return mo_coeffs_bdf
 
@@ -141,7 +148,16 @@ H             -6.383749016945       0.000000000000       2.354252931327
     # convert to bdf #
     mo_coeffs_bdf = convert_bdf_to_pyscf(Mol, mf)
 
+    # check ortho #
+    
+    ovlp = Mol.intor("int1e_ovlp")
+    ovlp_mo = mo_coeffs_bdf.T @ ovlp @ mo_coeffs_bdf
+    
+    # print diagonal elements of ovlp_mo #
+    
+    print(np.diag(ovlp_mo))
+
     # check #
 
-    dm_init = mf.make_rdm1(mo_coeffs_bdf)
-    mf.kernel(dm0=dm_init)  # should end within one or two cycles #
+    #dm_init = mf.make_rdm1(mo_coeffs_bdf)
+    #mf.kernel(dm0=dm_init)  # should end within one or two cycles #

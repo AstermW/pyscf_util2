@@ -91,7 +91,7 @@ def ao2somat_split_based_on_irrep(ao2somat, Mol):
         res[irrep] = ao2somat[:, loc_now : loc_now + nbas_tmp]
         loc_now += nbas_tmp
 
-    print(res)
+    # print(res)
 
     return res
 

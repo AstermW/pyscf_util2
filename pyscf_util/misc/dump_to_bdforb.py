@@ -19,6 +19,7 @@ def dump_to_scforb(
     occupancies: np.ndarray,
     filename: str = "02S.scforb",
     title: str = "SCF Canonical Orbital",
+    is_casorb = False
 ):
     """
     将 PySCF 数据转换为 BDF scforb 格式
@@ -59,17 +60,53 @@ def dump_to_scforb(
 
     # 根据轨道能量排序 #
 
+    
     sym_info = sym_data[0]
-    coeffs = sym_info["coeffs"]
-    energies = sym_info["energies"]
-    occupancies = sym_info["occupancies"]
-    idx = np.argsort(energies)
-    print(idx)
-    sym_data[0]["coeffs"] = coeffs[:, idx]
-    sym_data[0]["energies"] = energies[idx]
-    sym_data[0]["occupancies"] = occupancies[idx]
-    energies = energies[idx]
-    occupancies = occupancies[idx]
+    
+    if not is_casorb:
+        coeffs = sym_info["coeffs"]
+        energies = sym_info["energies"]
+        occupancies = sym_info["occupancies"]
+        idx = np.argsort(energies)
+        # print(idx)
+        sym_data[0]["coeffs"] = coeffs[:, idx]
+        sym_data[0]["energies"] = energies[idx]
+        sym_data[0]["occupancies"] = occupancies[idx]
+        energies = energies[idx]
+        occupancies = occupancies[idx]
+    else:
+        # 按 occupancies 从大到小排序
+        idx_occ = np.argsort(-occupancies)
+        coeffs = sym_info["coeffs"][:, idx_occ]
+        energies = sym_info["energies"][idx_occ]
+        occupancies = sym_info["occupancies"][idx_occ]
+
+        # print(idx_occ)
+
+        # 对于 occupancy > 2-1e-4 和 < 1e-4 的轨道按轨道能量排序
+        high_occ_idx = np.where(occupancies > 2 - 1e-4)[0]
+        low_occ_idx = np.where(occupancies < 1e-4)[0]
+        mid_occ_idx = np.setdiff1d(np.arange(len(occupancies)), np.concatenate((high_occ_idx, low_occ_idx)))
+
+        high_occ_sort_idx = high_occ_idx[np.argsort(energies[high_occ_idx])]
+        low_occ_sort_idx = low_occ_idx[np.argsort(energies[low_occ_idx])]
+        sorted_idx = np.concatenate((high_occ_sort_idx, mid_occ_idx, low_occ_sort_idx))
+
+        # print(high_occ_sort_idx)
+        # print(low_occ_sort_idx)
+
+        coeffs = coeffs[:, sorted_idx]
+        energies = energies[sorted_idx]
+        occupancies = occupancies[sorted_idx]
+
+        # 修改 occupancies 数组
+        nocc = mol.nelectron // 2
+        occupancies[:nocc] = 1.0
+        occupancies[nocc:] = 0.0
+
+        sym_data[0]["coeffs"] = coeffs
+        sym_data[0]["energies"] = energies
+        sym_data[0]["occupancies"] = occupancies
 
     # 写入文件
     with open(filename, "w") as f:
