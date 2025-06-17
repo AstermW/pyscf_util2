@@ -298,14 +298,14 @@ def fcidump_mrpt2_incore_fast(
         int2e_cvaa = pyscf.ao2mo.general(
             mol,
             (
+                mo_coeff[:, nfzc : nfzc + nact],
+                mo_coeff[:, nfzc : nfzc + nact],
                 mo_coeff[:, :nfzc],
                 mo_coeff[:, nfzc + nact :],
-                mo_coeff[:, nfzc : nfzc + nact],
-                mo_coeff[:, nfzc : nfzc + nact],
             ),
             aosym="1",
             compact=False,
-        ).reshape(nfzc, nvir, nact, nact)
+        ).reshape(nact, nact, nfzc, nvir)
 
         for p in range(int2e_cvaa.shape[0]):
             for q in range(int2e_cvaa.shape[1]):
