@@ -17,7 +17,7 @@ from pyscf_util.Integrals._util import generate_eri_pprs, generate_eri_prps
 
 
 def fcidump_mrpt2_incore_fast(
-    mol, scf, mo_coeff, nfzc, nact, nvir, filename="FCIDUMP", tol=1e-10
+    mol, scf, mo_coeff, nfzc, nact, nvir, filename="FCIDUMP", tol=1e-10, full_integrals=False
 ):
     nmo = nfzc + nact + nvir
     assert nmo <= mol.nao
@@ -50,106 +50,112 @@ def fcidump_mrpt2_incore_fast(
 
         ### CCVV part ###
 
-        int2e_cvcv = pyscf.ao2mo.general(
-            mol,
-            (
-                mo_coeff[:, :nfzc],
-                mo_coeff[:, nfzc + nact :],
-                mo_coeff[:, :nfzc],
-                mo_coeff[:, nfzc + nact :],
-            ),
-            aosym="1",
-            compact=False,
-        ).reshape(nfzc, nvir, nfzc, nvir)
+        if full_integrals:
 
-        for p in range(int2e_cvcv.shape[0]):
-            for q in range(int2e_cvcv.shape[1]):
-                for r in range(p + 1):
-                    for s in range(int2e_cvcv.shape[3]):
-                        if abs(int2e_cvcv[p, q, r, s]) < tol:
-                            continue
-                        fout.write(
-                            output_format
-                            % (
-                                int2e_cvcv[p, q, r, s],
-                                p + 1,
-                                nfzc + nact + q + 1,
-                                r + 1,
-                                nfzc + nact + s + 1,
+            int2e_cvcv = pyscf.ao2mo.general(
+                mol,
+                (
+                    mo_coeff[:, :nfzc],
+                    mo_coeff[:, nfzc + nact :],
+                    mo_coeff[:, :nfzc],
+                    mo_coeff[:, nfzc + nact :],
+                ),
+                aosym="1",
+                compact=False,
+            ).reshape(nfzc, nvir, nfzc, nvir)
+
+            for p in range(int2e_cvcv.shape[0]):
+                for q in range(int2e_cvcv.shape[1]):
+                    for r in range(p + 1):
+                        for s in range(int2e_cvcv.shape[3]):
+                            if abs(int2e_cvcv[p, q, r, s]) < tol:
+                                continue
+                            fout.write(
+                                output_format
+                                % (
+                                    int2e_cvcv[p, q, r, s],
+                                    p + 1,
+                                    nfzc + nact + q + 1,
+                                    r + 1,
+                                    nfzc + nact + s + 1,
+                                )
                             )
-                        )
 
-        del int2e_cvcv
+            del int2e_cvcv
 
         # (2) space ACVV
 
         ### CVAV part ###
 
-        int2e_cvav = pyscf.ao2mo.general(
-            mol,
-            (
-                mo_coeff[:, nfzc : nfzc + nact],
-                mo_coeff[:, nfzc + nact :],
-                mo_coeff[:, :nfzc],
-                mo_coeff[:, nfzc + nact :],
-            ),
-            aosym="1",
-            compact=False,
-        ).reshape(nact, nvir, nfzc, nvir)
+        if full_integrals:
 
-        for p in range(int2e_cvav.shape[0]):
-            for q in range(int2e_cvav.shape[1]):
-                for r in range(int2e_cvav.shape[2]):
-                    for s in range(int2e_cvav.shape[3]):
-                        if abs(int2e_cvav[p, q, r, s]) < tol:
-                            continue
-                        fout.write(
-                            output_format
-                            % (
-                                int2e_cvav[p, q, r, s],
-                                nfzc + p + 1,
-                                nfzc + nact + q + 1,
-                                r + 1,
-                                nfzc + nact + s + 1,
+            int2e_cvav = pyscf.ao2mo.general(
+                mol,
+                (
+                    mo_coeff[:, nfzc : nfzc + nact],
+                    mo_coeff[:, nfzc + nact :],
+                    mo_coeff[:, :nfzc],
+                    mo_coeff[:, nfzc + nact :],
+                ),
+                aosym="1",
+                compact=False,
+            ).reshape(nact, nvir, nfzc, nvir)
+
+            for p in range(int2e_cvav.shape[0]):
+                for q in range(int2e_cvav.shape[1]):
+                    for r in range(int2e_cvav.shape[2]):
+                        for s in range(int2e_cvav.shape[3]):
+                            if abs(int2e_cvav[p, q, r, s]) < tol:
+                                continue
+                            fout.write(
+                                output_format
+                                % (
+                                    int2e_cvav[p, q, r, s],
+                                    nfzc + p + 1,
+                                    nfzc + nact + q + 1,
+                                    r + 1,
+                                    nfzc + nact + s + 1,
+                                )
                             )
-                        )
 
-        del int2e_cvav
+            del int2e_cvav
 
         # (3) space CCAV
 
         ### CVCA part ###
 
-        int2e_cvca = pyscf.ao2mo.general(
-            mol,
-            (
-                mo_coeff[:, :nfzc],
-                mo_coeff[:, nfzc : nfzc + nact],
-                mo_coeff[:, :nfzc],
-                mo_coeff[:, nfzc + nact :],
-            ),
-            aosym="1",
-            compact=False,
-        ).reshape(nfzc, nact, nfzc, nvir)
+        if full_integrals:
 
-        for p in range(int2e_cvca.shape[0]):
-            for q in range(int2e_cvca.shape[1]):
-                for r in range(int2e_cvca.shape[2]):
-                    for s in range(int2e_cvca.shape[3]):
-                        if abs(int2e_cvca[p, q, r, s]) < tol:
-                            continue
-                        fout.write(
-                            output_format
-                            % (
-                                int2e_cvca[p, q, r, s],
-                                p + 1,
-                                nfzc + q + 1,
-                                r + 1,
-                                nfzc + nact + s + 1,
+            int2e_cvca = pyscf.ao2mo.general(
+                mol,
+                (
+                    mo_coeff[:, :nfzc],
+                    mo_coeff[:, nfzc : nfzc + nact],
+                    mo_coeff[:, :nfzc],
+                    mo_coeff[:, nfzc + nact :],
+                ),
+                aosym="1",
+                compact=False,
+            ).reshape(nfzc, nact, nfzc, nvir)
+
+            for p in range(int2e_cvca.shape[0]):
+                for q in range(int2e_cvca.shape[1]):
+                    for r in range(int2e_cvca.shape[2]):
+                        for s in range(int2e_cvca.shape[3]):
+                            if abs(int2e_cvca[p, q, r, s]) < tol:
+                                continue
+                            fout.write(
+                                output_format
+                                % (
+                                    int2e_cvca[p, q, r, s],
+                                    p + 1,
+                                    nfzc + q + 1,
+                                    r + 1,
+                                    nfzc + nact + s + 1,
+                                )
                             )
-                        )
 
-        del int2e_cvca
+            del int2e_cvca
 
         # (4) P space
 
@@ -186,7 +192,7 @@ def fcidump_mrpt2_incore_fast(
 
         del int2e_aaaa
 
-        # (5) CAAA or AVVV
+        # (5) CAAA or VAAA
 
         ### PAAA part ###
 
