@@ -7,7 +7,7 @@ def Dump_Cmoao(TaskName, mocoeff):
     FILE.write("i,j,mocoeff\n")
     for i in range(mocoeff.shape[0]):
         for j in range(mocoeff.shape[1]):
-            FILE.write("%d,%d,%20.12e\n" % (i, j, mocoeff[i][j]))
+            FILE.write("%d,%d,%24.18e\n" % (i, j, mocoeff[i][j]))
     FILE.close()
 
 
