@@ -313,20 +313,28 @@ def fcidump_mrpt2_incore_fast(
             compact=False,
         ).reshape(nact, nact, nfzc, nvir)
 
+        # for p in range(int2e_cvaa.shape[0]):
+        #     for q in range(int2e_cvaa.shape[1]):
+        #         for r in range(int2e_cvaa.shape[2]):
+        #             for s in range(r + 1):
         for p in range(int2e_cvaa.shape[0]):
-            for q in range(int2e_cvaa.shape[1]):
+            for q in range(p+1):
                 for r in range(int2e_cvaa.shape[2]):
-                    for s in range(r + 1):
+                    for s in range(int2e_cvaa.shape[3]):
+        # for p in range(int2e_cvaa.shape[0]):
+        #     for q in range(int2e_cvaa.shape[1]):
+        #         for r in range(int2e_cvaa.shape[2]):
+        #             for s in range(int2e_cvaa.shape[3]):
                         if abs(int2e_cvaa[p, q, r, s]) < tol:
                             continue
                         fout.write(
                             output_format
                             % (
                                 int2e_cvaa[p, q, r, s],
-                                p + 1,
-                                nfzc + nact + q + 1,
-                                nfzc + r + 1,
-                                nfzc + s + 1,
+                                nfzc + p + 1,
+                                nfzc + q + 1,
+                                r + 1,
+                                nfzc + nact + s + 1,
                             )
                         )
 
@@ -337,14 +345,16 @@ def fcidump_mrpt2_incore_fast(
         int2e_acav = pyscf.ao2mo.general(
             mol,
             (
-                mo_coeff[:, :nfzc],
                 mo_coeff[:, nfzc : nfzc + nact],
+                mo_coeff[:, :nfzc],
+                # mo_coeff[:, nfzc : nfzc + nact],
                 mo_coeff[:, nfzc : nfzc + nact],
                 mo_coeff[:, nfzc + nact :],
             ),
             aosym="1",
             compact=False,
-        ).reshape(nfzc, nact, nact, nvir)
+        # ).reshape(nfzc, nact, nact, nvir)
+        ).reshape(nact, nfzc, nact, nvir)
 
         for p in range(int2e_acav.shape[0]):
             for q in range(int2e_acav.shape[1]):
@@ -356,8 +366,8 @@ def fcidump_mrpt2_incore_fast(
                             output_format
                             % (
                                 int2e_acav[p, q, r, s],
-                                p + 1,
-                                nfzc + q + 1,
+                                nfzc + p + 1,
+                                q + 1,
                                 nfzc + r + 1,
                                 nfzc + nact + s + 1,
                             )
