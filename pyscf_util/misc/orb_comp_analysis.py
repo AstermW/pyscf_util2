@@ -38,7 +38,7 @@ def Analysis_MO_Component(
     # step 3 calculate the res #
     if first_nmo is None:
         first_nmo = mol.nao
-    first_nmo = min(first_nmo, mol.nao)
+    first_nmo = min(first_nmo, mo_coeff.shape[1])
     mo_coeff = mo_coeff[:, :first_nmo]
     res = numpy.ndarray((first_nmo, ncomp), dtype=numpy.float64)
     icomp = 0
@@ -72,6 +72,9 @@ def Analysis_MO_Component(
             proj = numpy.dot(mo_coeff.T, numpy.dot(ovlp, orb_in_mol))
             proj = np.square(proj)
             row_sums = np.sum(proj, axis=1)
+            # print(row_sums.shape)
+            # print(res.shape)
+            # print(icomp)
             res[:, icomp] = row_sums
             icomp += 1
     return {
