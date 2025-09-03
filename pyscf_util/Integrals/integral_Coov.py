@@ -235,6 +235,26 @@ def tranform_rdm2_adapted_2_xy(orbsym_ID, rdm2, begin_orb, end_orb):
     # return Res
 
 
+def tranform_2e_adapted_2_xy(orbsym_ID, rdm2, begin_orb, end_orb):
+
+    time_reversal_pair = _get_time_reversal_pair(orbsym_ID)
+    _check_orb_range_valid(time_reversal_pair, begin_orb, end_orb)
+
+    basis_trans, _ = _get_symmetry_adapted_basis_Coov(orbsym_ID)
+    # basis_trans = basis_trans.H
+    basis_trans = basis_trans[begin_orb:end_orb, begin_orb:end_orb]
+
+    Res = rdm2
+
+    Res = numpy.einsum("ijkl,ip->pjkl", Res, basis_trans.conj())
+    Res = numpy.einsum("pjkl,jq->pqkl", Res, basis_trans)
+    Res = numpy.einsum("pqkl,kr->pqrl", Res, basis_trans.conj())
+    Res = numpy.einsum("pqrl,ls->pqrs", Res, basis_trans)
+
+    return numpy.real(Res)
+    # return Res
+
+
 def tranform_rdm2_xy_2_adapted(orbsym_ID, rdm2, begin_orb, end_orb):
 
     time_reversal_pair = _get_time_reversal_pair(orbsym_ID)
@@ -410,6 +430,7 @@ def FCIDUMP_Coov(mol, my_scf, filename):
         output_format = float_format + "  0  0  0  0\n"
         fout.write(output_format % nuc)
 
+
 def from_integrals_coov(
     filename,
     h1eff,
@@ -423,7 +444,7 @@ def from_integrals_coov(
     nmo = ncas
     tol = 1e-10
     float_format = tools.fcidump.DEFAULT_FLOAT_FORMAT
-    
+
     with open(filename, "w") as fout:  # 4-fold symmetry
         tools.fcidump.write_head(fout, nmo, nelec, ms, orbsym_ID)
         output_format = float_format + " %4d %4d %4d %4d\n"

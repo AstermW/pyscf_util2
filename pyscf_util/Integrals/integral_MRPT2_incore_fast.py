@@ -17,7 +17,15 @@ from pyscf_util.Integrals._util import generate_eri_pprs, generate_eri_prps
 
 
 def fcidump_mrpt2_incore_fast(
-    mol, scf, mo_coeff, nfzc, nact, nvir, filename="FCIDUMP", tol=1e-10, full_integrals=False
+    mol,
+    scf,
+    mo_coeff,
+    nfzc,
+    nact,
+    nvir,
+    filename="FCIDUMP",
+    tol=1e-10,
+    full_integrals=False,
 ):
     nmo = nfzc + nact + nvir
     assert nmo <= mol.nao
@@ -318,13 +326,13 @@ def fcidump_mrpt2_incore_fast(
         #         for r in range(int2e_cvaa.shape[2]):
         #             for s in range(r + 1):
         for p in range(int2e_cvaa.shape[0]):
-            for q in range(p+1):
+            for q in range(p + 1):
                 for r in range(int2e_cvaa.shape[2]):
                     for s in range(int2e_cvaa.shape[3]):
-        # for p in range(int2e_cvaa.shape[0]):
-        #     for q in range(int2e_cvaa.shape[1]):
-        #         for r in range(int2e_cvaa.shape[2]):
-        #             for s in range(int2e_cvaa.shape[3]):
+                        # for p in range(int2e_cvaa.shape[0]):
+                        #     for q in range(int2e_cvaa.shape[1]):
+                        #         for r in range(int2e_cvaa.shape[2]):
+                        #             for s in range(int2e_cvaa.shape[3]):
                         if abs(int2e_cvaa[p, q, r, s]) < tol:
                             continue
                         fout.write(
@@ -353,7 +361,7 @@ def fcidump_mrpt2_incore_fast(
             ),
             aosym="1",
             compact=False,
-        # ).reshape(nfzc, nact, nact, nvir)
+            # ).reshape(nfzc, nact, nact, nvir)
         ).reshape(nact, nfzc, nact, nvir)
 
         for p in range(int2e_acav.shape[0]):

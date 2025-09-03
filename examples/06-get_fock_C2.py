@@ -1,14 +1,15 @@
-
 from pyscf import gto, scf
+
 # from pyscf_util.iCIPT2.iCIPT2_coov import kernel
 from pyscf import tools
+
 # from pyscf_util.iCIPT2.iCIPT2 import kernel
 import pyscf
 from pyscf_util.Integrals.integral_MRPT2 import get_generalized_fock
 from pyscf_util.MeanField.iciscf import iCI
 from pyscf_util.Integrals.integral_CASCI import dump_heff_casci
 from pyscf_util.iCIPT2.iCIPT2 import kernel
-    
+
 mol = gto.M(
     verbose=4,
     atom="""
@@ -28,13 +29,13 @@ norb = 8
 nelec = 8
 CASSCF_Driver = pyscf.mcscf.CASSCF(mf, norb, nelec)
 CASSCF_Driver.fcisolver = iCI(
-        mol=mol,
-        cmin=0.0,
-        state=[[0, 0, 1]],
-        tol=1e-12,
-        mo_coeff=mf.mo_coeff,
-        taskname="iCI0",
-    )
+    mol=mol,
+    cmin=0.0,
+    state=[[0, 0, 1]],
+    tol=1e-12,
+    mo_coeff=mf.mo_coeff,
+    taskname="iCI0",
+)
 CASSCF_Driver.mc1step()
 
 ### dump heff and generate gfock ###
@@ -42,33 +43,33 @@ CASSCF_Driver.mc1step()
 mo_coeff = CASSCF_Driver.mo_coeff
 
 dump_heff_casci(
-        mol,
-        CASSCF_Driver,
-        mo_coeff[:, :2],
-        mo_coeff[:, 2:10],
-        _filename="FCIDUMP_C2",
-    )
+    mol,
+    CASSCF_Driver,
+    mo_coeff[:, :2],
+    mo_coeff[:, 2:10],
+    _filename="FCIDUMP_C2",
+)
 
 kernel(
-        IsCSF=True,
-        task_name="c2_rdm1",
-        fcidump="FCIDUMP_C2",
-        segment="0 0 4 4 0 0",
-        nelec_val=8,
-        rotatemo=0,
-        cmin=0.0,
-        perturbation=0,
-        dumprdm=1,
-        relative=0,
-        Task="0 0 1 1",
-        inputocfg=0,
-        etol=1e-10,
-        selection=1,
-        doublegroup=None,
-        direct=None,
-        start_with=None,
-        end_with=[".csv"],
-    )
+    IsCSF=True,
+    task_name="c2_rdm1",
+    fcidump="FCIDUMP_C2",
+    segment="0 0 4 4 0 0",
+    nelec_val=8,
+    rotatemo=0,
+    cmin=0.0,
+    perturbation=0,
+    dumprdm=1,
+    relative=0,
+    Task="0 0 1 1",
+    inputocfg=0,
+    etol=1e-10,
+    selection=1,
+    doublegroup=None,
+    direct=None,
+    start_with=None,
+    end_with=[".csv"],
+)
 
 import os
 from pyscf_util.File import file_rdm, file_cmoao

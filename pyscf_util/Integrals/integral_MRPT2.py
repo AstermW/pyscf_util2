@@ -486,7 +486,7 @@ Cr     0.0000      0.0000  -%f
     print(rdm1)
     print(get_generalized_fock(CASSCF_Driver, mo_coeff, rdm1))
     print(mo_energy)
-    
+
     gfock = get_generalized_fock(CASSCF_Driver, mo_coeff, rdm1)
 
     # fcidump #
@@ -500,5 +500,5 @@ Cr     0.0000      0.0000  -%f
         Mol, SCF, mo_coeff, 18, 12, Mol.nao - 30, "FCIDUMP_Cr2_outcore", 1e-10
     )
     fcidump_mrpt2(Mol, SCF, mo_coeff, 18, 12, Mol.nao - 30, "FCIDUMP_Cr2_incore", 1e-10)
-    
+
     Dump_Cmoao("gfock", gfock)

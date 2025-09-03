@@ -14,6 +14,7 @@ from typing import Iterator, Tuple, List, Dict
 import time
 from pyscf.ao2mo._ao2mo import nr_e2
 
+
 def get_shell_slices(mol: pyscf.gto.Mole, ao_block_size: int) -> List[Tuple[int, int]]:
     """
     根据给定的 AO 块大小，返回壳层切片，使得每个切片的 AO 块大小不大于指定的 AO 块大小。
@@ -184,10 +185,10 @@ def generate_eri_pprs(
 
     # eri_ppkl = np.einsum("pqr,qs->psr", eri_ppkl, mo_coeff)
     # eri_ppkl = np.einsum("psr,rt->pst", eri_ppkl, mo_coeff)
-    
+
     eri_ppkl_out = np.zeros(eri_ppkl.shape)
     orb_slices = (0, nao, 0, nao)
-    
+
     nr_e2(eri_ppkl, mo_coeff, orb_slices, out=eri_ppkl_out)
     eri_ppkl = eri_ppkl_out
 
@@ -292,10 +293,10 @@ def generate_eri_prps(
 
     # eri_pkpl = np.einsum("pqr,qs->psr", eri_pkpl, mo_coeff)
     # eri_pkpl = np.einsum("psr,rt->pst", eri_pkpl, mo_coeff)
-    
+
     eri_pkpl_out = np.zeros(eri_pkpl.shape)
     orb_slices = (0, nao, 0, nao)
-    
+
     nr_e2(eri_pkpl, mo_coeff, orb_slices, out=eri_pkpl_out)
     eri_pkpl = eri_pkpl_out
 

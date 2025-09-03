@@ -89,31 +89,34 @@ def writeIntegralFile(iciobj, h1eff, eri_cas, ncas, nelec, ecore=0):
             from pyscf_util.Integrals.integral_Dooh import (
                 # _get_symmetry_adapted_basis_Dooh,
                 tranform_rdm1_adapted_2_xy,
-                tranform_rdm2_adapted_2_xy,
+                tranform_2e_adapted_2_xy,
                 from_integrals_dooh,
             )
 
             # func_get_transmat = _get_symmetry_adapted_basis_Dooh
             trans_1e = tranform_rdm1_adapted_2_xy
-            trans_2e = tranform_rdm2_adapted_2_xy
+            trans_2e = tranform_2e_adapted_2_xy
             from_integrals = from_integrals_dooh
         else:
             from pyscf_util.Integrals.integral_Coov import (
                 # _get_symmetry_adapted_basis_Coov,
                 tranform_rdm1_adapted_2_xy,
-                tranform_rdm2_adapted_2_xy,
+                tranform_2e_adapted_2_xy,
                 from_integrals_coov,
             )
 
             # func_get_transmat = _get_symmetry_adapted_basis_Coov
             trans_1e = tranform_rdm1_adapted_2_xy
-            trans_2e = tranform_rdm2_adapted_2_xy
+            trans_2e = tranform_2e_adapted_2_xy
             from_integrals = from_integrals_coov
 
         # get transformed integrals and dump #
 
+        from pyscf.ao2mo import restore
+
         h1eff_highsym = trans_1e(orbsym, h1eff, 0, ncas)
-        eri_cas_highsym = trans_2e(orbsym, eri_cas, 0, ncas)
+        eri_cas_highsym = restore("s1", eri_cas, ncas)
+        eri_cas_highsym = trans_2e(orbsym, eri_cas_highsym, 0, ncas)
 
         from_integrals(
             integralFile,
@@ -123,7 +126,7 @@ def writeIntegralFile(iciobj, h1eff, eri_cas, ncas, nelec, ecore=0):
             neleca + nelecb,
             ecore,
             ms=abs(neleca - nelecb),
-            orbsym=orbsym,
+            orbsym_ID=orbsym,
         )
 
         pass
@@ -330,6 +333,7 @@ class iCI(lib.StreamObject):  # this is iCI object used in iciscf #
         # self._cached_outputfile = []
 
     def __del__(self):
+        # pass
         for f in self._cached_outputfile:
             if os.path.isfile(f):
                 try:
@@ -369,8 +373,12 @@ class iCI(lib.StreamObject):  # this is iCI object used in iciscf #
 
         ################### dooh and coov ###################
 
+        nfzc = self.config["nfzc"]
+
         if self.groupname.lower() in ["dooh", "coov"]:
             rdm1_act = rdm1[nfzc:norb, nfzc:norb].copy()
+
+            # before = rdm1.copy()
 
             if self.groupname.lower() == "dooh":
                 from pyscf_util.Integrals.integral_Dooh import (
@@ -387,6 +395,9 @@ class iCI(lib.StreamObject):  # this is iCI object used in iciscf #
             rdm1_act = tranform_rdm1_adapted_2_xy(self.orbsym, rdm1_act, 0, norb - nfzc)
 
             rdm1[nfzc:norb, nfzc:norb] = rdm1_act
+
+            # after = rdm1.copy()
+            # print(after-before)
 
         #########################################################
 
@@ -419,6 +430,8 @@ class iCI(lib.StreamObject):  # this is iCI object used in iciscf #
         if self.groupname.lower() in ["dooh", "coov"]:
             rdm2_act = rdm2[nfzc:norb, nfzc:norb, nfzc:norb, nfzc:norb].copy()
 
+            # before = rdm2.copy()
+
             if self.groupname.lower() == "dooh":
                 from pyscf_util.Integrals.integral_Dooh import (
                     symmetrize_rdm2,
@@ -430,10 +443,17 @@ class iCI(lib.StreamObject):  # this is iCI object used in iciscf #
                     tranform_rdm2_adapted_2_xy,
                 )
 
+            # print(rdm2[3,2,3,2], rdm2[3,2,2,3])
+
             rdm2_act = symmetrize_rdm2(self.orbsym, rdm2_act, 0, norb - nfzc, False)
             rdm2_act = tranform_rdm2_adapted_2_xy(self.orbsym, rdm2_act, 0, norb - nfzc)
 
             rdm2[nfzc:norb, nfzc:norb, nfzc:norb, nfzc:norb] = rdm2_act
+
+            # after = rdm2.copy()
+            # print(before - after)
+            # print(numpy.abs(after-before) > 0)
+            # print(rdm2[3,2,3,2], rdm2[3,2,2,3])
 
         #########################################################
 
@@ -484,7 +504,7 @@ class iCI(lib.StreamObject):  # this is iCI object used in iciscf #
 
         print(self.runtime, self.fixocfg_iter)
 
-        if restart:
+        if restart and self.groupname.lower() not in ["dooh", "coov"]:
             if "approx" in kwargs and kwargs["approx"] is True:
                 self.config["inputocfg"] = 3  # iCI is changed!
                 # self.config["inputocfg"] = 2
@@ -499,6 +519,7 @@ class iCI(lib.StreamObject):  # this is iCI object used in iciscf #
                 self.config["inputocfg"] = 0  # iCI is changed
             else:
                 self.config["inputocfg"] = 2
+        # else:
 
         if self.config["selection"] == 0:
             if self.config["readinocfg"] == True:

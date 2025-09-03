@@ -58,6 +58,9 @@ def get_symmetry_adapted_basis_Dooh(mol, coeff):
 
 def _get_symmetry_adapted_basis_Dooh(orbsym_ID):
 
+    # print(orbsym_ID)
+    orbsym_ID = [int(x) for x in orbsym_ID]
+
     # orbsym_ID, _ = get_orbsym(mol, coeff)
 
     # A1g = [i for i, x in enumerate(orbsym_ID) if x is A1g_ID]
@@ -100,6 +103,10 @@ def _get_symmetry_adapted_basis_Dooh(orbsym_ID):
 
     Parity[A1u] = -1
     Parity[A2u] = -1
+
+    # print(A1u, A2u)
+    # print(E1g_x, E1g_y)
+    # print(list(zip(E1g_x, E1g_y)))
 
     for orbx, orby in zip(E1g_x, E1g_y):
         basis_trans[orbx, orbx] = factor
@@ -249,7 +256,7 @@ def _get_time_reversal_pair(orbsym_ID):
     E5u_up = [i for i, x in enumerate(orbsym_ID) if x is E5u_up_ID]
     E5u_dn = [i for i, x in enumerate(orbsym_ID) if x is E5u_dn_ID]
 
-    Res = range(0, len(orbsym_ID))
+    Res = list(range(0, len(orbsym_ID)))
 
     for i in range(len(E1g_up)):
         up_ID = E1g_up[i]
@@ -332,8 +339,8 @@ def tranform_rdm1_adapted_2_xy(orbsym_ID, rdm1, begin_orb, end_orb):
     Res = rdm1
     Res = numpy.einsum("ij,ip->pj", Res, basis_trans.conj())
     Res = numpy.einsum("pj,jq->pq", Res, basis_trans)
-    
-    return numpy.real(Res) # 只有实数有值
+
+    return numpy.real(Res)  # 只有实数有值
     # return Res
 
 
@@ -365,9 +372,38 @@ def tranform_rdm2_adapted_2_xy(orbsym_ID, rdm2, begin_orb, end_orb):
     Res = rdm2
 
     Res = numpy.einsum("ijkl,ip->pjkl", Res, basis_trans.conj())
-    Res = numpy.einsum("pjkl,jq->pqkl", Res, basis_trans.conj())
-    Res = numpy.einsum("pqkl,kr->pqrl", Res, basis_trans)
+    Res = numpy.einsum("pjkl,jq->pqkl", Res, basis_trans)
+    Res = numpy.einsum("pqkl,kr->pqrl", Res, basis_trans.conj())
     Res = numpy.einsum("pqrl,ls->pqrs", Res, basis_trans)
+
+    return numpy.real(Res)
+    # return Res
+
+
+def tranform_2e_adapted_2_xy(orbsym_ID, rdm2, begin_orb, end_orb):
+
+    # print(orbsym_ID)
+
+    time_reversal_pair = _get_time_reversal_pair(orbsym_ID)
+    _check_orb_range_valid(time_reversal_pair, begin_orb, end_orb)
+
+    basis_trans, _, _ = _get_symmetry_adapted_basis_Dooh(orbsym_ID)
+    # basis_trans = basis_trans.H
+    basis_trans = basis_trans[begin_orb:end_orb, begin_orb:end_orb]
+
+    Res = rdm2
+
+    # print(Res[3,2,3,2])
+    # print(Res[3,2,2,3])
+    # print(basis_trans)
+
+    Res = numpy.einsum("ijkl,ip->pjkl", Res, basis_trans.conj())
+    Res = numpy.einsum("pjkl,jq->pqkl", Res, basis_trans)
+    Res = numpy.einsum("pqkl,kr->pqrl", Res, basis_trans.conj())
+    Res = numpy.einsum("pqrl,ls->pqrs", Res, basis_trans)
+
+    # print(Res[3,2,3,2])
+    # print(Res[3,2,2,3])
 
     return numpy.real(Res)
     # return Res
@@ -404,6 +440,9 @@ def symmetrize_rdm1(orbsym_ID, rdm1, begin_orb, end_orb, xy_basis=False):
 
     rdm1_tmp_ = numpy.zeros(rdm1_tmp.shape)
 
+    # print("before")
+    # print(rdm1_tmp)
+
     # spatial symmetry
 
     for i in range(end_orb - begin_orb):
@@ -437,6 +476,10 @@ def symmetrize_rdm1(orbsym_ID, rdm1, begin_orb, end_orb, xy_basis=False):
         rdm1_tmp = tranform_rdm2_adapted_2_xy(orbsym_ID, rdm1_tmp_, begin_orb, end_orb)
     else:
         rdm1_tmp = rdm1_tmp_
+
+    # print("after")
+    # print(rdm1_tmp.real)
+    # exit(1)
 
     return rdm1_tmp.real
 
@@ -548,6 +591,7 @@ def FCIDUMP_Dooh(mol, my_scf, filename):
         output_format = float_format + "  0  0  0  0\n"
         fout.write(output_format % nuc)
 
+
 def from_integrals_dooh(
     filename,
     h1eff,
@@ -561,7 +605,7 @@ def from_integrals_dooh(
     nmo = ncas
     tol = 1e-10
     float_format = tools.fcidump.DEFAULT_FLOAT_FORMAT
-    
+
     with open(filename, "w") as fout:  # 4-fold symmetry
         tools.fcidump.write_head(fout, nmo, nelec, ms, orbsym_ID)
         output_format = float_format + " %4d %4d %4d %4d\n"
