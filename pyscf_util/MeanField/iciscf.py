@@ -70,22 +70,73 @@ def writeIntegralFile(iciobj, h1eff, eri_cas, ncas, nelec, ecore=0):
     # print(integralFile)
     # print(h1eff)
     # print(eri_cas)
-    tools.fcidump.from_integrals(
-        integralFile,
-        h1eff,
-        eri_cas,
-        ncas,
-        neleca + nelecb,
-        ecore,
-        ms=abs(neleca - nelecb),
-        orbsym=orbsym,
-    )
+
+    if iciobj.groupname.lower() not in ["dooh", "coov"]:
+        tools.fcidump.from_integrals(
+            integralFile,
+            h1eff,
+            eri_cas,
+            ncas,
+            neleca + nelecb,
+            ecore,
+            ms=abs(neleca - nelecb),
+            orbsym=orbsym,
+        )
+    else:
+        orbsym = numpy.asarray(iciobj.orbsym)
+
+        if iciobj.groupname.lower() == "dooh":
+            from pyscf_util.Integrals.integral_Dooh import (
+                # _get_symmetry_adapted_basis_Dooh,
+                tranform_rdm1_adapted_2_xy,
+                tranform_rdm2_adapted_2_xy,
+                from_integrals_dooh,
+            )
+
+            # func_get_transmat = _get_symmetry_adapted_basis_Dooh
+            trans_1e = tranform_rdm1_adapted_2_xy
+            trans_2e = tranform_rdm2_adapted_2_xy
+            from_integrals = from_integrals_dooh
+        else:
+            from pyscf_util.Integrals.integral_Coov import (
+                # _get_symmetry_adapted_basis_Coov,
+                tranform_rdm1_adapted_2_xy,
+                tranform_rdm2_adapted_2_xy,
+                from_integrals_coov,
+            )
+
+            # func_get_transmat = _get_symmetry_adapted_basis_Coov
+            trans_1e = tranform_rdm1_adapted_2_xy
+            trans_2e = tranform_rdm2_adapted_2_xy
+            from_integrals = from_integrals_coov
+
+        # get transformed integrals and dump #
+
+        h1eff_highsym = trans_1e(orbsym, h1eff, 0, ncas)
+        eri_cas_highsym = trans_2e(orbsym, eri_cas, 0, ncas)
+
+        from_integrals(
+            integralFile,
+            h1eff_highsym,
+            eri_cas_highsym,
+            ncas,
+            neleca + nelecb,
+            ecore,
+            ms=abs(neleca - nelecb),
+            orbsym=orbsym,
+        )
+
+        pass
+
     # print("stop here!")
     # exit(1)
     return integralFile
 
 
 def execute_iCI(iciobj):
+
+    # print("ici mol groupname %s" % (iciobj.mol.groupname.lower()))
+
     iciobj.inputfile = iciobj.config["taskname"] + "_" + str(iciobj.runtime) + ".inp"
     iciobj.outputfile = iciobj.config["taskname"] + "_" + str(iciobj.runtime) + ".out"
     iciobj.energydat = iciobj.inputfile + ".enedat"
@@ -117,9 +168,15 @@ def execute_iCI(iciobj):
 
     # print("%s %s > %s" % (iciobj.executable, iciobj.inputfile, iciobj.outputfile))
     if iciobj.CVS:
-        os.system("%s %s FCIDUMP > %s" % (iciobj.executable, iciobj.inputfile, iciobj.outputfile))
+        os.system(
+            "%s %s FCIDUMP > %s"
+            % (iciobj.executable, iciobj.inputfile, iciobj.outputfile)
+        )
     else:
-        os.system("%s %s FCIDUMP > %s" % (iciobj.executable, iciobj.inputfile, iciobj.outputfile)) # for new iCIPT2
+        os.system(
+            "%s %s FCIDUMP > %s"
+            % (iciobj.executable, iciobj.inputfile, iciobj.outputfile)
+        )  # for new iCIPT2
 
     # exit(1)
 
@@ -189,16 +246,16 @@ class iCI(lib.StreamObject):  # this is iCI object used in iciscf #
             self.stdout = mol.stdout  # useless for iCI
             self.verbose = mol.verbose
         self.CVS = CVS
-        
+
         if not self.CVS:
-            self.executable = os.getenv(iCI_ProgramName)
-            # if mol.symmetry == "Dooh":
-            #     self.executable = os.getenv(iCI_ProgramName)
-            # else:
-            #     if mol.symmetry == "Coov":
-            #         self.executable = os.getenv(iCI_ProgramName)
-            #     else:
-            #         self.executable = os.getenv(iCI_ProgramName)
+            # self.executable = os.getenv(iCI_ProgramName)
+            if mol.symmetry == "Dooh":
+                self.executable = os.getenv(iCI_Dooh_ProgramName)
+            else:
+                if mol.symmetry == "Coov":
+                    self.executable = os.getenv(iCI_Coov_ProgramName)
+                else:
+                    self.executable = os.getenv(iCI_ProgramName)
         else:
             self.executable = os.getenv(iCI_CVS_ProgramName)
         print(self.executable)
@@ -270,6 +327,7 @@ class iCI(lib.StreamObject):  # this is iCI object used in iciscf #
         # cached output file #
 
         self._cached_outputfile = ["FCIDUMP", FILE_RDM1_NAME, FILE_RDM2_NAME]
+        # self._cached_outputfile = []
 
     def __del__(self):
         for f in self._cached_outputfile:
@@ -308,6 +366,30 @@ class iCI(lib.StreamObject):  # this is iCI object used in iciscf #
         )
         rdm1 = numpy.zeros((norb, norb))
         rdm1[i, j] = rdm1[j, i] = val
+
+        ################### dooh and coov ###################
+
+        if self.groupname.lower() in ["dooh", "coov"]:
+            rdm1_act = rdm1[nfzc:norb, nfzc:norb].copy()
+
+            if self.groupname.lower() == "dooh":
+                from pyscf_util.Integrals.integral_Dooh import (
+                    symmetrize_rdm1,
+                    tranform_rdm1_adapted_2_xy,
+                )
+            else:
+                from pyscf_util.Integrals.integral_Coov import (
+                    symmetrize_rdm1,
+                    tranform_rdm1_adapted_2_xy,
+                )
+
+            rdm1_act = symmetrize_rdm1(self.orbsym, rdm1_act, 0, norb - nfzc, False)
+            rdm1_act = tranform_rdm1_adapted_2_xy(self.orbsym, rdm1_act, 0, norb - nfzc)
+
+            rdm1[nfzc:norb, nfzc:norb] = rdm1_act
+
+        #########################################################
+
         nfzc = self.config["nfzc"]
         for j in range(nfzc):
             rdm1[j, j] = 2.0
@@ -331,6 +413,30 @@ class iCI(lib.StreamObject):  # this is iCI object used in iciscf #
         )
         rdm2 = numpy.zeros((norb, norb, norb, norb))
         rdm2[i, j, k, l] = rdm2[j, i, l, k] = val
+
+        ################### dooh and coov ###################
+
+        if self.groupname.lower() in ["dooh", "coov"]:
+            rdm2_act = rdm2[nfzc:norb, nfzc:norb, nfzc:norb, nfzc:norb].copy()
+
+            if self.groupname.lower() == "dooh":
+                from pyscf_util.Integrals.integral_Dooh import (
+                    symmetrize_rdm2,
+                    tranform_rdm2_adapted_2_xy,
+                )
+            else:
+                from pyscf_util.Integrals.integral_Coov import (
+                    symmetrize_rdm2,
+                    tranform_rdm2_adapted_2_xy,
+                )
+
+            rdm2_act = symmetrize_rdm2(self.orbsym, rdm2_act, 0, norb - nfzc, False)
+            rdm2_act = tranform_rdm2_adapted_2_xy(self.orbsym, rdm2_act, 0, norb - nfzc)
+
+            rdm2[nfzc:norb, nfzc:norb, nfzc:norb, nfzc:norb] = rdm2_act
+
+        #########################################################
+
         rdm2 = rdm2.transpose(0, 3, 1, 2)  # p^+ q r^+ s
 
         # 补全 nfzc
@@ -523,7 +629,7 @@ class iCI(lib.StreamObject):  # this is iCI object used in iciscf #
                     self.config["nvalelec"] = 12
                 else:
                     self.config["nvalelec"] = 11
-                    
+
         nval = min(self.config["nvalelec"], norb)
         nval_hole = nval // 2
         nval_part = nval - nval_hole
@@ -666,10 +772,12 @@ def kernel(
     """
 
     # Generate MCSCF object
-    # df 
+    # df
     if _with_df:
         if _df_auxbasis is not None:
-            my_mc = pyscf.mcscf.DFCASSCF(_rohf, nelecas=_nelecas, ncas=_ncas, auxbasis=_df_auxbasis)
+            my_mc = pyscf.mcscf.DFCASSCF(
+                _rohf, nelecas=_nelecas, ncas=_ncas, auxbasis=_df_auxbasis
+            )
         else:
             my_mc = pyscf.mcscf.DFCASSCF(_rohf, nelecas=_nelecas, ncas=_ncas)
     else:
@@ -686,7 +794,9 @@ def kernel(
     if _cas_list is not None:
         # print(_cas_list)
         if isinstance(_cas_list, dict):
-            mo_init = pyscf.mcscf.sort_mo_by_irrep(my_mc, mo_init, _cas_list, _core_list)
+            mo_init = pyscf.mcscf.sort_mo_by_irrep(
+                my_mc, mo_init, _cas_list, _core_list
+            )
         else:
             mo_init = pyscf.mcscf.sort_mo(my_mc, mo_init, _cas_list)
     # determine FCIsolver

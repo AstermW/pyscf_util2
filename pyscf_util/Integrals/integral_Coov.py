@@ -195,7 +195,8 @@ def tranform_rdm1_adapted_2_xy(orbsym_ID, rdm1, begin_orb, end_orb):
     Res = numpy.einsum("ij,ip->pj", Res, basis_trans.conj())
     Res = numpy.einsum("pj,jq->pq", Res, basis_trans)
 
-    return Res
+    return numpy.real(Res)
+    # return Res
 
 
 def tranform_rdm1_xy_2_adapted(orbsym_ID, rdm1, begin_orb, end_orb):
@@ -210,7 +211,8 @@ def tranform_rdm1_xy_2_adapted(orbsym_ID, rdm1, begin_orb, end_orb):
     Res = numpy.einsum("ij,ip->pj", Res, basis_trans.conj())
     Res = numpy.einsum("pj,jq->pq", Res, basis_trans)
 
-    return Res
+    return numpy.real(Res)
+    # return Res
 
 
 def tranform_rdm2_adapted_2_xy(orbsym_ID, rdm2, begin_orb, end_orb):
@@ -229,7 +231,8 @@ def tranform_rdm2_adapted_2_xy(orbsym_ID, rdm2, begin_orb, end_orb):
     Res = numpy.einsum("pqkl,kr->pqrl", Res, basis_trans)
     Res = numpy.einsum("pqrl,ls->pqrs", Res, basis_trans)
 
-    return Res
+    return numpy.real(Res)
+    # return Res
 
 
 def tranform_rdm2_xy_2_adapted(orbsym_ID, rdm2, begin_orb, end_orb):
@@ -247,7 +250,8 @@ def tranform_rdm2_xy_2_adapted(orbsym_ID, rdm2, begin_orb, end_orb):
     Res = numpy.einsum("pqkl,kr->pqrl", Res, basis_trans)
     Res = numpy.einsum("pqrl,ls->pqrs", Res, basis_trans)
 
-    return Res
+    return numpy.real(Res)
+    # return Res
 
 
 def symmetrize_rdm1(orbsym_ID, rdm1, begin_orb, end_orb, xy_basis=False):
@@ -405,3 +409,54 @@ def FCIDUMP_Coov(mol, my_scf, filename):
         tools.fcidump.write_hcore(fout, h1e, nmo, tol=tol, float_format=float_format)
         output_format = float_format + "  0  0  0  0\n"
         fout.write(output_format % nuc)
+
+def from_integrals_coov(
+    filename,
+    h1eff,
+    eri_cas,
+    ncas,
+    nelec,
+    ecore,
+    ms,
+    orbsym_ID,
+):
+    nmo = ncas
+    tol = 1e-10
+    float_format = tools.fcidump.DEFAULT_FLOAT_FORMAT
+    
+    with open(filename, "w") as fout:  # 4-fold symmetry
+        tools.fcidump.write_head(fout, nmo, nelec, ms, orbsym_ID)
+        output_format = float_format + " %4d %4d %4d %4d\n"
+        for i in range(nmo):
+            for j in range(i + 1):
+                for k in range(i + 1):
+                    if i > k:
+                        for l in range(i + 1):
+                            if abs(eri_cas[i][j][k][l]) > tol:
+                                fout.write(
+                                    output_format
+                                    % (
+                                        eri_cas[i][j][k][l],
+                                        i + 1,
+                                        j + 1,
+                                        k + 1,
+                                        l + 1,
+                                    )
+                                )
+                    else:
+                        for l in range(j + 1):
+                            if abs(eri_cas[i][j][k][l]) > tol:
+                                fout.write(
+                                    output_format
+                                    % (
+                                        eri_cas[i][j][k][l],
+                                        i + 1,
+                                        j + 1,
+                                        k + 1,
+                                        l + 1,
+                                    )
+                                )
+
+        tools.fcidump.write_hcore(fout, h1eff, nmo, tol=tol, float_format=float_format)
+        output_format = float_format + "  0  0  0  0\n"
+        fout.write(output_format % ecore)
