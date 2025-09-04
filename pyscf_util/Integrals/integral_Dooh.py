@@ -372,8 +372,8 @@ def tranform_rdm2_adapted_2_xy(orbsym_ID, rdm2, begin_orb, end_orb):
     Res = rdm2
 
     Res = numpy.einsum("ijkl,ip->pjkl", Res, basis_trans.conj())
-    Res = numpy.einsum("pjkl,jq->pqkl", Res, basis_trans)
-    Res = numpy.einsum("pqkl,kr->pqrl", Res, basis_trans.conj())
+    Res = numpy.einsum("pjkl,jq->pqkl", Res, basis_trans.conj())
+    Res = numpy.einsum("pqkl,kr->pqrl", Res, basis_trans)
     Res = numpy.einsum("pqrl,ls->pqrs", Res, basis_trans)
 
     return numpy.real(Res)

@@ -15,7 +15,7 @@ mol = gto.M(
             C   0.000000000000       0.000000000000      -0.621265
             C   0.000000000000       0.000000000000       0.621265
             """,
-    basis={"C": "cc-pvtz", "O": "cc-pvtz"},
+    basis={"C": "cc-pvdz", "O": "cc-pvdz"},
     spin=0,
     charge=0,
     symmetry="dooh",
@@ -26,7 +26,7 @@ mf.kernel()
 
 FCIDUMP_NAME = "FCIDUMP_C2_DOOH"
 
-# FCIDUMP_Dooh(mol, mf, FCIDUMP_NAME)
+FCIDUMP_Dooh(mol, mf, FCIDUMP_NAME)
 
 mol = gto.M(
     verbose=0,
@@ -50,4 +50,4 @@ OrbSym = pyscf.symm.label_orb_symm(
     mol, mol.irrep_name, mol.symm_orb, mf.mo_coeff[:, :14]
 )
 OrbSymID = [pyscf.symm.irrep_name2id(mol.groupname, x) for x in OrbSym]
-tools.fcidump.from_mo(mol, FCIDUMP_NAME, mf.mo_coeff[:, :14], OrbSymID, tol=1e-10)
+# tools.fcidump.from_mo(mol, FCIDUMP_NAME, mf.mo_coeff[:, :14], OrbSymID, tol=1e-10)
