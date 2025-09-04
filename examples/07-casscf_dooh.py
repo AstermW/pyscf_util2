@@ -52,8 +52,9 @@ mf2.kernel()
 norb = 8
 nelec = 8
 
-res2 = iciscf_kernel(mol2, mf2, nelec, norb, _ici_state=[[0,0,1]])
-FCIDUMP_Dooh(mol2, mf2, "FCIDUMP_C2_DOOH")
-# res2 = iciscf_kernel(mol2, mf2, nelec, norb, _ici_state=[[0,6,1],[0,7,1]])
-res2 = casscf_kernel(mol2, mf2, nelec, norb, _pyscf_state=[[0,0,1]])
-FCIDUMP_Dooh(mol2, mf2,"FCIDUMP_C2_DOOH2")
+# res2 = iciscf_kernel(mol2, mf2, nelec, norb, _ici_state=[[0,0,1]])
+# FCIDUMP_Dooh(mol2, res2, "FCIDUMP_C2_DOOH")
+# exit(1)
+res2 = iciscf_kernel(mol2, mf2, nelec, norb, _ici_state=[[2, 6, 1], [2, 7, 1]])
+res2 = casscf_kernel(mol2, mf2, nelec, norb, _pyscf_state=[[0, 6, 1], [0, 7, 1]])
+# FCIDUMP_Dooh(mol2, res2,"FCIDUMP_C2_DOOH2")

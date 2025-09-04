@@ -391,8 +391,8 @@ class iCI(lib.StreamObject):  # this is iCI object used in iciscf #
                     tranform_rdm1_adapted_2_xy,
                 )
 
-            # rdm1_act = symmetrize_rdm1(self.orbsym, rdm1_act, 0, norb - nfzc, False)
-            # rdm1_act = tranform_rdm1_adapted_2_xy(self.orbsym, rdm1_act, 0, norb - nfzc)
+            rdm1_act = symmetrize_rdm1(self.orbsym, rdm1_act, 0, norb - nfzc, False)
+            rdm1_act = tranform_rdm1_adapted_2_xy(self.orbsym, rdm1_act, 0, norb - nfzc)
 
             rdm1[nfzc:norb, nfzc:norb] = rdm1_act
 
@@ -445,8 +445,8 @@ class iCI(lib.StreamObject):  # this is iCI object used in iciscf #
 
             # print(rdm2[3,2,3,2], rdm2[3,2,2,3])
 
-            # rdm2_act = symmetrize_rdm2(self.orbsym, rdm2_act, 0, norb - nfzc, False)
-            # rdm2_act = tranform_rdm2_adapted_2_xy(self.orbsym, rdm2_act, 0, norb - nfzc)
+            rdm2_act = symmetrize_rdm2(self.orbsym, rdm2_act, 0, norb - nfzc, False)
+            rdm2_act = tranform_rdm2_adapted_2_xy(self.orbsym, rdm2_act, 0, norb - nfzc)
 
             rdm2[nfzc:norb, nfzc:norb, nfzc:norb, nfzc:norb] = rdm2_act
 

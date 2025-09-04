@@ -338,7 +338,8 @@ def symmetrize_rdm2(orbsym_ID, rdm2, begin_orb, end_orb, xy_basis=False):
     if xy_basis:
         rdm2_tmp = tranform_rdm2_xy_2_adapted(orbsym_ID, rdm2_tmp, begin_orb, end_orb)
 
-    rdm2_tmp_ = numpy.zeros(rdm2_tmp.shape)
+    # rdm2_tmp_ = numpy.zeros(rdm2_tmp.shape)
+    rdm2_tmp_ = rdm2_tmp
 
     _, Lz = _get_symmetry_adapted_basis_Coov(orbsym_ID)
 
