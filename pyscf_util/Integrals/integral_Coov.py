@@ -38,6 +38,8 @@ def _get_symmetry_adapted_basis_Coov(orbsym_ID):
 
     # orbsym_ID, _ = get_orbsym(mol, coeff)
 
+    orbsym_ID = [int(x) for x in orbsym_ID]
+
     # A1 = [i for i, x in enumerate(orbsym_ID) if x is A1_ID]
     # A2 = [i for i, x in enumerate(orbsym_ID) if x is A2_ID]
 
@@ -141,7 +143,7 @@ def _get_time_reversal_pair(orbsym_ID):
     E5_up = [i for i, x in enumerate(orbsym_ID) if x is E5_up_ID]
     E5_dn = [i for i, x in enumerate(orbsym_ID) if x is E5_dn_ID]
 
-    Res = range(0, len(orbsym_ID))
+    Res = list(range(0, len(orbsym_ID)))
 
     for i in range(len(E1_up)):
         up_ID = E1_up[i]
