@@ -106,6 +106,7 @@ def extract_icipt2_data_from_file(file_path: str):
 
     return extracted_data
 
+
 def extract_icipt2_data_from_file2(file_path: str):
     # 读取文件内容
     content = None
@@ -138,6 +139,7 @@ def extract_icipt2_data_from_file2(file_path: str):
         extracted_data.append(data)
 
     return extracted_data
+
 
 # extra #
 

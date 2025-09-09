@@ -1,0 +1,260 @@
+****************************************************************************
+*********** Iteractive Configuration Interaction with Selection  ***********
+     AUTHOR : NING ZHANG   , QiTCS, 100871, ningzhang1024@gmail.com        
+     AUTHOR : QINGPENG WANG, QiTCS 
+****************************************************************************
+
+
+
+**************************************
+*********** Print TaskInfo ***********
+**************************************
+
+ Spintwo / Irrep / nStates / OuterWeight / Weight
+____________________________________
+        0/      0/        1/     1.000000     1.00000000 
+____________________________________
+
+
+**************************************
+***************  END  ****************
+**************************************
+
+
+
+******** Print Parameter ******* 
+
+********** Basic Info **********
+
+Selection Algorithm            = SiCI with iCI Criterion
+Diagonization Algorithm        = LOBPCG
+Initial Guess                  = CASCI
+Perturbation                   = No Perturbation
+Reduced Density Matrix         = Do not calculate RDMs
+********** Cnotrol Info **********
+
+Similarity Control                           = 0.950000
+energy convergence tolerance for iCI (ETOL)  = 0.000000
+Cmin Schedule                (CMIN_SCHEDULE) = 0.0000e+00 
+
+**********  End  Parameter **********
+
+nfzc      2 
+nact      8 
+nhole_act 4 
+nvir      18 
+size 264
+size 1
+ ****** cfgspace info ****** 
+ncfg    :          175
+ncsf    :          264
+energy  :    -75.55289820
+mxopen  :            8
+after remove open shell cfgspace info 
+ncfg    :          175
+ncsf    :          264
+energy  :    -75.55289820
+mxopen  :            8
+ --------------------- MRPT2 Driver --------------------- 
+Time to build H0_Dyall_Integrals:           0.000 s
+Time to build Integrals_Dg and get E0:           0.000 s
+
+
+*************** Begin Second_Residue_Update ***************
+
+memory            = 50208
+Working Time      : cputime / walltime / effective core 
+Total Time        :     0.00 /     0.00 / 3.18
+Initialize Time   :     0.00 /     0.00 / 1.18
+Calculation Time  :     0.00 /     0.00 / 3.18
+Finalize Time     :     0.00 /     0.00 / 0.00
+
+
+*************** End Second_Residue_Update ***************
+
+Time taken for _read_in_fcidump  : 8.31099 ms
+Time taken for _build_other_info : 0.002266 ms
+
+
+********** ENPT2 Info **********
+
+Wall Time                   =    0.617
+CPU  Time                   =    4.410
+CPU / Wall                  =    7.152
+ncfg_touched                =                 2424
+ncsf_touched                =                 5376
+ncsf_important              =                 5376
+---------------------------------------------------
+       var        /  perturbation  /     total     
+       -75.55289820/    -0.09577052/   -75.64866872
+---------------------------------------------------
+Generate connection  record =    0.006 ( 0.14%)
+sort connection record      =    0.004 ( 0.08%)
+sort calculation record     =    0.018 ( 0.41%)
+sort                        =    0.022 ( 0.49%)
+calculation sigma           =    0.008 ( 0.17%)
+collect result              =    0.000 ( 0.01%)
+nWorkDone                   = 85
+
+
+********************************
+
+-9.577052e-02 
+Time to perform V:           0.626 s
+Time taken for _read_in_fcidump  : 13.9232 ms
+Time taken for _build_other_info : 0.037362 ms
+build PreCalculator_CCF time        0.005 s memory 1591496
+
+
+********** ENPT2 Info **********
+
+Wall Time                   =    0.322
+CPU  Time                   =    2.446
+CPU / Wall                  =    7.607
+ncfg_touched                =                17392
+ncsf_touched                =                54648
+ncsf_important              =                54212
+---------------------------------------------------
+       var        /  perturbation  /     total     
+       -75.55289820/    -0.08182949/   -75.63472769
+---------------------------------------------------
+Generate connection  record =    0.000 ( 0.00%)
+sort connection record      =    0.000 ( 0.00%)
+sort calculation record     =    0.000 ( 0.00%)
+sort                        =    0.000 ( 0.00%)
+calculation sigma           =    0.000 ( 0.00%)
+collect result              =    0.000 ( 0.00%)
+nWorkDone                   = 0
+
+
+********************************
+
+Time to perform VV:           0.336 s
+
+
+*************** Begin Residue Update Algo OrbRange MRPT2 ***************
+
+memory            = 79184
+Working Time      : cputime / walltime / effective core 
+Total Time        :     0.01 /     0.00 / 35.76
+Initialize Time   :     0.00 /     0.00 / 0.00
+Calculation Time  :     0.01 /     0.00 / 36.25
+Finalize Time     :     0.00 /     0.00 / 3.98
+
+
+*************** End Residue Update Algo OrbRange MRPT2 ***************
+
+Time taken for _read_in_fcidump  : 12.0475 ms
+Time taken for _build_other_info : 0.001758 ms
+
+
+********** ENPT2 Info **********
+
+Wall Time                   =    0.286
+CPU  Time                   =    2.180
+CPU / Wall                  =    7.633
+ncfg_touched                =                  300
+ncsf_touched                =                  616
+ncsf_important              =                  616
+---------------------------------------------------
+       var        /  perturbation  /     total     
+       -75.55289820/    -0.00008122/   -75.55297942
+---------------------------------------------------
+Generate connection  record =    0.015 ( 0.67%)
+sort connection record      =    0.001 ( 0.04%)
+sort calculation record     =    0.004 ( 0.16%)
+sort                        =    0.004 ( 0.20%)
+calculation sigma           =    0.010 ( 0.44%)
+collect result              =    0.000 ( 0.00%)
+nWorkDone                   = 50
+
+
+********************************
+
+Time to perform C:           0.298 s
+Time taken for _read_in_fcidump  : 10.9614 ms
+Time taken for _build_other_info : 0.031526 ms
+n_threads 8 n_work 987 nwork_dbl 978
+build PreCalculator_CCF time        0.007 s memory 4497040
+
+
+********** ENPT2 Info **********
+
+Wall Time                   =    0.324
+CPU  Time                   =    2.450
+CPU / Wall                  =    7.562
+ncfg_touched                =                 5288
+ncsf_touched                =                18784
+ncsf_important              =                18780
+---------------------------------------------------
+       var        /  perturbation  /     total     
+       -75.55289820/    -0.00088746/   -75.55378566
+---------------------------------------------------
+Generate connection  record =    0.000 ( 0.00%)
+sort connection record      =    0.000 ( 0.00%)
+sort calculation record     =    0.000 ( 0.00%)
+sort                        =    0.000 ( 0.00%)
+calculation sigma           =    0.000 ( 0.00%)
+collect result              =    0.000 ( 0.00%)
+nWorkDone                   = 0
+
+
+********************************
+
+Time to perform CV:           0.336 s
+Time taken for _read_in_fcidump  : 9.86056 ms
+Time taken for _build_other_info : 0.016823 ms
+
+
+*************** Begin Second_Residue_Update ***************
+
+memory            = 50208
+Working Time      : cputime / walltime / effective core 
+Total Time        :     0.01 /     0.00 / 22.87
+Initialize Time   :     0.00 /     0.00 / 1.81
+Calculation Time  :     0.01 /     0.00 / 23.11
+Finalize Time     :     0.00 /     0.00 / 4.10
+
+
+*************** End Second_Residue_Update ***************
+
+build PreCalculator_CCF time        0.003 s memory 1591496
+
+
+********** ENPT2 Info **********
+
+Wall Time                   =    0.287
+CPU  Time                   =    2.292
+CPU / Wall                  =    7.986
+ncfg_touched                =                  368
+ncsf_touched                =                  696
+ncsf_important              =                  696
+---------------------------------------------------
+       var        /  perturbation  /     total     
+       -75.55289820/    -0.00001650/   -75.55291469
+---------------------------------------------------
+Generate connection  record =    0.000 ( 0.00%)
+sort connection record      =    0.000 ( 0.00%)
+sort calculation record     =    0.000 ( 0.00%)
+sort                        =    0.000 ( 0.00%)
+calculation sigma           =    0.000 ( 0.00%)
+collect result              =    0.000 ( 0.00%)
+nWorkDone                   = 0
+
+
+********************************
+
+Time to perform CC:           0.297 s
+Total Work Time :           1.902 s
+----------------------------------
+(ncore, nvirt) | E2
+(    0,     1) |     -0.09577052 
+(    0,     2) |     -0.08182949 
+(    1,     0) |     -0.00008122 
+(    1,     1) |     -0.00088746 
+(    1,     2) |      0.00000000 
+(    2,     0) |     -0.00001650 
+(    2,     1) |      0.00000000 
+(    2,     2) |      0.00000000 
+----------------------------------
+ --------------------- MRPT2 Driver End --------------------- 

@@ -1,0 +1,413 @@
+argc = 8
+****************************************************************************
+*********** Iteractive Configuration Interaction with Selection  ***********
+     AUTHOR : NING ZHANG   , QiTCS, 100871, ningzhang1024@gmail.com        
+     AUTHOR : QINGPENG WANG, QiTCS 
+****************************************************************************
+
+
+
+**************************************
+*********** Print TaskInfo ***********
+**************************************
+
+ Spintwo / Irrep / nStates / OuterWeight / Weight
+____________________________________
+        0/      0/        1/     1.000000     1.00000000 
+____________________________________
+
+
+**************************************
+***************  END  ****************
+**************************************
+
+
+
+******** Print Parameter ******* 
+
+********** Basic Info **********
+
+Selection Algorithm            = SiCI with iCI Criterion
+Diagonization Algorithm        = LOBPCG
+Initial Guess                  = CASCI
+Perturbation                   = No Perturbation
+Reduced Density Matrix         = Do not calculate RDMs
+********** Cnotrol Info **********
+
+Similarity Control                           = 0.950000
+energy convergence tolerance for iCI (ETOL)  = 0.000000
+Cmin Schedule                (CMIN_SCHEDULE) = 0.0000e+00 
+
+**********  End  Parameter **********
+
+nfzc      2 
+nact      8 
+nhole_act 4 
+nvir      18 
+size 264
+size 1
+ ****** cfgspace info ****** 
+ncfg    :          175
+ncsf    :          264
+energy  :    -75.55289820
+mxopen  :            8
+after remove open shell cfgspace info 
+ncfg    :          175
+ncsf    :          264
+energy  :    -75.55289820
+mxopen  :            8
+ --------------------- MRPT2 Driver --------------------- 
+Time to build H0_Dyall_Integrals:           0.008 s
+With Dyall Hamiltonian as H0
+
+
+*************** Begin Second_Residue_Update ***************
+
+memory            = 50208
+Working Time      : cputime / walltime / effective core 
+Total Time        :     0.01 /     0.00 / 17.47
+Initialize Time   :     0.00 /     0.00 / 1.34
+Calculation Time  :     0.01 /     0.00 / 17.59
+Finalize Time     :     0.00 /     0.00 / 5.21
+
+
+*************** End Second_Residue_Update ***************
+
+
+
+*************** Begin Hmat_Construction ***************
+
+dimension = 264
+nnz               = 0
+Working Time      : cputime / walltime / effective core 
+Total Time        :     0.02 /     0.00 / 6.55
+Initialize Time   :     0.00 /     0.00 / 1.05
+Calculation Time  :     0.02 /     0.00 / 7.14
+Finalize Time     :     0.00 /     0.00 / 1.06
+
+
+*************** End Hmat_Construction ***************
+
+
+
+*************** Begin Residue Free MVP ***************
+
+Working Time      : cputime / walltime / effective core 
+Total Time        :     0.06 /     0.01 / 6.89
+Initialize Time   :     0.00 /     0.00 / 1.00
+Calculation Time  :     0.06 /     0.01 / 6.89
+Finalize Time     :     0.00 /     0.00 / 2.65
+
+
+*************** End Residue Free MVP ***************
+
+E0 =    -75.55289820 
+Time to build Integrals_Dg and get E0:           0.014 s
+perform MRPT2 with selection
+nQmin = 3
+Qmin  =       1.000e-03       1.000e-04       1.000e-05 
+
+
+*************** Begin Second_Residue_Update ***************
+
+memory            = 50208
+Working Time      : cputime / walltime / effective core 
+Total Time        :     0.00 /     0.00 / 23.84
+Initialize Time   :     0.00 /     0.00 / 1.08
+Calculation Time  :     0.00 /     0.00 / 24.57
+Finalize Time     :     0.00 /     0.00 / 4.88
+
+
+*************** End Second_Residue_Update ***************
+
+Time taken for _read_in_fcidump  : 9.35637 ms
+Time taken for _build_other_info : 0.003554 ms
+
+
+********** ENPT2 Info **********
+
+Wall Time                   =    0.440
+CPU  Time                   =    3.358
+CPU / Wall                  =    7.636
+ncfg_touched                =                 2424
+ncsf_touched                =                 5376
+ncsf_important              =                 5376
+---------------------------------------------------
+       var        /  perturbation  /     total     
+       -75.55289820/    -0.00127742/   -75.55417562
+---------------------------------------------------
+Generate connection  record =    0.016 ( 0.48%)
+sort connection record      =    0.002 ( 0.05%)
+sort calculation record     =    0.018 ( 0.53%)
+sort                        =    0.019 ( 0.58%)
+calculation sigma           =    0.007 ( 0.20%)
+collect result              =    0.002 ( 0.05%)
+nWorkDone                   = 85
+
+
+********************************
+
+-1.277424e-03 -1.987923e-05 -1.275849e-07 
+Time to perform V:           0.450 s
+Time taken for _read_in_fcidump  : 9.63304 ms
+Time taken for _build_other_info : 0.024782 ms
+build PreCalculator_CCF time        0.004 s memory 1591496
+
+
+********** ENPT2 Info **********
+
+Wall Time                   =    0.367
+CPU  Time                   =    2.471
+CPU / Wall                  =    6.739
+ncfg_touched                =                17392
+ncsf_touched                =                54648
+ncsf_important              =                54212
+---------------------------------------------------
+       var        /  perturbation  /     total     
+       -75.55289820/    -0.00363226/   -75.55653046
+---------------------------------------------------
+Generate connection  record =    0.000 ( 0.00%)
+sort connection record      =    0.000 ( 0.00%)
+sort calculation record     =    0.000 ( 0.00%)
+sort                        =    0.000 ( 0.00%)
+calculation sigma           =    0.000 ( 0.00%)
+collect result              =    0.000 ( 0.00%)
+nWorkDone                   = 0
+
+
+********************************
+
+Time to perform VV:           0.379 s
+
+
+*************** Begin Residue Update Algo OrbRange MRPT2 ***************
+
+memory            = 79184
+Working Time      : cputime / walltime / effective core 
+Total Time        :     0.02 /     0.00 / 80.30
+Initialize Time   :     0.00 /     0.00 / 1.15
+Calculation Time  :     0.02 /     0.00 / 82.29
+Finalize Time     :     0.00 /     0.00 / 0.00
+
+
+*************** End Residue Update Algo OrbRange MRPT2 ***************
+
+Time taken for _read_in_fcidump  : 10.4626 ms
+Time taken for _build_other_info : 0.001252 ms
+
+
+********** ENPT2 Info **********
+
+Wall Time                   =    0.241
+CPU  Time                   =    1.965
+CPU / Wall                  =    8.147
+ncfg_touched                =                  300
+ncsf_touched                =                  616
+ncsf_important              =                  616
+---------------------------------------------------
+       var        /  perturbation  /     total     
+       -75.55289820/    -0.00006358/   -75.55296178
+---------------------------------------------------
+Generate connection  record =    0.001 ( 0.03%)
+sort connection record      =    0.001 ( 0.03%)
+sort calculation record     =    0.000 ( 0.01%)
+sort                        =    0.001 ( 0.04%)
+calculation sigma           =    0.002 ( 0.09%)
+collect result              =    0.000 ( 0.01%)
+nWorkDone                   = 50
+
+
+********************************
+
+Time to perform C:           0.254 s
+Time taken for _read_in_fcidump  : 11.897 ms
+Time taken for _build_other_info : 0.0346 ms
+n_threads 8 n_work 987 nwork_dbl 978
+build PreCalculator_CCF time        0.007 s memory 4497040
+
+
+********** ENPT2 Info **********
+
+Wall Time                   =    0.303
+CPU  Time                   =    2.176
+CPU / Wall                  =    7.180
+ncfg_touched                =                 5288
+ncsf_touched                =                18784
+ncsf_important              =                18780
+---------------------------------------------------
+       var        /  perturbation  /     total     
+       -75.55289820/    -0.00060600/   -75.55350420
+---------------------------------------------------
+Generate connection  record =    0.000 ( 0.00%)
+sort connection record      =    0.000 ( 0.00%)
+sort calculation record     =    0.000 ( 0.00%)
+sort                        =    0.000 ( 0.00%)
+calculation sigma           =    0.000 ( 0.00%)
+collect result              =    0.000 ( 0.00%)
+nWorkDone                   = 0
+
+
+********************************
+
+Time to perform CV:           0.319 s
+Time taken for _read_in_fcidump  : 12.5027 ms
+Time taken for _build_other_info : 0.020418 ms
+
+
+*************** Begin Second_Residue_Update ***************
+
+memory            = 50208
+Working Time      : cputime / walltime / effective core 
+Total Time        :     0.00 /     0.00 / 1.07
+Initialize Time   :     0.00 /     0.00 / 1.46
+Calculation Time  :     0.00 /     0.00 / 1.06
+Finalize Time     :     0.00 /     0.00 / 0.00
+
+
+*************** End Second_Residue_Update ***************
+
+build PreCalculator_CCF time        0.003 s memory 1591496
+
+
+********** ENPT2 Info **********
+
+Wall Time                   =    0.385
+CPU  Time                   =    2.509
+CPU / Wall                  =    6.524
+ncfg_touched                =                  368
+ncsf_touched                =                  696
+ncsf_important              =                  696
+---------------------------------------------------
+       var        /  perturbation  /     total     
+       -75.55289820/    -0.00001700/   -75.55291520
+---------------------------------------------------
+Generate connection  record =    0.000 ( 0.00%)
+sort connection record      =    0.000 ( 0.00%)
+sort calculation record     =    0.000 ( 0.00%)
+sort                        =    0.000 ( 0.00%)
+calculation sigma           =    0.000 ( 0.00%)
+collect result              =    0.000 ( 0.00%)
+nWorkDone                   = 0
+
+
+********************************
+
+Time to perform CC:           0.403 s
+----------------------------------
+Qmin =       1.000e-03
+ ************ GradedCfgSpaceBase info ************ 
+  dimension      : 1498
+  ncfg           : 1053
+ N subspaces     : 186
+  nstates        : 1
+  subspaces info : 
+ ************************************************* 
+Time to build hmat:           0.065 s
+Time to solve hmat:           0.002 s
+----------------------------------
+un-NEVPT2s E2 (left)
+(ncore, nvirt) | E2
+(    0,     1) |     -0.00127742 
+(    0,     2) |     -0.00363226 
+(    1,     0) |     -0.00006358 
+(    1,     1) |     -0.00060600 
+(    1,     2) |      0.00000000 
+(    2,     0) |     -0.00001700 
+(    2,     1) |      0.00000000 
+(    2,     2) |      0.00000000 
+----------------------------------
+----------------------------------
+un-NEVPT2s E2
+(ncore, nvirt) | E2
+(    0,     1) |     -0.08319959 
+(    0,     2) |     -0.05965414 
+(    1,     0) |     -0.00007953 
+(    1,     1) |     -0.00086828 
+(    1,     2) |      0.00000000 
+(    2,     0) |     -0.00001700 
+(    2,     1) |      0.00000000 
+(    2,     2) |      0.00000000 
+----------------------------------
+----------------------------------
+Qmin =       1.000e-04
+ ************ GradedCfgSpaceBase info ************ 
+  dimension      : 9362
+  ncfg           : 5263
+ N subspaces     : 228
+  nstates        : 1
+  subspaces info : 
+ ************************************************* 
+Time to build hmat:           0.068 s
+Time to solve hmat:           0.003 s
+----------------------------------
+un-NEVPT2s E2 (left)
+(ncore, nvirt) | E2
+(    0,     1) |     -0.00001988 
+(    0,     2) |     -0.00013509 
+(    1,     0) |     -0.00000384 
+(    1,     1) |     -0.00005881 
+(    1,     2) |      0.00000000 
+(    2,     0) |     -0.00000391 
+(    2,     1) |      0.00000000 
+(    2,     2) |      0.00000000 
+----------------------------------
+----------------------------------
+un-NEVPT2s E2
+(ncore, nvirt) | E2
+(    0,     1) |     -0.08413830 
+(    0,     2) |     -0.06073894 
+(    1,     0) |     -0.00007985 
+(    1,     1) |     -0.00087525 
+(    1,     2) |      0.00000000 
+(    2,     0) |     -0.00001701 
+(    2,     1) |      0.00000000 
+(    2,     2) |      0.00000000 
+----------------------------------
+----------------------------------
+Qmin =       1.000e-05
+ ************ GradedCfgSpaceBase info ************ 
+  dimension      : 28669
+  ncfg           : 13224
+ N subspaces     : 230
+  nstates        : 1
+  subspaces info : 
+ ************************************************* 
+Time to build hmat:           0.091 s
+Time to solve hmat:           0.010 s
+----------------------------------
+un-NEVPT2s E2 (left)
+(ncore, nvirt) | E2
+(    0,     1) |     -0.00000013 
+(    0,     2) |     -0.00000277 
+(    1,     0) |     -0.00000008 
+(    1,     1) |     -0.00000188 
+(    1,     2) |      0.00000000 
+(    2,     0) |     -0.00000012 
+(    2,     1) |      0.00000000 
+(    2,     2) |      0.00000000 
+----------------------------------
+----------------------------------
+un-NEVPT2s E2
+(ncore, nvirt) | E2
+(    0,     1) |     -0.08419989 
+(    0,     2) |     -0.06084291 
+(    1,     0) |     -0.00008017 
+(    1,     1) |     -0.00087993 
+(    1,     2) |      0.00000000 
+(    2,     0) |     -0.00001711 
+(    2,     1) |      0.00000000 
+(    2,     2) |      0.00000000 
+----------------------------------
+Total Work Time :           2.199 s
+----------------------------------
+(ncore, nvirt) | E2
+(    0,     1) |     -0.08319959     -0.08413830     -0.08419989 
+(    0,     2) |     -0.05965414     -0.06073894     -0.06084291 
+(    1,     0) |     -0.00007953     -0.00007985     -0.00008017 
+(    1,     1) |     -0.00086828     -0.00087525     -0.00087993 
+(    1,     2) |      0.00000000      0.00000000      0.00000000 
+(    2,     0) |     -0.00001700     -0.00001701     -0.00001711 
+(    2,     1) |      0.00000000      0.00000000      0.00000000 
+(    2,     2) |      0.00000000      0.00000000      0.00000000 
+----------------------------------
+ --------------------- MRPT2 Driver End --------------------- 
