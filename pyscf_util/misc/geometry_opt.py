@@ -103,6 +103,8 @@ def geometry_optimization(
     # 选择计算方法
     if method.upper() == 'HF':
         mf = scf.RHF(mol)
+    elif method.upper() == "ROHF":
+        mf = scf.ROHF(mol)
     elif method.upper() == 'DFT':
         functional = kwargs.get('functional', 'B3LYP')
         mf = dft.RKS(mol, xc=functional)
@@ -165,6 +167,8 @@ def geometry_optimization(
         # 选择计算方法
         if method.upper() == 'HF':
             mf = scf.RHF(mol_eq)
+        elif method.upper() == "ROHF":
+            mf = scf.ROHF(mol_eq)
         elif method.upper() == 'DFT':
             functional = kwargs.get('functional', 'B3LYP')
             mf = dft.RKS(mol_eq, xc=functional)
@@ -204,6 +208,7 @@ def geometry_optimization(
             'energy': mf.e_tot,
             'coordinates': mol_eq.atom_coords(),
             'converged': optimizer.converged,
+            'mf':mf
             # 'iterations': optimizer.iter_count,
             # 'gradient_norm': optimizer.grad_norm
         }
