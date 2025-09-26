@@ -15,7 +15,7 @@ from functools import reduce
 import numpy
 
 
-def get_generalized_fock(mc, mo_coeff, rdm1):
+def get_generalized_fock(mc, mo_coeff, rdm1, with_g3=False):
     """
     casdm1 (ndarray): 1-particle density matrix in active space. Without
             input casdm1, the density matrix is computed with the input ci
@@ -32,7 +32,31 @@ def get_generalized_fock(mc, mo_coeff, rdm1):
 
     fock_ao = get_fock(mc, mo_coeff=mo_coeff, casdm1=rdm1)
 
-    return reduce(numpy.dot, (mo_coeff.conj().T, fock_ao, mo_coeff))
+    if not with_g3:
+        return reduce(numpy.dot, (mo_coeff.conj().T, fock_ao, mo_coeff))
+    else:
+        d = 2.0 * numpy.identity(rdm1.shape[0]) - rdm1
+        # print(d)
+        mol = mc.mol
+        ncore = mc.ncore
+        nact = rdm1.shape[0]
+        nmo = mo_coeff.shape[0]
+        int2e = pyscf.ao2mo.general(
+            mol,
+            (mo_coeff, mo_coeff, mo_coeff, mo_coeff),
+            aosym="1",
+            compact=False,
+        ).reshape(nmo, nmo, nmo, nmo)
+        Dd = numpy.dot(rdm1, d)
+        K = numpy.einsum(
+            "prsq,rs->pq", int2e[:, ncore : ncore + nact, ncore : ncore + nact, :], Dd
+        )
+        Dd_full = numpy.zeros_like(K)
+        Dd_full[ncore : ncore + nact, ncore : ncore + nact] = Dd
+        g3 = -0.5 * reduce(numpy.dot, (Dd_full, K, Dd_full))
+        # print(g3)
+        # exit(1)
+        return reduce(numpy.dot, (mo_coeff.conj().T, fock_ao, mo_coeff)) + g3
 
 
 ############## integral MRPT2 ##############
