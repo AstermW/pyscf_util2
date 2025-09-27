@@ -81,6 +81,8 @@ rdm1 = file_rdm.ReadIn_rdm1("c2_rdm1", 8, 8)
 
 gfock = get_generalized_fock(CASSCF_Driver, mo_coeff, rdm1)
 file_cmoao.Dump_Cmoao("gfock", gfock)
+gfock = get_generalized_fock(CASSCF_Driver, mo_coeff, rdm1, True)
+file_cmoao.Dump_Cmoao("gfock2", gfock)
 mf.mo_coeff = mo_coeff
 
 tools.fcidump.from_scf(mf, "FCIDUMP_C2", 1e-10)
