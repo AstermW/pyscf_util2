@@ -30,7 +30,7 @@ fcidump_unrestricted(mol, mf, mf.mo_coeff, _filename=FCIDUMP_NAME)
 
 # no sym #
 
-mol.symmetry = 'C1'
+mol.symmetry = "C1"
 mol.build()
 
 mf = scf.RHF(mol)

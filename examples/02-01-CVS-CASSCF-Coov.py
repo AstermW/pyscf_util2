@@ -60,8 +60,6 @@ mymc2step.mc1step()
 
 FCIDUMP_Coov(mol, mymc2step, "FCIDUMP_CO_COOV")
 
-exit(1)
-
 kernel_coov(
     True,
     task_name="iCIPT2_CO_Coov_CVS_C_edge",
