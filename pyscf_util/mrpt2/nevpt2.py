@@ -226,16 +226,38 @@ def sc_nevpt2_ici(
 
 from pyscf.mrpt.nevpt2 import make_k27, _extract_orbs, make_hdm1, make_a3
 import scipy.linalg
+import numpy as np
 
+# def _diag_K_R_rsi(h1e, h2e, dm1, dm2):
+#     k27 = make_k27(h1e, h2e, dm1, dm2)
+#     eigvals, eigvecs = scipy.linalg.eigh(k27, dm1)
+#     return eigvals, eigvecs
 
 def _diag_K_R_rsi(h1e, h2e, dm1, dm2):
-
+    """
+    求解广义特征值问题 K * c = e * dm1 * c
+    
+    参数:
+        h1e, h2e: 哈密顿量矩阵元
+        dm1, dm2: 密度矩阵
+        tol: 奇异值容忍度
+    
+    返回:
+        eigvals: 特征值
+        eigvecs: 特征向量
+    """
     k27 = make_k27(h1e, h2e, dm1, dm2)
-
-    eigvals, eigvecs = scipy.linalg.eigh(k27, dm1)
-
-    return eigvals, eigvecs
-
+    n = dm1.shape[0]
+    # 方法1: 使用伪逆处理奇异矩阵
+    try:
+        # 尝试直接求解广义特征值问题
+        eigvals, eigvecs = scipy.linalg.eigh(k27, dm1)
+        return eigvals, eigvecs
+    except scipy.linalg.LinAlgError:
+        # 如果直接求解失败，使用正则化方法
+        dm1_regularized = dm1 + 1e-10 * np.eye(n)
+        eigvals, eigvecs = scipy.linalg.eigh(k27, dm1_regularized)
+        return eigvals, eigvecs
 
 def Srsi_PC(mc, dms, eris, verbose=None):
     # Subspace S_ijr^{(1)}
@@ -304,10 +326,16 @@ def Srsi_PC(mc, dms, eris, verbose=None):
 def _diag_K_R_ijr(h1e, h2e, dm1, dm2, hdm1):
 
     a3 = make_a3(h1e, h2e, dm1, dm2, hdm1)
+    n = hdm1.shape[0]
 
-    eigvals, eigvecs = scipy.linalg.eigh(a3, hdm1)
-
-    return eigvals, eigvecs
+    try:
+        eigvals, eigvecs = scipy.linalg.eigh(a3, hdm1)
+        return eigvals, eigvecs
+    except scipy.linalg.LinAlgError:
+        # 如果直接求解失败，使用正则化方法
+        hdm1_regularized = hdm1 + 1e-10 * np.eye(n)
+        eigvals, eigvecs = scipy.linalg.eigh(a3, hdm1_regularized)
+        return eigvals, eigvecs
 
 
 def Sijr_PC(mc, dms, eris, verbose=None):
