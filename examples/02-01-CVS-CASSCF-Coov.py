@@ -3,6 +3,8 @@ from pyscf import tools
 from pyscf import mcscf, gto, scf
 
 from pyscf_util.MeanField.iciscf import iCI
+from pyscf_util.Integrals.integral_Coov import FCIDUMP_Coov
+from pyscf_util.iCIPT2.iCIPT2_CVS_highsym import kernel_coov
 
 BASIS = "ccpvtz"
 
@@ -52,6 +54,25 @@ mymc2step.fcisolver.config["segment"] = "0 0 1 4 4 0 0 0"
 mymc2step.fcisolver.config["selection"] = 1
 mymc2step.fcisolver.config["nvalelec"] = 12
 mymc2step.mc1step()
+
+
+### fcidump coov ###
+
+FCIDUMP_Coov(mol, mymc2step, "FCIDUMP_CO_COOV")
+
+exit(1)
+
+kernel_coov(
+    True,
+    task_name="iCIPT2_CO_Coov_CVS_C_edge",
+    fcidump="FCIDUMP_CO_COOV",
+    segment="0 1 1 4 4 0 %d 0" % (mol.nao - 10),
+    nelec_val=12,
+    cmin="1e-4",
+    perturbation=1,
+    Task="0 10 1 1 0 11 1 1",
+    end_with=".PrimeSpace",
+)
 
 exit(1)
 

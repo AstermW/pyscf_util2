@@ -39,7 +39,7 @@ class _iCIPT2_Driver:
         nelec_val,
         rotatemo=0,
         # cmin: str | float = 1e-4,
-        cmin = 1e-4,
+        cmin=1e-4,
         perturbation=0,
         dumprdm=0,
         relative=0,
@@ -50,7 +50,7 @@ class _iCIPT2_Driver:
         doublegroup=None,
         direct=None,
         start_with=None,
-        end_with=None
+        end_with=None,
     ):
         inputfilename = task_name + ".inp"
         outputfilename = task_name + ".out"
@@ -94,12 +94,13 @@ class _iCIPT2_Driver:
             if not os.path.isfile(file):
                 continue
             with temporary_update(self._file_not_remove, "start_with", start_with):
-                if any(file.startswith(ext) for ext in self._file_not_remove["start_with"]):
+                if any(
+                    file.startswith(ext) for ext in self._file_not_remove["start_with"]
+                ):
                     continue
             with temporary_update(self._file_not_remove, "end_with", end_with):
                 if any(
-                    file.endswith(start)
-                    for start in self._file_not_remove["end_with"]
+                    file.endswith(start) for start in self._file_not_remove["end_with"]
                 ):
                     continue
             # os.remove(file)
@@ -124,7 +125,7 @@ def kernel(
     segment,
     nelec_val,
     rotatemo=0,
-    cmin= 1e-4,
+    cmin=1e-4,
     perturbation=0,
     dumprdm=0,
     relative=0,
@@ -135,7 +136,7 @@ def kernel(
     doublegroup=None,
     direct=None,
     start_with=None,
-    end_with=None
+    end_with=None,
 ):
     if IsCSF:
         ICIPT2_CSF_DRIVER.run(

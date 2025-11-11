@@ -342,7 +342,7 @@ class iCI(lib.StreamObject):  # this is iCI object used in iciscf #
         # self._cached_outputfile = []
 
     def __del__(self):
-        # pass
+        pass
         for f in self._cached_outputfile:
             if os.path.isfile(f):
                 try:
