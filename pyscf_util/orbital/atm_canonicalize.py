@@ -16,7 +16,7 @@ def random_orthogonal_matrix(n):
     return Q
 
 
-def atomic_canonicalization(mol, fock, mo_coeff, threshold1=0.7, threshold2=0.99):
+def atomic_canonicalization(mol, fock, mo_coeff, SCF=None, threshold1=0.7, threshold2=0.99):
     """
     执行原子正则化的函数
 
@@ -54,7 +54,13 @@ def atomic_canonicalization(mol, fock, mo_coeff, threshold1=0.7, threshold2=0.99
 
     # (1) Boys局域化
     print("进行Boys局域化...")
-    mo_boys = boys.Boys(mol, mo_processed).kernel()
+    if SCF is None:
+        mo_boys = boys.Boys(mol, mo_processed).kernel()
+    else:
+        # import pyscf
+        pm = pyscf.lo.PM(mol, mo_processed, SCF)
+        mo_boys = pm.kernel()
+
 
     # (2) 计算每个局域轨道的<r>并分析
     print("分析轨道局域化程度...")
@@ -116,7 +122,7 @@ def atomic_canonicalization(mol, fock, mo_coeff, threshold1=0.7, threshold2=0.99
             warning_msg = f"轨道 {i} 无法局域化: 最近原子 {nearest_atom} 与次近原子 {second_atom} 的距离比 = {ratio:.3f}"
             warnings.warn(warning_msg)
             orbital_warnings.append(warning_msg)
-            return False, orbital_warnings
+            return False,None, orbital_warnings
         else:
             if ratio > 1.0:
                 raise RuntimeError
@@ -133,9 +139,13 @@ def atomic_canonicalization(mol, fock, mo_coeff, threshold1=0.7, threshold2=0.99
     
     atom_groups = dict(sorted(atom_groups.items()))
 
+    norb_atm = []
+
     # 打印分组信息
+
     for atom_idx, orb_indices in atom_groups.items():
         print(f"原子 {atom_idx}: 轨道 {orb_indices}")
+        norb_atm.append(len(orb_indices))
 
     # (4) 计算每个原子组的Fock投影并对角化
     print("计算原子正则化轨道...")
@@ -167,7 +177,7 @@ def atomic_canonicalization(mol, fock, mo_coeff, threshold1=0.7, threshold2=0.99
 
     # (5) 返回原子正则化轨道
     print("原子正则化完成!")
-    return mo_atm_can, orbital_warnings
+    return mo_atm_can, norb_atm, orbital_warnings
 
 
 # 使用示例
